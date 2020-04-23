@@ -34,7 +34,10 @@
           v-ripple
           v-for="menuItem in menuItems"
           :key="menuItem.title"
-          v-bind="menuItem">
+          v-bind="menuItem"
+          tag="a"
+          rel="noopener"
+          :href="menuItem.link">
           <q-item-section avatar>
             <q-icon :name="menuItem.icon" />
           </q-item-section>
