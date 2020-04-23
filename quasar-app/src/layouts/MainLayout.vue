@@ -27,7 +27,7 @@
           header
           class="text-grey-8"
         >
-          Navigation
+          Menu
         </q-item-label>
         <q-item
           clickable
@@ -62,10 +62,24 @@ export default {
       // TODO: should we get the menu items from the server according to login permissions (admin / volunteer)
       menuItems: [
         {
-          title: 'Volunteers Dashbaord',
-          caption: 'Volunteers Dashbaord',
-          icon: 'public',
-          link: '/volunteers_dashboard'
+          title: 'Admin Volunteers Dashbaord',
+          icon: 'people',
+          link: '/admin_volunteers_dashboard'
+        },
+        {
+          title: 'Admin Tasks Dashbaord',
+          icon: 'assignment',
+          link: '/admin_tasks_dashboard'
+        },
+        {
+          title: 'Tasks Dashbaord',
+          icon: 'assignment_turned_in',
+          link: '/volunteer_tasks_dashboard'
+        },
+        {
+          title: 'About',
+          icon: 'help',
+          link: '/about'
         }
       ]
     }
