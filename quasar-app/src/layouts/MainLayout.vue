@@ -32,8 +32,8 @@
         <q-item
           clickable
           v-ripple
-          v-for="menuItem in menuItems"
-          :key="menuItem.title"
+          v-for="menuItem in displayMenu"
+          v-bind:key="menuItem.link"
           v-bind="menuItem"
           :to="menuItem.link"
           exact>
@@ -59,29 +59,41 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
+      currentUser: {
+        role: 'admin'
+      },
       // TODO: should we get the menu items from the server according to login permissions (admin / volunteer)
       menuItems: [
         {
           title: 'Admin Volunteers Dashbaord',
           icon: 'people',
-          link: '/admin_volunteers_dashboard'
+          link: '/admin_volunteers_dashboard',
+          displayToRole: 'admin'
         },
         {
           title: 'Admin Tasks Dashbaord',
           icon: 'assignment',
-          link: '/admin_tasks_dashboard'
+          link: '/admin_tasks_dashboard',
+          displayToRole: 'admin'
         },
         {
           title: 'Tasks Dashbaord',
           icon: 'assignment_turned_in',
-          link: '/volunteer_tasks_dashboard'
+          link: '/volunteer_tasks_dashboard',
+          displayToRole: 'volunteer'
         },
         {
           title: 'About',
           icon: 'help',
-          link: '/about'
+          link: '/about',
+          displayToRole: 'all'
         }
       ]
+    }
+  },
+  computed: {
+    displayMenu () {
+      return this.menuItems.filter(menuItem => menuItem.displayToRole === this.currentUser.role || menuItem.displayToRole === 'all')
     }
   }
 }
