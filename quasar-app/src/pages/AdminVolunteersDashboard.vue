@@ -19,6 +19,14 @@
             </q-badge>
           </q-td>
         </template>
+
+        <template v-slot:body-cell-specialties="props">
+          <q-td :props="props">
+            <q-badge color="green" v-for="sp in props.value" v-bind:key="sp.category + sp.name">
+              {{sp.category}}: {{sp.name}}
+            </q-badge>
+          </q-td>
+        </template>
       </q-table>
     </div>
   </q-page>
