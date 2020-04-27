@@ -12,9 +12,11 @@
         :selected.sync="selected">
         <template v-slot:body-cell-facebook_profile="props">
           <q-td :props="props">
-            <div>
-              <a v-if="props.value" :href="props.value" target="_blank">link</a>
-            </div>
+            <q-badge color="blue" v-if="props.value" class="badge-link">
+              <a :href="props.value" target="_blank">
+                facebook
+              </a>
+            </q-badge>
           </q-td>
         </template>
         <template v-slot:body-cell-newsletter="props">
@@ -72,6 +74,12 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+.badge-link
+  a:link, a:visited, a:hover, a:active
+    color: white
+</style>
 
 <!-- <style lang="sass">
 .sticky-header-column-table
