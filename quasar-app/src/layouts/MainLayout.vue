@@ -13,8 +13,8 @@
         />
 
         <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg">
+          <q-avatar square size="md">
+            <img src="statics/Shakuf-Logo-Main-Transparent-White-Website.png">
           </q-avatar>
           Shakuf Volunteers
         </q-toolbar-title>
