@@ -8,7 +8,7 @@
           <q-card-section>
             <div class="row no-wrap items-center">
               <div class="col text-h6 ellipsis">
-                Log in to Shakuf Volunteers
+                Admin Log in to Shakuf Volunteers
               </div>
             </div>
           </q-card-section>
@@ -18,13 +18,22 @@
             >
               <q-input
                 filled
-                v-model="email"
-                label="Email"
+                v-model="username"
+                label="Username"
                 lazy-rules
               />
 
+              <q-input
+                type="password"
+                filled
+                v-model="password"
+                label="Password"
+                lazy-rules
+
+              />
+
               <div>
-                <q-btn label="Login" to="/volunteer_tasks_dashboard" type="button" color="primary"/>
+                <q-btn label="Login" to="/admin_volunteers_dashboard" type="button" color="primary"/>
               </div>
             </q-form>
           </q-card-section>
@@ -40,7 +49,8 @@
     export default {
         data() {
             return {
-                email: ''
+                username: '',
+                password: ''
             }
         }
     }
