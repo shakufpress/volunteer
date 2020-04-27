@@ -5,8 +5,33 @@
         title="Volunteers"
         :data="data"
         :columns="columns"
-        row-key="name"
-      />
+        row-key="email"
+        :dense="$q.screen.lt.md"
+        separator="cell"
+        selection="single"
+        :selected.sync="selected">
+        <template v-slot:body-cell-facebook_profile="props">
+          <q-td :props="props">
+            <div>
+              <a v-if="props.value" :href="props.value" target="_blank">link</a>
+            </div>
+          </q-td>
+        </template>
+        <template v-slot:body-cell-newsletter="props">
+          <q-td :props="props">
+            <div>
+              {{props.value ? 'V' : 'X'}}
+            </div>
+          </q-td>
+        </template>
+        <template v-slot:body-cell-sayeret="props">
+          <q-td :props="props">
+            <div>
+              {{props.value ? 'V' : 'X'}}
+            </div>
+          </q-td>
+        </template>
+      </q-table>
     </div>
   </q-page>
 </template>
@@ -16,9 +41,10 @@ export default {
   name: 'PageAdminVolunteersDashboard',
   data () {
     return {
+      selected: [],
       columns: [
         { name: 'fullname', required: true, label: 'Full Name', align: 'right', field: 'fullname', sortable: true },
-        { name: 'email', align: 'center', label: 'Email', field: 'email', sortable: true },
+        { name: 'email', required: true, align: 'center', label: 'Email', field: 'email', sortable: true },
         { name: 'telephone', label: 'Telephone', align: 'left', field: 'telephone', sortable: true },
         { name: 'facebook_profile', label: 'Facebook Profile', align: 'left', field: 'facebook_profile', sortable: true },
         { name: 'city_residence', label: 'City of Residence', field: 'city_residence', sortable: true },
@@ -33,7 +59,7 @@ export default {
           fullname: 'שקופי שקופוביץ',
           email: 'bla@shakuf.com',
           telephone: '054-1234567',
-          facebook_profile: 'www.facebook.com/shakuf',
+          facebook_profile: 'https://www.facebook.com/shakuf',
           city_residence: 'תל אביב',
           weekly_free_hours: 5.5,
           interests_and_expertise: ['bla', 'bla bla'],
@@ -46,3 +72,37 @@ export default {
   }
 }
 </script>
+
+<!-- <style lang="sass">
+.sticky-header-column-table
+  td:first-child
+    /* bg color is important for td; just specify one */
+    background-color: #c1f4cd !important
+
+  tr th
+    position: sticky
+    /* higher than z-index for td below */
+    z-index: 2
+    /* bg color is important; just specify one */
+    background: #fff
+
+  /* this will be the loading indicator */
+  thead tr:last-child th
+    /* height of all previous header rows */
+    top: 48px
+    /* highest z-index */
+    z-index: 3
+  thead tr:first-child th
+    top: 0
+    z-index: 1
+  tr:first-child th:first-child
+    /* highest z-index */
+    z-index: 3
+
+  td:first-child
+    z-index: 1
+
+  td:first-child, th:first-child
+    position: sticky
+    left: 0
+</style> -->
