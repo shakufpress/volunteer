@@ -5,28 +5,18 @@
         title="Volunteers"
         :data="data"
         :columns="columns"
-        row-key="email"
+        row-key="id"
         :dense="$q.screen.lt.md"
         separator="cell"
         selection="single"
         :selected.sync="selected">
-        <template v-slot:body-cell-facebook_profile="props">
+        <template v-slot:body-cell-facebook_profile_url="props">
           <q-td :props="props">
             <q-badge color="blue" v-if="props.value" class="badge-link">
               <a :href="props.value" target="_blank">
                 facebook
               </a>
             </q-badge>
-          </q-td>
-        </template>
-        <template v-slot:body-cell-newsletter="props">
-          <q-td :props="props">
-            <q-icon :name="props.value ? 'check' : 'clear'" />
-          </q-td>
-        </template>
-        <template v-slot:body-cell-sayeret="props">
-          <q-td :props="props">
-            <q-icon :name="props.value ? 'check' : 'clear'" />
           </q-td>
         </template>
       </q-table>
@@ -41,29 +31,25 @@ export default {
     return {
       selected: [],
       columns: [
-        { name: 'fullname', required: true, label: 'Full Name', align: 'right', field: 'fullname', sortable: true },
-        { name: 'email', required: true, align: 'center', label: 'Email', field: 'email', sortable: true },
-        { name: 'telephone', label: 'Telephone', align: 'left', field: 'telephone', sortable: true },
-        { name: 'facebook_profile', label: 'Facebook Profile', align: 'left', field: 'facebook_profile', sortable: true },
-        { name: 'city_residence', label: 'City of Residence', field: 'city_residence', sortable: true },
-        { name: 'weekly_free_hours', label: 'Weekly Free Hours', align: 'left', field: 'weekly_free_hours', sortable: true },
-        { name: 'interests_and_expertise', label: 'Interests / Expertise', align: 'left', field: 'interests_and_expertise', sortable: true },
-        { name: 'notes', label: 'Notes', align: 'left', field: 'notes', sortable: true },
-        { name: 'newsletter', label: 'Newsletter', align: 'left', field: 'newsletter', sortable: true },
-        { name: 'sayeret', label: 'Sayeret', align: 'left', field: 'sayeret', sortable: true }
+        { name: 'full_name', required: true, label: 'Full Name', align: 'left', field: 'full_name', sortable: true },
+        { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
+        { name: 'phone', label: 'Phone', align: 'left', field: 'phone', sortable: true },
+        { name: 'facebook_profile_url', label: 'Facebook Profile', align: 'left', field: 'facebook_profile_url', sortable: true },
+        { name: 'city', label: 'City', align: 'left', field: 'city', sortable: true },
+        { name: 'available_hours_per_week', label: 'Available Hours per Week', align: 'left', field: 'available_hours_per_week', sortable: true },
+        { name: 'specialties', label: 'Specialties', align: 'left', field: 'specialties', sortable: true },
+        { name: 'notes', label: 'Notes', align: 'left', field: 'notes', sortable: true }
       ],
       data: [
         {
-          fullname: 'שקופי שקופוביץ',
+          full_name: 'שקופי שקופוביץ',
           email: 'bla@shakuf.com',
-          telephone: '054-1234567',
-          facebook_profile: 'https://www.facebook.com/shakuf',
-          city_residence: 'תל אביב',
-          weekly_free_hours: 5.5,
-          interests_and_expertise: ['bla', 'bla bla'],
-          notes: 'woo hoo',
-          newsletter: true,
-          sayeret: false
+          phone: '054-1234567',
+          facebook_profile_url: 'https://www.facebook.com/shakuf',
+          city: 'תל אביב',
+          available_hours_per_week: 5.5,
+          specialties: [{ name: 'bla', category: 'a' }, { name: 'bla bla', category: 'a' }],
+          notes: 'woo hoo'
         }
       ]
     }
