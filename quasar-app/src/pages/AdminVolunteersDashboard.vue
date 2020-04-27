@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'PageAbout'
+  name: 'PageAdminVolunteersDashboard'
 }
 </script>
