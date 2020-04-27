@@ -21,16 +21,12 @@
         </template>
         <template v-slot:body-cell-newsletter="props">
           <q-td :props="props">
-            <div>
-              {{props.value ? 'V' : 'X'}}
-            </div>
+            <q-icon :name="props.value ? 'done' : 'clear'" />
           </q-td>
         </template>
         <template v-slot:body-cell-sayeret="props">
           <q-td :props="props">
-            <div>
-              {{props.value ? 'V' : 'X'}}
-            </div>
+            <q-icon :name="props.value ? 'done' : 'clear'" />
           </q-td>
         </template>
       </q-table>
