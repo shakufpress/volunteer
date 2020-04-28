@@ -9,7 +9,19 @@
         :dense="$q.screen.lt.md"
         separator="cell"
         selection="single"
-        :selected.sync="selected">
+        :selected.sync="selected"
+        :filter="filter">
+
+        <template v-slot:top>
+          <h5 class="q-ma-xs">Volunteers</h5>
+          <q-space />
+          <q-input placeholder="Search" dense  class="q-ml-md" debounce="300" color="primary" v-model="filter">
+            <template v-slot:append>
+              <q-icon name="search" />
+            </template>
+          </q-input>
+        </template>
+
         <template v-slot:body-cell-facebook_profile_url="props">
           <q-td :props="props">
             <q-badge color="blue" v-if="props.value" class="badge-link">
@@ -27,7 +39,10 @@
             </q-badge>
           </q-td>
         </template>
+
       </q-table>
+
+      <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="editRow" />
     </div>
   </q-page>
 </template>
@@ -38,6 +53,7 @@ export default {
   data () {
     return {
       selected: [],
+      filter: '',
       columns: [
         { name: 'full_name', required: true, label: 'Full Name', align: 'left', field: 'full_name', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
