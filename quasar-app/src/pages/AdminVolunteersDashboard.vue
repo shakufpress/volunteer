@@ -16,7 +16,7 @@
         <template v-slot:top>
           <h5 class="q-ma-xs">Volunteers</h5>
           <q-space />
-          <q-input placeholder="Search" dense  class="q-ml-md" debounce="300" color="primary" v-model="filter">
+          <q-input placeholder="Search" dense outlined class="q-ml-md" debounce="300" color="primary" v-model="filter">
             <template v-slot:append>
               <q-icon name="search" />
             </template>
@@ -90,18 +90,43 @@
 
       </q-table>
 
-      <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="editRow" />
+      <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; editing = cloneObject(selected[0])" />
+
+      <q-dialog v-model="edit">
+        <q-card v-if="editing">
+          <q-card-section>
+            Edit Volunteer
+          </q-card-section>
+
+          <q-separator inset />
+
+          <q-list dense>
+            <q-item v-for="col in columns" :key="col.name">
+              <q-item-section>
+                <q-item-label caption>{{ col.label }}</q-item-label>
+              </q-item-section>
+              <q-item-section side>
+                <q-input outlined v-model="editing[col.name]" :placeholder="col.label" />
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-card>
+      </q-dialog>
     </div>
   </q-page>
 </template>
 
 <script>
+import cloneObject from '../utils/clone-object'
+
 export default {
   name: 'PageAdminVolunteersDashboard',
   data () {
     return {
       selected: [],
       filter: '',
+      edit: false,
+      editing: undefined,
       columns: [
         { name: 'full_name', required: true, label: 'Full Name', align: 'left', field: 'full_name', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
@@ -130,6 +155,9 @@ export default {
     defaultColumns () {
       return this.columns.filter(col => !col.hasCustomStyle)
     }
+  },
+  methods: {
+    cloneObject
   }
 }
 </script>
