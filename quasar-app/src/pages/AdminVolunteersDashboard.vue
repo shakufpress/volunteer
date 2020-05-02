@@ -1,7 +1,15 @@
 <template>
   <q-page>
     <div class="q-pa-md">
-      <q-table
+      <ResponsiveDataTable
+        title="Volunteers"
+        :data="data"
+        :columns="columns"
+        :selectedSync="selected"
+        :filter="filter">
+
+      </ResponsiveDataTable>
+      <!-- <q-table
         title="Volunteers"
         :data="data"
         :columns="columns"
@@ -76,7 +84,7 @@
           </div>
         </template>
 
-      </q-table>
+      </q-table> -->
 
       <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; editing = cloneObject(selected[0])" />
 
@@ -87,17 +95,19 @@
 
 <script>
 import cloneObject from '../utils/clone-object'
-import BadgeLink from 'components/BadgeLink'
-import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
+// import BadgeLink from 'components/BadgeLink'
+// import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import EditDialog from 'components/EditDialog'
+import ResponsiveDataTable from 'components/ResponsiveDataTable'
 
 export default {
   name: 'PageAdminVolunteersDashboard',
 
   components: {
-    BadgeLink,
-    SpecialtiesBadgeList,
-    EditDialog
+    // BadgeLink,
+    // SpecialtiesBadgeList,
+    EditDialog,
+    ResponsiveDataTable
   },
 
   data () {
@@ -105,7 +115,7 @@ export default {
       selected: [],
       filter: '',
       edit: false,
-      editing: undefined,
+      editing: {},
       columns: [
         { name: 'full_name', required: true, label: 'Full Name', align: 'left', field: 'full_name', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
