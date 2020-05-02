@@ -80,26 +80,7 @@
 
       <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; editing = cloneObject(selected[0])" />
 
-      <q-dialog v-model="edit">
-        <q-card v-if="editing">
-          <q-card-section>
-            Edit Volunteer
-          </q-card-section>
-
-          <q-separator inset />
-
-          <q-list dense>
-            <q-item v-for="col in columns" :key="col.name">
-              <q-item-section>
-                <q-item-label caption>{{ col.label }}</q-item-label>
-              </q-item-section>
-              <q-item-section side>
-                <q-input outlined v-model="editing[col.name]" :placeholder="col.label" />
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-card>
-      </q-dialog>
+      <EditDialog :show="edit" :editing="editing" label="Edit Volunteer" :columns="columns" />
     </div>
   </q-page>
 </template>
@@ -108,13 +89,15 @@
 import cloneObject from '../utils/clone-object'
 import BadgeLink from 'components/BadgeLink'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
+import EditDialog from 'components/EditDialog'
 
 export default {
   name: 'PageAdminVolunteersDashboard',
 
   components: {
     BadgeLink,
-    SpecialtiesBadgeList
+    SpecialtiesBadgeList,
+    EditDialog
   },
 
   data () {
