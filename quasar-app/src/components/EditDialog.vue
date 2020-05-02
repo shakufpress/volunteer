@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="show">
+  <q-dialog v-model="show" full-width>
     <q-card v-if="editing">
       <q-card-section>
         {{ label }}
@@ -8,20 +8,26 @@
       <q-separator inset />
 
       <q-list dense>
-        <q-item v-for="col in columns" :key="col.name">
+        <q-item v-for="col in defaultColumns" :key="col.name">
           <q-item-section>
-            <q-item-label caption>{{ col.label }}</q-item-label>
-          </q-item-section>
-          <q-item-section side>
-            <q-input outlined v-model="editing[col.name]" :placeholder="col.label" />
+            <q-input dense outlined v-model="editing[col.name]" :placeholder="col.label">
+              <template v-slot:before>
+                {{ col.label }}
+              </template>
+            </q-input>
           </q-item-section>
         </q-item>
+
+        <slot name="customItems">
+        </slot>
       </q-list>
     </q-card>
   </q-dialog>
 </template>
 
 <script>
+import defaultColumns from '../utils/defaultColumns'
+
 export default {
   name: 'EditDialog',
   props: {
@@ -44,6 +50,9 @@ export default {
       type: Array,
       required: true
     }
+  },
+  computed: {
+    defaultColumns
   }
 }
 </script>

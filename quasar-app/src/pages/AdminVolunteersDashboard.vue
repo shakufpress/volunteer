@@ -80,13 +80,49 @@
 
       <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; editing = cloneObject(selected[0])" />
 
-      <EditDialog :show="edit" :editing="editing" label="Edit Volunteer" :columns="columns" />
+      <EditDialog :show="edit" :editing="editing" label="Edit Volunteer" :columns="columns">
+        <template v-slot:customItems>
+          <span v-if="editing">
+            <q-item key="facebook_profile_url">
+              <q-item-section>
+                <q-input dense outlined v-model="editing.facebook_profile_url" placeholder="Facebook Profile">
+                  <template v-slot:before>
+                    Facebook Profile
+                  </template>
+                </q-input>
+              </q-item-section>
+            </q-item>
+
+            <q-item key="specialties">
+              <q-item-section>
+                <q-input dense outlined v-model="editing.specialties" placeholder="Specialties">
+                  <template v-slot:before>
+                    Specialties
+                  </template>
+                </q-input>
+              </q-item-section>
+            </q-item>
+
+            <q-item key="notes">
+              <q-item-section>
+                <q-input dense outlined v-model="editing.notes" placeholder="Notes">
+                  <template v-slot:before>
+                    Notes
+                  </template>
+                </q-input>
+              </q-item-section>
+            </q-item>
+          </span>
+        </template>
+      </EditDialog>
     </div>
   </q-page>
 </template>
 
 <script>
-import cloneObject from '../utils/clone-object'
+import cloneObject from '../utils/cloneObject'
+import defaultColumns from '../utils/defaultColumns'
+
 import BadgeLink from 'components/BadgeLink'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import EditDialog from 'components/EditDialog'
@@ -105,7 +141,7 @@ export default {
       selected: [],
       filter: '',
       edit: false,
-      editing: undefined,
+      editing: {},
       columns: [
         { name: 'full_name', required: true, label: 'Full Name', align: 'left', field: 'full_name', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
@@ -114,7 +150,7 @@ export default {
         { name: 'city', label: 'City', align: 'left', field: 'city', sortable: true },
         { name: 'available_hours_per_week', label: 'Available Hours per Week', align: 'left', field: 'available_hours_per_week', sortable: true },
         { name: 'specialties', label: 'Specialties', align: 'left', field: 'specialties', sortable: true, hasCustomStyle: true },
-        { name: 'notes', label: 'Notes', align: 'left', field: 'notes', sortable: true }
+        { name: 'notes', label: 'Notes', align: 'left', field: 'notes', sortable: true, hasCustomStyle: true }
       ],
       data: [
         {
@@ -131,9 +167,7 @@ export default {
     }
   },
   computed: {
-    defaultColumns () {
-      return this.columns.filter(col => !col.hasCustomStyle)
-    }
+    defaultColumns
   },
   methods: {
     cloneObject
