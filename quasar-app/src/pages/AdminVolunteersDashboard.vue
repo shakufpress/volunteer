@@ -7,6 +7,7 @@
         :columns="columns"
         row-key="id"
         :dense="$q.screen.lt.md"
+        :grid="$q.screen.xs"
         separator="cell"
         selection="single"
         :selected.sync="selected"
@@ -40,6 +41,53 @@
           </q-td>
         </template>
 
+        <template v-slot:item="props">
+          <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
+            <q-card :class="props.selected ? 'bg-grey-2' : ''">
+              <q-card-section>
+                <q-checkbox dense v-model="props.selected" :label="props.row.full_name" />
+              </q-card-section>
+
+              <q-separator inset />
+
+              <q-list dense>
+                <q-item v-for="col in defaultColumns" :key="col.name">
+                  <q-item-section>
+                    <q-item-label caption>{{ col.label }}</q-item-label>
+                  </q-item-section>
+                  <q-item-section side>
+                    <q-item-label>{{ props.row[col.name] }}</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item>
+                  <q-item-section>
+                    <q-item-label caption>Facebook Profile</q-item-label>
+                  </q-item-section>
+                  <q-item-section side>
+                    <q-badge color="blue" v-if="props.row.facebook_profile_url" class="badge-link">
+                      <a :href="props.row.facebook_profile_url" target="_blank">
+                        facebook
+                      </a>
+                    </q-badge>
+                  </q-item-section>
+                </q-item>
+
+                <q-item>
+                  <q-item-section>
+                    <q-item-label caption>Specialties</q-item-label>
+                  </q-item-section>
+                  <q-item-section side>
+                    <q-badge color="green" v-for="sp in props.row.specialties" v-bind:key="sp.category + sp.name">
+                    {{sp.category}}: {{sp.name}}
+                  </q-badge>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-card>
+          </div>
+        </template>
+
       </q-table>
 
       <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="editRow" />
@@ -58,10 +106,10 @@ export default {
         { name: 'full_name', required: true, label: 'Full Name', align: 'left', field: 'full_name', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
         { name: 'phone', label: 'Phone', align: 'left', field: 'phone', sortable: true },
-        { name: 'facebook_profile_url', label: 'Facebook Profile', align: 'left', field: 'facebook_profile_url', sortable: true },
+        { name: 'facebook_profile_url', label: 'Facebook Profile', align: 'left', field: 'facebook_profile_url', sortable: true, hasCustomStyle: true },
         { name: 'city', label: 'City', align: 'left', field: 'city', sortable: true },
         { name: 'available_hours_per_week', label: 'Available Hours per Week', align: 'left', field: 'available_hours_per_week', sortable: true },
-        { name: 'specialties', label: 'Specialties', align: 'left', field: 'specialties', sortable: true },
+        { name: 'specialties', label: 'Specialties', align: 'left', field: 'specialties', sortable: true, hasCustomStyle: true },
         { name: 'notes', label: 'Notes', align: 'left', field: 'notes', sortable: true }
       ],
       data: [
@@ -77,6 +125,11 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    defaultColumns () {
+      return this.columns.filter(col => !col.hasCustomStyle)
+    }
   }
 }
 </script>
@@ -86,37 +139,3 @@ export default {
   a:link, a:visited, a:hover, a:active
     color: white
 </style>
-
-<!-- <style lang="sass">
-.sticky-header-column-table
-  td:first-child
-    /* bg color is important for td; just specify one */
-    background-color: #c1f4cd !important
-
-  tr th
-    position: sticky
-    /* higher than z-index for td below */
-    z-index: 2
-    /* bg color is important; just specify one */
-    background: #fff
-
-  /* this will be the loading indicator */
-  thead tr:last-child th
-    /* height of all previous header rows */
-    top: 48px
-    /* highest z-index */
-    z-index: 3
-  thead tr:first-child th
-    top: 0
-    z-index: 1
-  tr:first-child th:first-child
-    /* highest z-index */
-    z-index: 3
-
-  td:first-child
-    z-index: 1
-
-  td:first-child, th:first-child
-    position: sticky
-    left: 0
-</style> -->
