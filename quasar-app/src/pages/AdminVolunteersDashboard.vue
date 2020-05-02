@@ -31,9 +31,7 @@
 
         <template v-slot:body-cell-specialties="props">
           <q-td :props="props">
-            <q-badge color="green" v-for="sp in props.value" v-bind:key="sp.category + sp.name">
-              {{sp.category}}: {{sp.name}}
-            </q-badge>
+            <SpecialtiesBadgeList :list="props.value" />
           </q-td>
         </template>
 
@@ -70,9 +68,7 @@
                     <q-item-label caption>Specialties</q-item-label>
                   </q-item-section>
                   <q-item-section side>
-                    <q-badge color="green" v-for="sp in props.row.specialties" v-bind:key="sp.category + sp.name">
-                    {{sp.category}}: {{sp.name}}
-                  </q-badge>
+                    <SpecialtiesBadgeList :list="props.row.specialties" />
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -111,12 +107,14 @@
 <script>
 import cloneObject from '../utils/clone-object'
 import BadgeLink from 'components/BadgeLink'
+import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 
 export default {
   name: 'PageAdminVolunteersDashboard',
 
   components: {
-    BadgeLink
+    BadgeLink,
+    SpecialtiesBadgeList
   },
 
   data () {
