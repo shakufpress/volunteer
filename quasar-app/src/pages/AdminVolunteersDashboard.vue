@@ -25,11 +25,7 @@
 
         <template v-slot:body-cell-facebook_profile_url="props">
           <q-td :props="props">
-            <q-badge color="blue" v-if="props.value" class="badge-link">
-              <a :href="props.value" target="_blank">
-                facebook
-              </a>
-            </q-badge>
+            <BadgeLink :url="props.row.facebook_profile_url" label="facebook"/>
           </q-td>
         </template>
 
@@ -65,11 +61,7 @@
                     <q-item-label caption>Facebook Profile</q-item-label>
                   </q-item-section>
                   <q-item-section side>
-                    <q-badge color="blue" v-if="props.row.facebook_profile_url" class="badge-link">
-                      <a :href="props.row.facebook_profile_url" target="_blank">
-                        facebook
-                      </a>
-                    </q-badge>
+                    <BadgeLink :url="props.row.facebook_profile_url" label="facebook"/>
                   </q-item-section>
                 </q-item>
 
@@ -118,9 +110,15 @@
 
 <script>
 import cloneObject from '../utils/clone-object'
+import BadgeLink from 'components/BadgeLink'
 
 export default {
   name: 'PageAdminVolunteersDashboard',
+
+  components: {
+    BadgeLink
+  },
+
   data () {
     return {
       selected: [],
@@ -161,9 +159,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass">
-.badge-link
-  a:link, a:visited, a:hover, a:active
-    color: white
-</style>
