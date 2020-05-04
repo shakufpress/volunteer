@@ -11,7 +11,8 @@
         separator="cell"
         selection="single"
         :selected.sync="selected"
-        :filter="filter">
+        :filter="filter"
+        :pagination.sync="pagination">
 
         <template v-slot:top>
           <h5 class="q-ma-xs">Volunteers</h5>
@@ -144,6 +145,9 @@ export default {
       filter: '',
       edit: false,
       editing: {},
+      pagination: {
+        rowsPerPage: 25
+      },
       columns: [
         { name: 'full_name', required: true, label: 'Full Name', align: 'left', field: 'full_name', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },

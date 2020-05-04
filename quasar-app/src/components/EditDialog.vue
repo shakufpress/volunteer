@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="show" full-width>
+  <q-dialog persistent v-model="show" full-width>
     <q-card v-if="editing">
       <q-card-section>
         {{ label }}
