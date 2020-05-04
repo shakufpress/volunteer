@@ -80,7 +80,7 @@
 
       <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; editing = cloneObject(selected[0])" />
 
-      <EditDialog :show="edit" :editing="editing" label="Edit Volunteer" :columns="columns" @close="edit = false; editing = {}">
+      <EditDialog :show="edit" :editing="editing" label="Edit Volunteer" :columns="columns" @close="onCloseEditDialog">
         <template v-slot:customItems>
           <span v-if="editing">
             <q-item key="facebook_profile_url">
@@ -172,7 +172,15 @@ export default {
     defaultColumns
   },
   methods: {
-    cloneObject
+    cloneObject,
+    onCloseEditDialog (newValue) {
+      this.edit = false
+      this.editing = {}
+
+      if (newValue && this.selected.length) {
+        this.columns.forEach(c => { this.selected[0][c.name] = newValue[c.name] })
+      }
+    }
   }
 }
 </script>

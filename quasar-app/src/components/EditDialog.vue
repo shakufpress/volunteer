@@ -22,7 +22,7 @@
         </slot>
       </q-list>
 
-      <q-btn class="q-ma-md" color="primary" label="Save" v-close-popup @click="onClose" />
+      <q-btn class="q-ma-md" color="primary" label="Save" v-close-popup @click="onSave" />
       <q-btn class="q-ma-md" color="primary" label="Cancel" v-close-popup @click="onClose" />
     </q-card>
   </q-dialog>
@@ -67,6 +67,9 @@ export default {
   methods: {
     onClose (event) {
       this.$emit('close')
+    },
+    onSave (event) {
+      this.$emit('close', this.editing)
     }
   }
 }
