@@ -1,11 +1,17 @@
 <template>
   <q-page>
-    This is an app
+    <TasksTable currentUserRole="admin"/>
   </q-page>
 </template>
 
 <script>
+import TasksTable from 'components/TasksTable'
+
 export default {
-  name: 'PageAdminTasksDashboard'
+  name: 'PageAdminTasksDashboard',
+
+  components: {
+    TasksTable
+  }
 }
 </script>
