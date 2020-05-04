@@ -1,6 +1,8 @@
 <template>
   <q-page>
-    This is an app
+    <div class="q-pa-md">
+      This is the Shakuf Volunteers management app.
+    </div>
   </q-page>
 </template>
 
