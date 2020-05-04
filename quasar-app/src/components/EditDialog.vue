@@ -12,7 +12,7 @@
           <q-item-section>
             <q-input dense outlined v-model="editing[col.name]" :placeholder="col.label">
               <template v-slot:before>
-                {{ col.label }}
+                <LabelDiv :label="col.label" />
               </template>
             </q-input>
           </q-item-section>
@@ -28,8 +28,15 @@
 <script>
 import defaultColumns from '../utils/defaultColumns'
 
+import LabelDiv from './LabelDiv'
+
 export default {
   name: 'EditDialog',
+
+  components: {
+    LabelDiv
+  },
+
   props: {
     show: {
       type: Boolean,

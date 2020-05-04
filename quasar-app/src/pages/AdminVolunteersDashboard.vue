@@ -87,7 +87,7 @@
               <q-item-section>
                 <q-input dense outlined v-model="editing.facebook_profile_url" placeholder="Facebook Profile">
                   <template v-slot:before>
-                    Facebook Profile
+                    <LabelDiv label="Facebook Profile" />
                   </template>
                 </q-input>
               </q-item-section>
@@ -97,7 +97,7 @@
               <q-item-section>
                 <q-input dense outlined v-model="editing.specialties" placeholder="Specialties">
                   <template v-slot:before>
-                    Specialties
+                    <LabelDiv label="Specialties" />
                   </template>
                 </q-input>
               </q-item-section>
@@ -107,7 +107,7 @@
               <q-item-section>
                 <q-input dense outlined v-model="editing.notes" placeholder="Notes">
                   <template v-slot:before>
-                    Notes
+                    <LabelDiv label="Notes" />
                   </template>
                 </q-input>
               </q-item-section>
@@ -126,6 +126,7 @@ import defaultColumns from '../utils/defaultColumns'
 import BadgeLink from 'components/BadgeLink'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import EditDialog from 'components/EditDialog'
+import LabelDiv from 'components/LabelDiv'
 
 export default {
   name: 'PageAdminVolunteersDashboard',
@@ -133,7 +134,8 @@ export default {
   components: {
     BadgeLink,
     SpecialtiesBadgeList,
-    EditDialog
+    EditDialog,
+    LabelDiv
   },
 
   data () {
