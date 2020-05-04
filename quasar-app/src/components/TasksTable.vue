@@ -27,7 +27,7 @@
         <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
           <q-card :class="props.selected ? 'bg-grey-2' : ''">
             <q-card-section>
-              <q-checkbox dense v-model="props.selected" :label="props.row.task_title" />
+              <q-checkbox dense v-model="props.selected" :label="props.row.title" />
             </q-card-section>
 
             <q-separator inset />
@@ -68,7 +68,7 @@
           <q-avatar icon="done" color="primary" text-color="white" />
           <span class="q-ml-sm">Are you sure you want to join this task?</span>
           <br/>
-          <span v-if="selected.length">{{ selected[0].task_title }}</span>
+          <span v-if="selected.length">{{ selected[0].title }}</span>
         </q-card-section>
 
         <q-card-actions align="right">
@@ -111,16 +111,37 @@ export default {
         rowsPerPage: 25
       },
       columns: [
-        { name: 'task_title', required: true, label: 'Task Title', align: 'left', field: 'task_title', sortable: true }
+        { name: 'managerId', required: true, label: 'Manager', align: 'left', field: 'managerId', sortable: true },
+        { name: 'title', required: true, label: 'Task Title', align: 'left', field: 'title', sortable: true },
+        { name: 'estimation', required: true, label: 'Estimation', align: 'left', field: 'estimation', sortable: true },
+        { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true },
+        { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true },
+        { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
+        { name: 'wanted_volunteers', required: true, label: 'Wanted Volunteers', align: 'left', field: 'wanted_volunteers', sortable: true },
+        { name: 'status', required: true, label: 'Status', align: 'left', field: 'status', sortable: true }
       ],
       data: [
         {
           id: 1,
-          task_title: 'task 1'
+          managerId: 1,
+          title: 'task 1',
+          estimation: 5.2,
+          description: 'bla bla bla',
+          phone: '054-26543656',
+          email: 'shakuf@shakuf.com',
+          wanted_volunteers: 5,
+          status: 0
         },
         {
           id: 2,
-          task_title: 'best task ever'
+          managerId: 1,
+          title: 'best task ever',
+          estimation: 15,
+          description: 'wow this is amazing',
+          phone: '054-7674574567',
+          email: 'shakuf@shakuf.com',
+          wanted_volunteers: 2,
+          status: 1
         }
       ]
     }
