@@ -96,11 +96,15 @@
 
             <q-item key="specialties">
               <q-item-section>
-                <q-input dense outlined v-model="editing.specialties" placeholder="Specialties">
+                <q-select
+                  v-model="editing.specialties"
+                  multiple
+                  :options="allSpecialties"
+                >
                   <template v-slot:before>
                     <LabelDiv label="Specialties" />
                   </template>
-                </q-input>
+                </q-select>
               </q-item-section>
             </q-item>
 
@@ -129,6 +133,8 @@ import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
 
+const mapSpecialtiesOptions = sp => Object.assign({ label: `${sp.category}: ${sp.name}`, value: sp }, sp)
+
 export default {
   name: 'PageAdminVolunteersDashboard',
 
@@ -148,6 +154,10 @@ export default {
       pagination: {
         rowsPerPage: 25
       },
+      allSpecialties: [
+        { name: 'bla', category: 'a' },
+        { name: 'bla bla', category: 'a' }
+      ].map(mapSpecialtiesOptions),
       columns: [
         { name: 'full_name', required: true, label: 'Full Name', align: 'left', field: 'full_name', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
@@ -166,7 +176,7 @@ export default {
           facebook_profile_url: 'https://www.facebook.com/shakuf',
           city: 'תל אביב',
           available_hours_per_week: 5.5,
-          specialties: [{ name: 'bla', category: 'a' }, { name: 'bla bla', category: 'a' }],
+          specialties: [{ name: 'bla', category: 'a' }, { name: 'bla bla', category: 'a' }].map(mapSpecialtiesOptions),
           notes: 'woo hoo'
         }
       ]
