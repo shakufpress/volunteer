@@ -21,6 +21,9 @@
         <slot name="customItems">
         </slot>
       </q-list>
+
+      <q-btn class="q-ma-md" color="primary" label="Save" v-close-popup @click="onClose" />
+      <q-btn class="q-ma-md" color="primary" label="Cancel" v-close-popup @click="onClose" />
     </q-card>
   </q-dialog>
 </template>
@@ -60,6 +63,11 @@ export default {
   },
   computed: {
     defaultColumns
+  },
+  methods: {
+    onClose (event) {
+      this.$emit('close')
+    }
   }
 }
 </script>

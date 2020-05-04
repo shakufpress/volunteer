@@ -80,7 +80,7 @@
 
       <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; editing = cloneObject(selected[0])" />
 
-      <EditDialog :show="edit" :editing="editing" label="Edit Volunteer" :columns="columns">
+      <EditDialog :show="edit" :editing="editing" label="Edit Volunteer" :columns="columns" @close="edit = false; editing = {}">
         <template v-slot:customItems>
           <span v-if="editing">
             <q-item key="facebook_profile_url">
