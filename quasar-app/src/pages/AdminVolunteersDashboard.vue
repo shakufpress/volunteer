@@ -36,6 +36,16 @@
           </q-td>
         </template>
 
+        <template v-slot:body-cell-notes="props">
+          <q-td :props="props">
+            {{ props.value }}
+
+            <q-tooltip>
+              {{ props.row.notes }}
+            </q-tooltip>
+          </q-td>
+        </template>
+
         <template v-slot:item="props">
           <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
             <q-card :class="props.selected ? 'bg-grey-2' : ''">
@@ -70,6 +80,19 @@
                   </q-item-section>
                   <q-item-section side>
                     <SpecialtiesBadgeList :list="props.row.specialties" />
+                  </q-item-section>
+                </q-item>
+
+                <q-item>
+                  <q-item-section>
+                    <q-item-label caption>Notes</q-item-label>
+                  </q-item-section>
+                  <q-item-section side>
+                    <q-item-label>{{ ellipsis15(props.row.notes) }}</q-item-label>
+
+                    <q-tooltip>
+                      {{ props.row.notes }}
+                    </q-tooltip>
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -110,7 +133,7 @@
 
             <q-item key="notes">
               <q-item-section>
-                <q-input dense outlined v-model="editing.notes" placeholder="Notes">
+                <q-input dense outlined autogrow v-model="editing.notes" placeholder="Notes">
                   <template v-slot:before>
                     <LabelDiv label="Notes" />
                   </template>
@@ -134,6 +157,7 @@ import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
 
 const mapSpecialtiesOptions = sp => Object.assign({ label: `${sp.category}: ${sp.name}`, value: sp }, sp)
+const ellipsis15 = str => str && str.length > 15 ? str.substr(0, 15) + '...' : str
 
 export default {
   name: 'PageAdminVolunteersDashboard',
@@ -166,7 +190,7 @@ export default {
         { name: 'city', label: 'City', align: 'left', field: 'city', sortable: true },
         { name: 'available_hours_per_week', label: 'Available Hours per Week', align: 'left', field: 'available_hours_per_week', sortable: true },
         { name: 'specialties', label: 'Specialties', align: 'left', field: 'specialties', sortable: true, hasCustomStyle: true },
-        { name: 'notes', label: 'Notes', align: 'left', field: 'notes', sortable: true, hasCustomStyle: true }
+        { name: 'notes', label: 'Notes', align: 'left', field: 'notes', sortable: true, hasCustomStyle: true, format: ellipsis15 }
       ],
       data: [
         {
@@ -187,6 +211,7 @@ export default {
   },
   methods: {
     cloneObject,
+    ellipsis15,
     onCloseEditDialog (newValue) {
       this.edit = false
       this.editing = {}

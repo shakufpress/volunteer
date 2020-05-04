@@ -11,6 +11,11 @@ export default {
       default: '250px'
     },
 
+    xsWidth: {
+      type: String,
+      default: '100px'
+    },
+
     fontSize: {
       type: String,
       default: '16px'
@@ -24,8 +29,8 @@ export default {
   computed: {
     divStyles () {
       return {
-        width: this.width,
-        'max-width': this.width,
+        width: this.$q.screen.xs ? this.xsWidth : this.width,
+        'max-width': this.$q.screen.xs ? this.xsWidth : this.width,
         display: 'inline-block',
         fontSize: this.fontSize
       }
