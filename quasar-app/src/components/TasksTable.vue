@@ -6,7 +6,7 @@
       :columns="columns"
       row-key="id"
       :dense="$q.screen.lt.md"
-      :grid="$q.screen.xs || currentUserRole !== 'admin'"
+      :grid="$q.screen.xs || !isAdmin"
       separator="cell"
       selection="single"
       :selected.sync="selected"
@@ -48,23 +48,40 @@
 
     </q-table>
 
-    <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; editing = cloneObject(selected[0])" />
+    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; editing = cloneObject(selected[0])" />
 
-    <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="New Task" @click="newTask = true" />
+    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" @click="newTask = true; editing = {}" />
 
-    <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Join" @click="join = true" />
+    <q-btn v-if="!isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Join" @click="join = true" />
 
-    <EditDialog :show="edit" :editing="editing" label="Edit Task" :columns="columns" @close="onCloseEditDialog">
+    <EditDialog :show="edit || newTask" :editing="editing" :label="edit ? 'Edit Task' : 'New Task'" :columns="columns" @close="onCloseNewEditDialog">
       <template v-slot:customItems>
         <span v-if="editing">
 
         </span>
       </template>
     </EditDialog>
+
+    <q-dialog v-model="join" persistent>
+      <q-card>
+        <q-card-section class="items-center">
+          <q-avatar icon="done" color="primary" text-color="white" />
+          <span class="q-ml-sm">Are you sure you want to join this task?</span>
+          <br/>
+          <span v-if="selected.length">{{ selected[0].task_title }}</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cancel" color="primary" v-close-popup />
+          <q-btn flat label="Join" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
 <script>
+import cloneObject from '../utils/cloneObject'
 import defaultColumns from '../utils/defaultColumns'
 
 import EditDialog from 'components/EditDialog'
@@ -110,11 +127,33 @@ export default {
   },
 
   computed: {
-    defaultColumns
+    defaultColumns,
+    isAdmin () {
+      return this.currentUserRole === 'admin'
+    }
   },
 
   methods: {
-    onCloseEditDialog (newValue) {}
+    cloneObject,
+    onCloseNewEditDialog (newValue) {
+      if (this.edit) {
+        if (newValue && this.selected.length) {
+          this.columns.forEach(c => { this.selected[0][c.name] = newValue[c.name] })
+        }
+      } else if (this.newTask) {
+        if (newValue) {
+          newValue.id = this.data.length + 1
+          this.data.push(newValue)
+        }
+      }
+
+      this.edit = false
+      this.newTask = false
+      this.editing = {}
+    },
+    onCloseJoinDialog (value) {
+      this.join = false
+    }
   }
 }
 </script>
