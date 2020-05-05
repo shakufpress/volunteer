@@ -10,7 +10,7 @@
       <q-list dense>
         <q-item v-for="col in defaultColumns" :key="col.name">
           <q-item-section>
-            <q-input dense outlined v-model="editing[col.name]" :placeholder="col.label">
+            <q-input dense outlined :readonly="readonly" v-model="editing[col.name]" :placeholder="col.label">
               <template v-slot:before>
                 <LabelDiv :label="col.label" />
               </template>
@@ -22,8 +22,10 @@
         </slot>
       </q-list>
 
-      <q-btn class="q-ma-md" color="primary" label="Save" v-close-popup @click="onSave" />
-      <q-btn class="q-ma-md" color="primary" label="Cancel" v-close-popup @click="onClose" />
+      <q-btn v-if="!readonly" class="q-ma-md" color="primary" label="Save" v-close-popup @click="onSave" />
+      <slot name="buttons">
+      </slot>
+      <q-btn class="q-ma-md" color="primary" :label="labelCancel" v-close-popup @click="onClose" />
     </q-card>
   </q-dialog>
 </template>
@@ -59,6 +61,16 @@ export default {
     columns: {
       type: Array,
       required: true
+    },
+
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+
+    labelCancel: {
+      type: String,
+      default: 'Cancel'
     }
   },
   computed: {

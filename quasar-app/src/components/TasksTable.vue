@@ -3,7 +3,7 @@
     <q-table
       title="Tasks"
       :data="data"
-      :columns="columns"
+      :columns="defaultColumns"
       row-key="id"
       :dense="$q.screen.lt.md"
       :grid="$q.screen.xs || !isAdmin"
@@ -58,12 +58,12 @@
 
     <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Details" @click="onDetailsClick(selected[0])" />
 
-    <EditDialog :show="edit || newTask" :editing="editing" :label="edit ? 'Edit Task' : 'New Task'" :columns="columns" @close="onCloseNewEditDialog">
+    <EditDialog :show="edit || newTask || details" :editing="editing" :label="edit ? 'Edit Task' : newTask ? 'New Task' : 'Task Details'" :columns="columns" @close="onCloseNewEditDialog" :readonly="details" :labelCancel="details ? 'Close' : 'Cancel'">
       <template v-slot:customItems>
         <span v-if="editing">
           <q-item>
             <q-item-section>
-              <q-input dense outlined autogrow v-model="editing.description">
+              <q-input dense outlined autogrow :readonly="details" v-model="editing.description">
                 <template v-slot:before>
                   <LabelDiv label="Description" />
                 </template>
@@ -72,42 +72,11 @@
           </q-item>
         </span>
       </template>
-    </EditDialog>
 
-    <q-dialog persistent v-model="details" full-width>
-      <q-card v-if="editing">
-        <q-card-section>
-          Task Details
-        </q-card-section>
-
-        <q-separator inset />
-
-        <q-list dense>
-          <q-item v-for="col in defaultColumns" :key="col.name">
-            <q-item-section>
-              <q-input dense outlined autogrow readonly v-model="editing[col.name]">
-                <template v-slot:before>
-                  <LabelDiv :label="col.label" />
-                </template>
-              </q-input>
-            </q-item-section>
-          </q-item>
-
-          <q-item>
-            <q-item-section>
-              <q-input dense outlined autogrow readonly v-model="editing.description">
-                <template v-slot:before>
-                  <LabelDiv label="Description" />
-                </template>
-              </q-input>
-            </q-item-section>
-          </q-item>
-        </q-list>
-
+      <template v-slot:buttons v-if="details">
         <q-btn v-if="!isAdmin" class="q-ma-md" color="primary" label="Join" @click="join = true" />
-        <q-btn class="q-ma-md" color="primary" label="Close" v-close-popup @click="details = false" />
-      </q-card>
-    </q-dialog>
+      </template>
+    </EditDialog>
 
     <q-dialog v-model="join" persistent>
       <q-card>
@@ -220,6 +189,7 @@ export default {
 
       this.edit = false
       this.newTask = false
+      this.details = false
       this.editing = {}
     },
     onCloseJoinDialog (value) {
