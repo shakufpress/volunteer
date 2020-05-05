@@ -61,7 +61,15 @@
     <EditDialog :show="edit || newTask" :editing="editing" :label="edit ? 'Edit Task' : 'New Task'" :columns="columns" @close="onCloseNewEditDialog">
       <template v-slot:customItems>
         <span v-if="editing">
-
+          <q-item>
+            <q-item-section>
+              <q-input dense outlined autogrow v-model="editing.description">
+                <template v-slot:before>
+                  <LabelDiv label="Description" />
+                </template>
+              </q-input>
+            </q-item-section>
+          </q-item>
         </span>
       </template>
     </EditDialog>
@@ -77,10 +85,21 @@
         <q-list dense>
           <q-item v-for="col in defaultColumns" :key="col.name">
             <q-item-section>
-              <LabelDiv :label="col.label" />
-              <div>
-                {{ editing[col.name] }}
-              </div>
+              <q-input dense outlined autogrow readonly v-model="editing[col.name]">
+                <template v-slot:before>
+                  <LabelDiv :label="col.label" />
+                </template>
+              </q-input>
+            </q-item-section>
+          </q-item>
+
+          <q-item>
+            <q-item-section>
+              <q-input dense outlined autogrow readonly v-model="editing.description">
+                <template v-slot:before>
+                  <LabelDiv label="Description" />
+                </template>
+              </q-input>
             </q-item-section>
           </q-item>
         </q-list>
@@ -168,7 +187,7 @@ export default {
           managerId: 1,
           title: 'best task ever',
           estimation: 15,
-          description: 'wow this is amazing',
+          description: 'wow this \nis amazing',
           phone: '054-7674574567',
           email: 'shakuf@shakuf.com',
           wanted_volunteers: 2,
