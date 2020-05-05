@@ -59,9 +59,6 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      currentUser: {
-        role: 'admin'
-      },
       // TODO: should we get the menu items from the server according to login permissions (admin / volunteer)
       menuItems: [
         {
@@ -93,7 +90,10 @@ export default {
   },
   computed: {
     displayMenu () {
-      return this.menuItems.filter(menuItem => menuItem.displayToRole === this.currentUser.role || menuItem.displayToRole === 'all')
+      return this.menuItems.filter(menuItem => menuItem.displayToRole === this.userRole || menuItem.displayToRole === 'all')
+    },
+    userRole () {
+      return this.$store.state.user.role
     }
   }
 }

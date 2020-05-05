@@ -33,7 +33,7 @@
               />
 
               <div>
-                <q-btn label="Login" to="/admin_volunteers_dashboard" type="button" color="primary"/>
+                <q-btn label="Login" to="/admin_volunteers_dashboard" type="button" color="primary" @click="onLogin"/>
               </div>
             </q-form>
           </q-card-section>
@@ -46,14 +46,20 @@
 <script type="text/javascript">
 </script>
 <script>
-    export default {
-        data() {
-            return {
-                username: '',
-                password: ''
-            }
-        }
+  export default {
+    data() {
+      return {
+        username: '',
+        password: ''
+      }
+    },
+
+    methods: {
+      onLogin () {
+        this.$store.commit('user/updateRole', 'admin')
+      }
     }
+  }
 </script>
 
 <style>

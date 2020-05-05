@@ -24,7 +24,7 @@
               />
 
               <div>
-                <q-btn label="Login" to="/volunteer_tasks_dashboard" type="button" color="primary"/>
+                <q-btn label="Login" to="/volunteer_tasks_dashboard" type="button" color="primary" @click="onLogin"/>
               </div>
             </q-form>
           </q-card-section>
@@ -37,13 +37,19 @@
 <script type="text/javascript">
 </script>
 <script>
-    export default {
-        data() {
-            return {
-                email: ''
-            }
-        }
+  export default {
+    data() {
+      return {
+        email: ''
+      }
+    },
+
+    methods: {
+      onLogin () {
+        this.$store.commit('user/updateRole', 'volunteer')
+      }
     }
+  }
 </script>
 
 <style>

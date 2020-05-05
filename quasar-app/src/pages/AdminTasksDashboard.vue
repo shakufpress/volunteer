@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <TasksTable currentUserRole="admin"/>
+    <TasksTable />
   </q-page>
 </template>
 

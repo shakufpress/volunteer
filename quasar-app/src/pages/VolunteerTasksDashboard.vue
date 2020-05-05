@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <TasksTable currentUserRole="volunteer"/>
+    <TasksTable />
   </q-page>
 </template>
 

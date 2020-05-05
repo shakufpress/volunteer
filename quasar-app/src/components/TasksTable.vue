@@ -106,10 +106,6 @@ import LabelDiv from 'components/LabelDiv'
 export default {
   name: 'TasksTable',
   props: {
-    currentUserRole: {
-      type: String,
-      required: true
-    }
   },
 
   components: {
@@ -168,8 +164,11 @@ export default {
 
   computed: {
     defaultColumns,
+    userRole () {
+      return this.$store.state.user.role
+    },
     isAdmin () {
-      return this.currentUserRole === 'admin'
+      return this.userRole === 'admin'
     }
   },
 
