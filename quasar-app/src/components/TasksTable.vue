@@ -27,7 +27,11 @@
         <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
           <q-card :class="props.selected ? 'bg-grey-2' : ''">
             <q-card-section>
-              <q-checkbox dense v-model="props.selected" :label="props.row.title" />
+              <q-checkbox v-if="isAdmin" dense v-model="props.selected" :label="props.row.title" />
+              <span v-if="!isAdmin">
+                <LabelDiv :label="props.row.title" width="270px" xsWidth="270px" />
+                <q-btn color="primary" label="Details" @click="onDetailsClick(props.row)" />
+              </span>
             </q-card-section>
 
             <q-separator inset />
@@ -52,7 +56,7 @@
 
     <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" @click="newTask = true; editing = {}" />
 
-    <q-btn v-if="!isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Join" @click="join = true" />
+    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Details" @click="onDetailsClick(selected[0])" />
 
     <EditDialog :show="edit || newTask" :editing="editing" :label="edit ? 'Edit Task' : 'New Task'" :columns="columns" @close="onCloseNewEditDialog">
       <template v-slot:customItems>
@@ -62,13 +66,37 @@
       </template>
     </EditDialog>
 
+    <q-dialog persistent v-model="details" full-width>
+      <q-card v-if="editing">
+        <q-card-section>
+          Task Details
+        </q-card-section>
+
+        <q-separator inset />
+
+        <q-list dense>
+          <q-item v-for="col in defaultColumns" :key="col.name">
+            <q-item-section>
+              <LabelDiv :label="col.label" />
+              <div>
+                {{ editing[col.name] }}
+              </div>
+            </q-item-section>
+          </q-item>
+        </q-list>
+
+        <q-btn v-if="!isAdmin" class="q-ma-md" color="primary" label="Join" @click="join = true" />
+        <q-btn class="q-ma-md" color="primary" label="Close" v-close-popup @click="details = false" />
+      </q-card>
+    </q-dialog>
+
     <q-dialog v-model="join" persistent>
       <q-card>
         <q-card-section class="items-center">
           <q-avatar icon="done" color="primary" text-color="white" />
           <span class="q-ml-sm">Are you sure you want to join this task?</span>
           <br/>
-          <span v-if="selected.length">{{ selected[0].title }}</span>
+          <span v-if="editing">{{ editing.title }}</span>
         </q-card-section>
 
         <q-card-actions align="right">
@@ -85,6 +113,7 @@ import cloneObject from '../utils/cloneObject'
 import defaultColumns from '../utils/defaultColumns'
 
 import EditDialog from 'components/EditDialog'
+import LabelDiv from 'components/LabelDiv'
 
 export default {
   name: 'TasksTable',
@@ -96,7 +125,8 @@ export default {
   },
 
   components: {
-    EditDialog
+    EditDialog,
+    LabelDiv
   },
 
   data () {
@@ -105,6 +135,7 @@ export default {
       filter: '',
       edit: false,
       newTask: false,
+      details: false,
       join: false,
       editing: {},
       pagination: {
@@ -114,7 +145,7 @@ export default {
         { name: 'managerId', required: true, label: 'Manager', align: 'left', field: 'managerId', sortable: true },
         { name: 'title', required: true, label: 'Task Title', align: 'left', field: 'title', sortable: true },
         { name: 'estimation', required: true, label: 'Estimation', align: 'left', field: 'estimation', sortable: true },
-        { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true },
+        { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true, hasCustomStyle: true },
         { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
         { name: 'wanted_volunteers', required: true, label: 'Wanted Volunteers', align: 'left', field: 'wanted_volunteers', sortable: true },
@@ -174,6 +205,10 @@ export default {
     },
     onCloseJoinDialog (value) {
       this.join = false
+    },
+    onDetailsClick (row) {
+      this.details = true
+      this.editing = row
     }
   }
 }
