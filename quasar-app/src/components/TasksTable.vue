@@ -2,7 +2,7 @@
   <div class="q-pa-md">
     <q-table
       title="Tasks"
-      :data="data"
+      :data="mappedData"
       :columns="defaultColumns"
       row-key="id"
       :dense="$q.screen.lt.md"
@@ -99,6 +99,7 @@
 <script>
 import cloneObject from '../utils/cloneObject'
 import defaultColumns from '../utils/defaultColumns'
+import taskStatusEnum from '../utils/taskStatusEnum'
 
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
@@ -126,14 +127,14 @@ export default {
         rowsPerPage: 25
       },
       columns: [
-        { name: 'managerId', required: true, label: 'Manager', align: 'left', field: 'managerId', sortable: true },
+        { name: 'managerName', required: true, label: 'Manager', align: 'left', field: 'managerName', sortable: true },
         { name: 'title', required: true, label: 'Task Title', align: 'left', field: 'title', sortable: true },
         { name: 'estimation', required: true, label: 'Estimation', align: 'left', field: 'estimation', sortable: true },
         { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true, hasCustomStyle: true },
         { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
         { name: 'wanted_volunteers', required: true, label: 'Wanted Volunteers', align: 'left', field: 'wanted_volunteers', sortable: true },
-        { name: 'status', required: true, label: 'Status', align: 'left', field: 'status', sortable: true }
+        { name: 'statusStr', required: true, label: 'Status', align: 'left', field: 'statusStr', sortable: true }
       ],
       data: [
         {
@@ -145,7 +146,19 @@ export default {
           phone: '054-26543656',
           email: 'shakuf@shakuf.com',
           wanted_volunteers: 5,
-          status: 0
+          status: 0,
+          volunteers: [
+            {
+              full_name: 'שקופי שקופוביץ',
+              email: 'bla@shakuf.com',
+              status: 0
+            },
+            {
+              full_name: 'bla',
+              email: 'asdf@asdf.com',
+              status: 1
+            }
+          ]
         },
         {
           id: 2,
@@ -156,7 +169,8 @@ export default {
           phone: '054-7674574567',
           email: 'shakuf@shakuf.com',
           wanted_volunteers: 2,
-          status: 1
+          status: 1,
+          volunteers: []
         }
       ]
     }
@@ -169,6 +183,15 @@ export default {
     },
     isAdmin () {
       return this.userRole === 'admin'
+    },
+    managers () {
+      return this.$store.state.managers.data
+    },
+    mappedData () {
+      return this.data.map(row => Object.assign({
+        managerName: this.managers[row.managerId]?.name,
+        statusStr: taskStatusEnum[row.status]
+      }, row))
     }
   },
 
