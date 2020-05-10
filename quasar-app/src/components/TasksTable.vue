@@ -101,7 +101,7 @@
             </q-item-section>
           </q-item>
 
-          <q-item key="volunteers" v-if="!newTask">
+          <q-item key="volunteers" v-if="!newTask && isAdmin">
             <q-item-section>
               <q-table
                 title="Volunteers"
@@ -159,7 +159,7 @@
 
         <q-card-actions align="right">
           <q-btn flat label="Cancel" color="primary" v-close-popup />
-          <q-btn flat label="Join" color="primary" v-close-popup />
+          <q-btn flat label="Join" color="primary" v-close-popup @click="onJoin(editing)" />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -239,6 +239,9 @@ export default {
     },
     mappedData () {
       return this.tasks.map(this.mapRow)
+    },
+    loggedInVolunteer () {
+      return this.$store.state.user
     }
   },
 
@@ -289,6 +292,9 @@ export default {
     },
     onStatusSelected (status) {
       this.editing.status = status.value
+    },
+    onJoin (task) {
+      this.$store.commit('tasks/joinVolunteer', { task, volunteer: this.loggedInVolunteer })
     }
   }
 }

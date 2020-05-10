@@ -24,11 +24,24 @@
               />
 
               <div>
-                <q-btn label="Login" to="/volunteer_tasks_dashboard" type="button" color="primary" @click="onLogin"/>
+                <q-btn label="Login" type="button" color="primary" @click="onLogin"/>
               </div>
             </q-form>
           </q-card-section>
         </q-card>
+
+        <q-dialog v-model="register" persistent>
+          <q-card>
+            <q-card-section class="items-center">
+              <q-avatar icon="error" color="primary" text-color="white" />
+              <span class="q-ml-sm">Your email address is not registered. Please register!</span>
+            </q-card-section>
+
+            <q-card-actions align="right">
+              <q-btn flat label="Close" color="primary" v-close-popup @click="register = false" />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
       </q-page>
     </q-page-container>
   </q-layout>
@@ -37,19 +50,33 @@
 <script type="text/javascript">
 </script>
 <script>
-  export default {
-    data() {
-      return {
-        email: ''
-      }
-    },
+export default {
+  data() {
+    return {
+      email: '',
+      register: false
+    }
+  },
 
-    methods: {
-      onLogin () {
-        this.$store.commit('user/updateRole', 'volunteer')
+  computed: {
+    volunteers () {
+      return this.$store.state.volunteers.data
+    }
+  },
+
+  methods: {
+    onLogin (event) {
+      this.$store.commit('user/updateRole', 'volunteer')
+      const volunteer = this.volunteers.filter(v => v.email === this.email)[0]
+      if (volunteer) {
+        this.$store.commit('user/loginVolunteer', volunteer)
+        this.$router.push('volunteer_tasks_dashboard')
+      } else {
+        this.register = true
       }
     }
   }
+}
 </script>
 
 <style>
