@@ -76,6 +76,21 @@
             </q-item-section>
           </q-item>
 
+          <q-item key="statusStr">
+            <q-item-section>
+              <q-select
+                v-model="status"
+                :options="Object.keys(taskStatusEnum).map(n => ({label: taskStatusEnum[n], value: n}))"
+                :readonly="details"
+                @input="onStatusSelected"
+              >
+                <template v-slot:before>
+                  <LabelDiv label="Status" />
+                </template>
+              </q-select>
+            </q-item-section>
+          </q-item>
+
           <q-item key="description">
             <q-item-section>
               <q-input dense outlined autogrow :readonly="details" v-model="editing.description">
@@ -138,7 +153,9 @@ export default {
       details: false,
       join: false,
       editing: {},
+      status: {},
       manager: {},
+      taskStatusEnum,
       pagination: {
         rowsPerPage: 25
       },
@@ -214,20 +231,21 @@ export default {
   methods: {
     cloneObject,
     mapRow (row) {
-      return Object.assign({
-        managerName: this.managers[row.managerId]?.name,
-        statusStr: taskStatusEnum[row.status]
-      }, row)
+      row.managerName = this.managers[row.managerId]?.name
+      row.statusStr = taskStatusEnum[row.status]
+      return row
     },
     prepForEditDialog (row) {
       this.editing = row
       this.manager = this.managers[this.editing.managerId]
+      this.status = { label: taskStatusEnum[this.editing.status], value: this.editing.status }
     },
     onCloseNewEditDialog (newValue) {
       if (this.edit) {
         if (newValue && this.selected.length) {
           this.columns.forEach(c => { this.selected[0][c.name] = newValue[c.name] })
           this.selected[0].managerId = newValue.managerId
+          this.selected[0].status = newValue.status
           this.mapRow(this.selected[0])
         }
       } else if (this.newTask) {
@@ -253,6 +271,9 @@ export default {
     onManagerSelected (manager) {
       this.editing.managerId = manager.id
       this.editing.managerName = manager.name
+    },
+    onStatusSelected (status) {
+      this.editing.status = status.value
     }
   }
 }
