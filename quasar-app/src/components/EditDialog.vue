@@ -8,7 +8,7 @@
       <q-separator inset />
 
       <q-list dense>
-        <q-item v-for="col in defaultColumns" :key="col.name">
+        <q-item v-for="col in columns" :key="col.name">
           <q-item-section>
             <q-input dense outlined :readonly="readonly" v-model="editing[col.name]" :placeholder="col.label">
               <template v-slot:before>
@@ -31,8 +31,6 @@
 </template>
 
 <script>
-import defaultColumns from '../utils/defaultColumns'
-
 import LabelDiv from './LabelDiv'
 
 export default {
@@ -72,9 +70,6 @@ export default {
       type: String,
       default: 'Cancel'
     }
-  },
-  computed: {
-    defaultColumns
   },
   methods: {
     onClose (event) {

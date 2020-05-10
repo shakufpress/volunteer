@@ -52,16 +52,31 @@
 
     </q-table>
 
-    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; editing = cloneObject(selected[0])" />
+    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; prepForEditDialog(cloneObject(selected[0]))" />
 
-    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" @click="newTask = true; editing = {}" />
+    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" @click="newTask = true; prepForEditDialog({})" />
 
     <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Details" @click="onDetailsClick(selected[0])" />
 
-    <EditDialog :show="edit || newTask || details" :editing="editing" :label="edit ? 'Edit Task' : newTask ? 'New Task' : 'Task Details'" :columns="columns" @close="onCloseNewEditDialog" :readonly="details" :labelCancel="details ? 'Close' : 'Cancel'">
+    <EditDialog :show="edit || newTask || details" :editing="editing" :label="edit ? 'Edit Task' : newTask ? 'New Task' : 'Task Details'" :columns="editColumns" @close="onCloseNewEditDialog" :readonly="details" :labelCancel="details ? 'Close' : 'Cancel'">
       <template v-slot:customItems>
         <span v-if="editing">
-          <q-item>
+          <q-item key="managerName">
+            <q-item-section>
+              <q-select
+                v-model="manager"
+                :options="Object.values(managers)"
+                @input="onManagerSelected"
+                :readonly="details"
+              >
+                <template v-slot:before>
+                  <LabelDiv label="Manager" />
+                </template>
+              </q-select>
+            </q-item-section>
+          </q-item>
+
+          <q-item key="description">
             <q-item-section>
               <q-input dense outlined autogrow :readonly="details" v-model="editing.description">
                 <template v-slot:before>
@@ -123,18 +138,19 @@ export default {
       details: false,
       join: false,
       editing: {},
+      manager: {},
       pagination: {
         rowsPerPage: 25
       },
       columns: [
-        { name: 'managerName', required: true, label: 'Manager', align: 'left', field: 'managerName', sortable: true },
+        { name: 'managerName', required: true, label: 'Manager', align: 'left', field: 'managerName', sortable: true, hasCustomEdit: true },
         { name: 'title', required: true, label: 'Task Title', align: 'left', field: 'title', sortable: true },
         { name: 'estimation', required: true, label: 'Estimation', align: 'left', field: 'estimation', sortable: true },
-        { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true, hasCustomStyle: true },
+        { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
         { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
         { name: 'wanted_volunteers', required: true, label: 'Wanted Volunteers', align: 'left', field: 'wanted_volunteers', sortable: true },
-        { name: 'statusStr', required: true, label: 'Status', align: 'left', field: 'statusStr', sortable: true }
+        { name: 'statusStr', required: true, label: 'Status', align: 'left', field: 'statusStr', sortable: true, hasCustomEdit: true }
       ],
       data: [
         {
@@ -178,6 +194,9 @@ export default {
 
   computed: {
     defaultColumns,
+    editColumns () {
+      return this.columns.filter(col => !col.hasCustomEdit)
+    },
     userRole () {
       return this.$store.state.user.role
     },
@@ -188,23 +207,33 @@ export default {
       return this.$store.state.managers.data
     },
     mappedData () {
-      return this.data.map(row => Object.assign({
-        managerName: this.managers[row.managerId]?.name,
-        statusStr: taskStatusEnum[row.status]
-      }, row))
+      return this.data.map(this.mapRow)
     }
   },
 
   methods: {
     cloneObject,
+    mapRow (row) {
+      return Object.assign({
+        managerName: this.managers[row.managerId]?.name,
+        statusStr: taskStatusEnum[row.status]
+      }, row)
+    },
+    prepForEditDialog (row) {
+      this.editing = row
+      this.manager = this.managers[this.editing.managerId]
+    },
     onCloseNewEditDialog (newValue) {
       if (this.edit) {
         if (newValue && this.selected.length) {
           this.columns.forEach(c => { this.selected[0][c.name] = newValue[c.name] })
+          this.selected[0].managerId = newValue.managerId
+          this.mapRow(this.selected[0])
         }
       } else if (this.newTask) {
         if (newValue) {
           newValue.id = this.data.length + 1
+          this.mapRow(newValue)
           this.data.push(newValue)
         }
       }
@@ -219,7 +248,11 @@ export default {
     },
     onDetailsClick (row) {
       this.details = true
-      this.editing = row
+      this.prepForEditDialog(row)
+    },
+    onManagerSelected (manager) {
+      this.editing.managerId = manager.id
+      this.editing.managerName = manager.name
     }
   }
 }
