@@ -101,7 +101,7 @@
             </q-item-section>
           </q-item>
 
-          <q-item key="volunteers">
+          <q-item key="volunteers" v-if="!newTask">
             <q-item-section>
               <q-table
                 title="Volunteers"
@@ -114,6 +114,8 @@
 
                 <template v-slot:top>
                   <h5 class="q-ma-xs">Volunteers</h5>
+                  <q-space />
+                  <span v-if="edit" style="color:red">click on a status to edit</span>
                   <q-space />
                   <q-input placeholder="Search" dense outlined class="q-ml-md" debounce="300" color="primary" v-model="filterVolunteer">
                     <template v-slot:append>
