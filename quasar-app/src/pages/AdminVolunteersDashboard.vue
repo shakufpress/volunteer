@@ -3,7 +3,7 @@
     <div class="q-pa-md">
       <q-table
         title="Volunteers"
-        :data="data"
+        :data="volunteers"
         :columns="columns"
         row-key="id"
         :dense="$q.screen.lt.md"
@@ -150,7 +150,6 @@
 <script>
 import cloneObject from '../utils/cloneObject'
 import defaultColumns from '../utils/defaultColumns'
-import mapSpecialtiesOptions from '../utils/mapSpecialtiesOptions'
 
 import BadgeLink from 'components/BadgeLink'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
@@ -187,30 +186,6 @@ export default {
         { name: 'available_hours_per_week', label: 'Available Hours per Week', align: 'left', field: 'available_hours_per_week', sortable: true },
         { name: 'specialties', label: 'Specialties', align: 'left', field: 'specialties', sortable: true, hasCustomStyle: true },
         { name: 'notes', label: 'Notes', align: 'left', field: 'notes', sortable: true, hasCustomStyle: true, format: ellipsis15 }
-      ],
-      data: [
-        {
-          id: 1,
-          full_name: 'שקופי שקופוביץ',
-          email: 'bla@shakuf.com',
-          phone: '054-1234567',
-          facebook_profile_url: 'https://www.facebook.com/shakuf',
-          city: 'תל אביב',
-          available_hours_per_week: 5.5,
-          specialties: [{ name: 'bla', category: 'a' }, { name: 'bla bla', category: 'a' }].map(mapSpecialtiesOptions),
-          notes: 'woo hoo'
-        },
-        {
-          id: 2,
-          full_name: 'mr bloop',
-          email: 'bloop@shakuf.com',
-          phone: '054-756754',
-          facebook_profile_url: 'https://www.facebook.com/bloop',
-          city: 'somewhere',
-          available_hours_per_week: 2,
-          specialties: [],
-          notes: 'na na na na na na na\n na na na\n na na na na na'
-        }
       ]
     }
   },
@@ -218,6 +193,9 @@ export default {
     defaultColumns,
     allSpecialties () {
       return this.$store.state.specialties.data
+    },
+    volunteers () {
+      return this.$store.state.volunteers.data
     }
   },
   methods: {

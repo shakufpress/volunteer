@@ -216,48 +216,6 @@ export default {
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
         { name: 'wanted_volunteers', required: true, label: 'Wanted Volunteers', align: 'left', field: 'wanted_volunteers', sortable: true },
         { name: 'statusStr', required: true, label: 'Status', align: 'left', field: 'statusStr', sortable: true, hasCustomEdit: true }
-      ],
-      data: [
-        {
-          id: 1,
-          managerId: 1,
-          title: 'task 1',
-          estimation: 5.2,
-          description: 'bla bla bla',
-          phone: '054-26543656',
-          email: 'shakuf@shakuf.com',
-          wanted_volunteers: 5,
-          status: 0,
-          volunteers: [
-            {
-              id: 1,
-              full_name: 'שקופי שקופוביץ',
-              email: 'bla@shakuf.com',
-              status: 0
-            },
-            {
-              id: 2,
-              full_name: 'bla',
-              email: 'asdf@asdf.com',
-              status: 1
-            }
-          ].map(v => {
-            v.status = { label: volunteerStatusEnum[v.status], value: v.status }
-            return v
-          })
-        },
-        {
-          id: 2,
-          managerId: 1,
-          title: 'best task ever',
-          estimation: 15,
-          description: 'wow this \nis amazing',
-          phone: '054-7674574567',
-          email: 'shakuf@shakuf.com',
-          wanted_volunteers: 2,
-          status: 1,
-          volunteers: []
-        }
       ]
     }
   },
@@ -276,8 +234,11 @@ export default {
     managers () {
       return this.$store.state.managers.data
     },
+    tasks () {
+      return this.$store.state.tasks.data
+    },
     mappedData () {
-      return this.data.map(this.mapRow)
+      return this.tasks.map(this.mapRow)
     }
   },
 
@@ -304,9 +265,9 @@ export default {
         }
       } else if (this.newTask) {
         if (newValue) {
-          newValue.id = this.data.length + 1
+          newValue.id = this.tasks.length + 1
           this.mapRow(newValue)
-          this.data.push(newValue)
+          this.$store.commit('tasks/addTask', newValue)
         }
       }
 
