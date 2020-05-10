@@ -150,13 +150,13 @@
 <script>
 import cloneObject from '../utils/cloneObject'
 import defaultColumns from '../utils/defaultColumns'
+import mapSpecialtiesOptions from '../utils/mapSpecialtiesOptions'
 
 import BadgeLink from 'components/BadgeLink'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
 
-const mapSpecialtiesOptions = sp => Object.assign({ label: `${sp.category}: ${sp.name}`, value: sp }, sp)
 const ellipsis15 = str => str && str.length > 15 ? str.substr(0, 15) + '...' : str
 
 export default {
@@ -178,10 +178,6 @@ export default {
       pagination: {
         rowsPerPage: 25
       },
-      allSpecialties: [
-        { name: 'bla', category: 'a' },
-        { name: 'bla bla', category: 'a' }
-      ].map(mapSpecialtiesOptions),
       columns: [
         { name: 'full_name', required: true, label: 'Full Name', align: 'left', field: 'full_name', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
@@ -219,7 +215,10 @@ export default {
     }
   },
   computed: {
-    defaultColumns
+    defaultColumns,
+    allSpecialties () {
+      return this.$store.state.specialties.data
+    }
   },
   methods: {
     cloneObject,

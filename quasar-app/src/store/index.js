@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 // we first import the module
 import user from './user'
 import managers from './managers'
+import specialties from './specialties'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,8 @@ export default function (/* { ssrContext } */) {
     modules: {
       // then we reference it
       user,
-      managers
+      managers,
+      specialties
     },
 
     // enable strict mode (adds overhead!)
@@ -35,6 +37,10 @@ export default function (/* { ssrContext } */) {
     module.hot.accept(['./managers'], () => {
       const newManagers = require('./managers').default
       Store.hotUpdate({ modules: { managers: newManagers } })
+    })
+    module.hot.accept(['./specialties'], () => {
+      const newSpecialties = require('./specialties').default
+      Store.hotUpdate({ modules: { specialties: newSpecialties } })
     })
   }
 
