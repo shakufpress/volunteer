@@ -54,7 +54,7 @@
 
     <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; prepForEditDialog(cloneObject(selected[0]))" />
 
-    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" @click="newTask = true; prepForEditDialog({})" />
+    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" @click="newTask = true; prepForEditDialog({ volunteers: [] })" />
 
     <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Details" @click="onDetailsClick(selected[0])" />
 
@@ -100,6 +100,44 @@
               </q-input>
             </q-item-section>
           </q-item>
+
+          <q-item key="volunteers">
+            <q-item-section>
+              <q-table
+                title="Volunteers"
+                :data="editing.volunteers"
+                :columns="volunteersColumns"
+                row-key="id"
+                dense
+                separator="cell"
+                :filter="filterVolunteer">
+
+                <template v-slot:top>
+                  <h5 class="q-ma-xs">Volunteers</h5>
+                  <q-space />
+                  <q-input placeholder="Search" dense outlined class="q-ml-md" debounce="300" color="primary" v-model="filterVolunteer">
+                    <template v-slot:append>
+                      <q-icon name="search" />
+                    </template>
+                  </q-input>
+                </template>
+
+                <template v-slot:body-cell-status="props">
+                  <q-td :props="props">
+                    {{ props.row.status.label }}
+                    <q-popup-edit v-if="!details" v-model="props.row.status" buttons persistent title="Edit the Status">
+                      <q-select
+                        dense
+                        v-model="props.row.status"
+                        :options="Object.keys(volunteerStatusEnum).map(n => ({label: volunteerStatusEnum[n], value: n}))"
+                      />
+                    </q-popup-edit>
+                  </q-td>
+                </template>
+
+              </q-table>
+            </q-item-section>
+          </q-item>
         </span>
       </template>
 
@@ -130,6 +168,7 @@
 import cloneObject from '../utils/cloneObject'
 import defaultColumns from '../utils/defaultColumns'
 import taskStatusEnum from '../utils/taskStatusEnum'
+import volunteerStatusEnum from '../utils/volunteerStatusEnum'
 
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
@@ -148,6 +187,7 @@ export default {
     return {
       selected: [],
       filter: '',
+      filterVolunteer: '',
       edit: false,
       newTask: false,
       details: false,
@@ -156,9 +196,15 @@ export default {
       status: {},
       manager: {},
       taskStatusEnum,
+      volunteerStatusEnum,
       pagination: {
         rowsPerPage: 25
       },
+      volunteersColumns: [
+        { name: 'full_name', required: true, label: 'full_name', field: 'full_name', align: 'left', sortable: true },
+        { name: 'email', required: true, label: 'email', field: 'email', align: 'left', sortable: true },
+        { name: 'status', required: true, label: 'status', field: 'status', align: 'left', sortable: true }
+      ],
       columns: [
         { name: 'managerName', required: true, label: 'Manager', align: 'left', field: 'managerName', sortable: true, hasCustomEdit: true },
         { name: 'title', required: true, label: 'Task Title', align: 'left', field: 'title', sortable: true },
@@ -182,16 +228,21 @@ export default {
           status: 0,
           volunteers: [
             {
+              id: 1,
               full_name: 'שקופי שקופוביץ',
               email: 'bla@shakuf.com',
               status: 0
             },
             {
+              id: 2,
               full_name: 'bla',
               email: 'asdf@asdf.com',
               status: 1
             }
-          ]
+          ].map(v => {
+            v.status = { label: volunteerStatusEnum[v.status], value: v.status }
+            return v
+          })
         },
         {
           id: 2,
@@ -246,6 +297,7 @@ export default {
           this.columns.forEach(c => { this.selected[0][c.name] = newValue[c.name] })
           this.selected[0].managerId = newValue.managerId
           this.selected[0].status = newValue.status
+          this.selected[0].volunteers = newValue.volunteers
           this.mapRow(this.selected[0])
         }
       } else if (this.newTask) {
@@ -259,7 +311,7 @@ export default {
       this.edit = false
       this.newTask = false
       this.details = false
-      this.editing = {}
+      this.editing = { volunteers: [] }
     },
     onCloseJoinDialog (value) {
       this.join = false
