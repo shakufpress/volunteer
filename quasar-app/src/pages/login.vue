@@ -66,9 +66,9 @@ export default {
 
   methods: {
     onLogin (event) {
-      this.$store.commit('user/updateRole', 'volunteer')
       const volunteer = this.volunteers.filter(v => v.email === this.email)[0]
       if (volunteer) {
+        this.$store.commit('user/updateRole', 'volunteer')
         this.$store.commit('user/loginVolunteer', volunteer)
         this.$router.push('tasks_dashboard')
       } else {
