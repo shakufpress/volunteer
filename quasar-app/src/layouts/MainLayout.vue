@@ -70,13 +70,13 @@ export default {
         {
           title: 'Admin Tasks Dashbaord',
           icon: 'assignment',
-          link: '/admin_tasks_dashboard',
+          link: '/tasks_dashboard',
           displayToRole: 'admin'
         },
         {
           title: 'Tasks Dashbaord',
           icon: 'assignment_turned_in',
-          link: '/volunteer_tasks_dashboard',
+          link: '/tasks_dashboard',
           displayToRole: 'volunteer'
         },
         {

@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import cloneObject from '../utils/cloneObject'
+
 import LabelDiv from './LabelDiv'
 
 export default {
@@ -46,8 +48,8 @@ export default {
       default: false
     },
 
-    editing: {
-      type: Object,
+    objGetter: {
+      type: Function,
       required: true
     },
 
@@ -71,6 +73,21 @@ export default {
       default: 'Cancel'
     }
   },
+
+  data () {
+    return {
+      editing: null
+    }
+  },
+
+  watch: {
+    show (newVal, oldVal) {
+      if (newVal) {
+        this.editing = cloneObject(this.objGetter())
+      }
+    }
+  },
+
   methods: {
     onClose (event) {
       this.$emit('close')

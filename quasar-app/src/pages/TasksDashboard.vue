@@ -8,7 +8,7 @@
 import TasksTable from 'components/TasksTable'
 
 export default {
-  name: 'PageAdminTasksDashboard',
+  name: 'PageTasksDashboard',
 
   components: {
     TasksTable

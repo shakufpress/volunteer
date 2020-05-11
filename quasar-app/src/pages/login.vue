@@ -70,7 +70,7 @@ export default {
       const volunteer = this.volunteers.filter(v => v.email === this.email)[0]
       if (volunteer) {
         this.$store.commit('user/loginVolunteer', volunteer)
-        this.$router.push('volunteer_tasks_dashboard')
+        this.$router.push('tasks_dashboard')
       } else {
         this.register = true
       }

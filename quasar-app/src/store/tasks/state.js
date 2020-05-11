@@ -1,5 +1,3 @@
-import volunteerStatusEnum from '../../utils/volunteerStatusEnum'
-
 export default function () {
   return {
     data: [
@@ -26,10 +24,7 @@ export default function () {
             email: 'asdf@asdf.com',
             status: 1
           }
-        ].map(v => {
-          v.status = { label: volunteerStatusEnum[v.status], value: v.status }
-          return v
-        })
+        ]
       },
       {
         id: 2,

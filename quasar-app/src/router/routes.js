@@ -13,8 +13,13 @@ const routes = [
           { path: '/edit_volunteer/:volunteerId' }
         ]
       },
-      { path: '/admin_tasks_dashboard', component: () => import('pages/AdminTasksDashboard.vue') },
-      { path: '/volunteer_tasks_dashboard', component: () => import('pages/VolunteerTasksDashboard.vue') },
+      {
+        path: '/tasks_dashboard',
+        component: () => import('pages/TasksDashboard.vue'),
+        children: [
+          { path: '/task/:dialogState/:taskId' }
+        ]
+      },
       { path: '/about', component: () => import('pages/About.vue') }
     ]
   }

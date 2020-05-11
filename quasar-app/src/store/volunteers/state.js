@@ -1,5 +1,3 @@
-import mapSpecialtiesOptions from '../../utils/mapSpecialtiesOptions'
-
 export default function () {
   return {
     data: [
@@ -11,7 +9,7 @@ export default function () {
         facebook_profile_url: 'https://www.facebook.com/shakuf',
         city: 'תל אביב',
         available_hours_per_week: 5.5,
-        specialties: [{ name: 'bla', category: 'a' }, { name: 'bla bla', category: 'a' }].map(mapSpecialtiesOptions),
+        specialties: [{ name: 'bla', category: 'a' }, { name: 'bla bla', category: 'a' }],
         notes: 'woo hoo'
       },
       {

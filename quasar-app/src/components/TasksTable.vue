@@ -30,7 +30,7 @@
               <q-checkbox v-if="isAdmin" dense v-model="props.selected" :label="props.row.title" />
               <span v-if="!isAdmin">
                 <LabelDiv :label="props.row.title" width="270px" xsWidth="270px" />
-                <q-btn color="primary" label="Details" @click="onDetailsClick(props.row)" />
+                <q-btn color="primary" label="Details" :to="'/task/details/'+props.row.id" />
               </span>
             </q-card-section>
 
@@ -52,21 +52,20 @@
 
     </q-table>
 
-    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; prepForEditDialog(cloneObject(selected[0]))" />
+    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/task/edit/'+(selected[0] || {}).id" />
 
-    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" @click="newTask = true; prepForEditDialog({ volunteers: [] })" />
+    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" :to="'/task/new/0'" />
 
-    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Details" @click="onDetailsClick(selected[0])" />
+    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Details" :to="'/task/details/'+(selected[0] || {}).id" />
 
-    <EditDialog :show="edit || newTask || details" :editing="editing" :label="edit ? 'Edit Task' : newTask ? 'New Task' : 'Task Details'" :columns="editColumns" @close="onCloseNewEditDialog" :readonly="details" :labelCancel="details ? 'Close' : 'Cancel'">
-      <template v-slot:customItems>
-        <span v-if="editing">
+    <EditDialog :show="!!dialogState" :objGetter="getTaskForDialog" :label="dialogLabel" :columns="editColumns" @close="onCloseNewEditDialog" :readonly="details" :labelCancel="details ? 'Close' : 'Cancel'">
+      <template v-slot:customItems="props">
+        <span v-if="props.editing">
           <q-item key="managerName">
             <q-item-section>
               <q-select
-                v-model="manager"
+                v-model="props.editing.manager"
                 :options="Object.values(managers)"
-                @input="onManagerSelected"
                 :readonly="details"
               >
                 <template v-slot:before>
@@ -79,10 +78,9 @@
           <q-item key="statusStr">
             <q-item-section>
               <q-select
-                v-model="status"
+                v-model="props.editing.statusObj"
                 :options="Object.keys(taskStatusEnum).map(n => ({label: taskStatusEnum[n], value: n}))"
                 :readonly="details"
-                @input="onStatusSelected"
               >
                 <template v-slot:before>
                   <LabelDiv label="Status" />
@@ -93,7 +91,7 @@
 
           <q-item key="description">
             <q-item-section>
-              <q-input dense outlined autogrow :readonly="details" v-model="editing.description">
+              <q-input dense outlined autogrow :readonly="details" v-model="props.editing.description">
                 <template v-slot:before>
                   <LabelDiv label="Description" />
                 </template>
@@ -105,7 +103,7 @@
             <q-item-section>
               <q-table
                 title="Volunteers"
-                :data="editing.volunteers"
+                :data="props.editing.volunteers"
                 :columns="volunteersColumns"
                 row-key="id"
                 dense
@@ -126,11 +124,11 @@
 
                 <template v-slot:body-cell-status="props">
                   <q-td :props="props">
-                    {{ props.row.status.label }}
-                    <q-popup-edit v-if="!details" v-model="props.row.status" buttons persistent title="Edit the Status">
+                    {{ props.row.statusObj.label }}
+                    <q-popup-edit v-if="!details" v-model="props.row.statusObj" buttons persistent title="Edit the Status">
                       <q-select
                         dense
-                        v-model="props.row.status"
+                        v-model="props.row.statusObj"
                         :options="Object.keys(volunteerStatusEnum).map(n => ({label: volunteerStatusEnum[n], value: n}))"
                       />
                     </q-popup-edit>
@@ -143,26 +141,27 @@
         </span>
       </template>
 
-      <template v-slot:buttons v-if="details">
-        <q-btn v-if="!isAdmin" class="q-ma-md" color="primary" label="Join" @click="join = true" />
+      <template v-slot:buttons="props" v-if="details && !isAdmin">
+        <q-btn class="q-ma-md" color="primary" label="Join" :to="'/task/join/'+props.editing.id" />
+
+        <q-dialog v-model="join" persistent>
+          <q-card>
+            <q-card-section class="items-center">
+              <q-avatar icon="done" color="primary" text-color="white" />
+              <span class="q-ml-sm">Are you sure you want to join this task?</span>
+              <br/>
+              <span v-if="props.editing">{{ props.editing.title }}</span>
+            </q-card-section>
+
+            <q-card-actions align="right">
+              <q-btn flat label="Cancel" color="primary" @click="onJoin()" />
+              <q-btn flat label="Join" color="primary" @click="onJoin(props.editing)" />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
       </template>
+
     </EditDialog>
-
-    <q-dialog v-model="join" persistent>
-      <q-card>
-        <q-card-section class="items-center">
-          <q-avatar icon="done" color="primary" text-color="white" />
-          <span class="q-ml-sm">Are you sure you want to join this task?</span>
-          <br/>
-          <span v-if="editing">{{ editing.title }}</span>
-        </q-card-section>
-
-        <q-card-actions align="right">
-          <q-btn flat label="Cancel" color="primary" v-close-popup />
-          <q-btn flat label="Join" color="primary" v-close-popup @click="onJoin(editing)" />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
   </div>
 </template>
 
@@ -190,13 +189,6 @@ export default {
       selected: [],
       filter: '',
       filterVolunteer: '',
-      edit: false,
-      newTask: false,
-      details: false,
-      join: false,
-      editing: {},
-      status: {},
-      manager: {},
       taskStatusEnum,
       volunteerStatusEnum,
       pagination: {
@@ -233,6 +225,11 @@ export default {
     },
     managers () {
       return this.$store.state.managers.data
+        .map(obj => Object.assign({ label: obj.name, value: obj }, obj))
+        .reduce((dict, obj) => {
+          dict[obj.id] = obj
+          return dict
+        }, {})
     },
     tasks () {
       return this.$store.state.tasks.data
@@ -242,59 +239,80 @@ export default {
     },
     loggedInVolunteer () {
       return this.$store.state.user
+    },
+    dialogTaskId () {
+      return Number(this.$route.params?.taskId)
+    },
+    dialogState () {
+      return this.$route.params?.dialogState
+    },
+    emptyTask () {
+      const t = { volunteers: [] }
+      this.columns.forEach(({ field }) => { t[field] = '' })
+      return t
+    },
+    dialogLabel () {
+      const state = this.dialogState
+      switch (state) {
+        case 'edit': return 'Edit Task'
+        case 'new': return 'New Task'
+        case 'details':
+        case 'join':
+          return 'Task Details'
+      }
+      return ''
+    },
+    details () {
+      return this.dialogState === 'details' || this.join
+    },
+    newTask () {
+      return this.dialogState === 'new'
+    },
+    edit () {
+      return this.dialogState === 'edit'
+    },
+    join () {
+      return this.dialogState === 'join'
     }
   },
 
   methods: {
     cloneObject,
     mapRow (row) {
-      row.managerName = this.managers[row.managerId]?.name
-      row.statusStr = taskStatusEnum[row.status]
-      return row
+      const m = cloneObject(row)
+      if (m.managerId) {
+        m.managerName = this.managers[m.managerId]?.name
+        m.manager = this.managers[m.managerId]
+      }
+      m.statusStr = taskStatusEnum[m.status]
+      m.statusObj = { label: this.taskStatusEnum[m.status], value: m.status }
+      m.volunteers = m.volunteers.map(v => {
+        v.statusObj = { label: this.volunteerStatusEnum[v.status], value: v.status }
+        return v
+      })
+      return m
     },
-    prepForEditDialog (row) {
-      this.editing = row
-      this.manager = this.managers[this.editing.managerId]
-      this.status = { label: taskStatusEnum[this.editing.status], value: this.editing.status }
+    getTaskForDialog () {
+      const v = this.$store.getters['tasks/getTask'](this.dialogTaskId)
+      const ret = v ? cloneObject(v) : this.emptyTask
+      return this.mapRow(ret)
     },
     onCloseNewEditDialog (newValue) {
-      if (this.edit) {
-        if (newValue && this.selected.length) {
-          this.columns.forEach(c => { this.selected[0][c.name] = newValue[c.name] })
-          this.selected[0].managerId = newValue.managerId
-          this.selected[0].status = newValue.status
-          this.selected[0].volunteers = newValue.volunteers
-          this.mapRow(this.selected[0])
-        }
-      } else if (this.newTask) {
-        if (newValue) {
-          newValue.id = this.tasks.length + 1
-          this.mapRow(newValue)
+      this.$router.go(-1)
+
+      if (newValue) {
+        if (this.edit) {
+          this.$store.commit('tasks/editTask', { newValue, columns: this.columns })
+        } else if (this.newTask) {
           this.$store.commit('tasks/addTask', newValue)
         }
       }
-
-      this.edit = false
-      this.newTask = false
-      this.details = false
-      this.editing = { volunteers: [] }
-    },
-    onCloseJoinDialog (value) {
-      this.join = false
-    },
-    onDetailsClick (row) {
-      this.details = true
-      this.prepForEditDialog(row)
-    },
-    onManagerSelected (manager) {
-      this.editing.managerId = manager.id
-      this.editing.managerName = manager.name
-    },
-    onStatusSelected (status) {
-      this.editing.status = status.value
     },
     onJoin (task) {
-      this.$store.commit('tasks/joinVolunteer', { task, volunteer: this.loggedInVolunteer })
+      this.$router.go(-1)
+      if (task) {
+        this.$store.commit('tasks/joinVolunteer', { task, volunteer: this.loggedInVolunteer })
+      }
     }
   }
 }

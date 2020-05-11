@@ -104,7 +104,7 @@
 
       <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/edit_volunteer/'+(selected[0] || {}).id" />
 
-      <EditDialog :show="!!editVolunteerId" :editing="getVolunteerToEdit" label="Edit Volunteer" :columns="defaultColumns" @close="onCloseEditDialog">
+      <EditDialog :show="!!editVolunteerId" :objGetter="getVolunteerToEdit" label="Edit Volunteer" :columns="defaultColumns" @close="onCloseEditDialog">
         <template v-slot:customItems="props">
           <span v-if="props.editing">
             <q-item key="facebook_profile_url">
@@ -150,6 +150,7 @@
 <script>
 import cloneObject from '../utils/cloneObject'
 import defaultColumns from '../utils/defaultColumns'
+import mapSpecialtiesOptions from '../utils/mapSpecialtiesOptions'
 
 import BadgeLink from 'components/BadgeLink'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
@@ -190,22 +191,27 @@ export default {
   computed: {
     defaultColumns,
     allSpecialties () {
-      return this.$store.state.specialties.data
+      return this.$store.state.specialties.data.map(mapSpecialtiesOptions)
     },
     volunteers () {
-      return this.$store.state.volunteers.data
+      return this.$store.state.volunteers.data.map(this.mapRow)
     },
     editVolunteerId () {
       return Number(this.$route.params?.volunteerId)
-    },
-    getVolunteerToEdit () {
-      const v = this.$store.getters['volunteers/getVolunteer'](this.editVolunteerId)
-      return cloneObject(v || {})
     }
   },
   methods: {
     cloneObject,
     ellipsis15,
+    mapRow (row) {
+      const n = cloneObject(row)
+      n.specialties = n.specialties.map(mapSpecialtiesOptions)
+      return n
+    },
+    getVolunteerToEdit () {
+      const v = this.$store.getters['volunteers/getVolunteer'](this.editVolunteerId)
+      return this.mapRow(v || {})
+    },
     onCloseEditDialog (newValue) {
       this.$router.go(-1)
 
