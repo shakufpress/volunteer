@@ -22,6 +22,16 @@
     </q-header>
 
     <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered content-class="bg-grey-1">
+      <q-card>
+        <q-card-section class="items-center">
+          <span class="q-ml-sm">Hello {{ loggedInUser.full_name }}</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Logout" color="primary" to="/" @click="onLogout" />
+        </q-card-actions>
+      </q-card>
+
       <q-list>
         <q-item-label
           header
@@ -88,12 +98,22 @@ export default {
       ]
     }
   },
+
   computed: {
     displayMenu () {
       return this.menuItems.filter(menuItem => menuItem.displayToRole === this.userRole || menuItem.displayToRole === 'all')
     },
+    loggedInUser () {
+      return this.$store.state.user
+    },
     userRole () {
-      return this.$store.state.user.role
+      return this.loggedInUser.role
+    }
+  },
+
+  methods: {
+    onLogout () {
+      this.$store.commit('user/logout')
     }
   }
 }

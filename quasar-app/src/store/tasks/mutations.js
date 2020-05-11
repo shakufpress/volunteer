@@ -1,9 +1,9 @@
 import { getTask } from './getters'
 
 const mapRow = task => {
-  task.managerId = task.manager.id
-  task.status = task.statusObj.value
-  task.volunteers.forEach(v => { v.status = v.statusObj.value })
+  task.managerId = task.manager?.id
+  task.status = task.statusObj?.value
+  task.volunteers.forEach(v => { v.status = v.statusObj?.value })
 }
 
 export const addTask = (state, newTask) => {

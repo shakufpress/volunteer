@@ -12,6 +12,7 @@
         selection="single"
         :selected.sync="selected"
         :filter="filter"
+        :filter-method="deepSearch"
         :pagination.sync="pagination">
 
         <template v-slot:top>
@@ -151,6 +152,7 @@
 import cloneObject from '../utils/cloneObject'
 import defaultColumns from '../utils/defaultColumns'
 import mapSpecialtiesOptions from '../utils/mapSpecialtiesOptions'
+import deepSearch from '../utils/deepSearch'
 
 import BadgeLink from 'components/BadgeLink'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
@@ -218,7 +220,8 @@ export default {
       if (newValue) {
         this.$store.commit('volunteers/editVolunteer', { newValue, columns: this.columns })
       }
-    }
+    },
+    deepSearch
   }
 }
 </script>

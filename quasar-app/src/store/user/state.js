@@ -1,6 +1,6 @@
 export default function () {
   return {
-    role: 'volunteer',
+    role: '',
     id: null,
     email: '',
     full_name: ''

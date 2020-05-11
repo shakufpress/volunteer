@@ -11,6 +11,7 @@
       selection="single"
       :selected.sync="selected"
       :filter="filter"
+      :filter-method="protectedDeepSearch"
       :pagination.sync="pagination">
 
       <template v-slot:top>
@@ -29,7 +30,8 @@
             <q-card-section>
               <q-checkbox v-if="isAdmin" dense v-model="props.selected" :label="props.row.title" />
               <span v-if="!isAdmin">
-                <LabelDiv :label="props.row.title" width="270px" xsWidth="270px" />
+                <q-avatar v-if="isTaskJoined(props.row)" class="q-mr-md" icon="done" color="primary" text-color="white" />
+                <LabelDiv :label="props.row.title" width="200px" xsWidth="200px" />
                 <q-btn color="primary" label="Details" :to="'/task/details/'+props.row.id" />
               </span>
             </q-card-section>
@@ -108,7 +110,8 @@
                 row-key="id"
                 dense
                 separator="cell"
-                :filter="filterVolunteer">
+                :filter="filterVolunteer"
+                :filter-method="deepSearch">
 
                 <template v-slot:top>
                   <h5 class="q-ma-xs">Volunteers</h5>
@@ -142,7 +145,7 @@
       </template>
 
       <template v-slot:buttons="props" v-if="details && !isAdmin">
-        <q-btn class="q-ma-md" color="primary" label="Join" :to="'/task/join/'+props.editing.id" />
+        <q-btn class="q-ma-md" color="primary" label="Join" :disable="!!isTaskJoined(props.editing)" :to="'/task/join/'+props.editing.id" />
 
         <q-dialog v-model="join" persistent>
           <q-card>
@@ -170,6 +173,7 @@ import cloneObject from '../utils/cloneObject'
 import defaultColumns from '../utils/defaultColumns'
 import taskStatusEnum from '../utils/taskStatusEnum'
 import volunteerStatusEnum from '../utils/volunteerStatusEnum'
+import deepSearch from '../utils/deepSearch'
 
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
@@ -278,14 +282,23 @@ export default {
 
   methods: {
     cloneObject,
+    deepSearch,
+    protectedDeepSearch (rows, terms, cols, getCellValue) {
+      if (this.isAdmin) {
+        return this.deepSearch(rows, terms, cols, getCellValue)
+      }
+      return this.deepSearch(rows.map(r => Object.assign({}, r, { volunteers: [] })), terms, cols, getCellValue)
+    },
     mapRow (row) {
       const m = cloneObject(row)
       if (m.managerId) {
         m.managerName = this.managers[m.managerId]?.name
         m.manager = this.managers[m.managerId]
       }
-      m.statusStr = taskStatusEnum[m.status]
-      m.statusObj = { label: this.taskStatusEnum[m.status], value: m.status }
+      if (m.status) {
+        m.statusStr = taskStatusEnum[m.status]
+        m.statusObj = { label: this.taskStatusEnum[m.status], value: m.status }
+      }
       m.volunteers = m.volunteers.map(v => {
         v.statusObj = { label: this.volunteerStatusEnum[v.status], value: v.status }
         return v
@@ -313,6 +326,9 @@ export default {
       if (task) {
         this.$store.commit('tasks/joinVolunteer', { task, volunteer: this.loggedInVolunteer })
       }
+    },
+    isTaskJoined (task) {
+      return task.volunteers.filter(({ id }) => id === this.loggedInVolunteer.id).length
     }
   }
 }
