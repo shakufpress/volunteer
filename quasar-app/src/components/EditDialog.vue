@@ -18,12 +18,12 @@
           </q-item-section>
         </q-item>
 
-        <slot name="customItems">
+        <slot name="customItems" v-bind:editing="editing">
         </slot>
       </q-list>
 
       <q-btn v-if="!readonly" class="q-ma-md" color="primary" label="Save" v-close-popup @click="onSave" />
-      <slot name="buttons">
+      <slot name="buttons" v-bind:editing="editing">
       </slot>
       <q-btn class="q-ma-md" color="primary" :label="labelCancel" v-close-popup @click="onClose" />
     </q-card>

@@ -102,14 +102,14 @@
 
       </q-table>
 
-      <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" @click="edit = true; editing = cloneObject(selected[0])" />
+      <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/edit_volunteer/'+(selected[0] || {}).id" />
 
-      <EditDialog :show="edit" :editing="editing" label="Edit Volunteer" :columns="defaultColumns" @close="onCloseEditDialog">
-        <template v-slot:customItems>
-          <span v-if="editing">
+      <EditDialog :show="!!editVolunteerId" :editing="getVolunteerToEdit" label="Edit Volunteer" :columns="defaultColumns" @close="onCloseEditDialog">
+        <template v-slot:customItems="props">
+          <span v-if="props.editing">
             <q-item key="facebook_profile_url">
               <q-item-section>
-                <q-input dense outlined v-model="editing.facebook_profile_url" placeholder="Facebook Profile">
+                <q-input dense outlined v-model="props.editing.facebook_profile_url" placeholder="Facebook Profile">
                   <template v-slot:before>
                     <LabelDiv label="Facebook Profile" />
                   </template>
@@ -120,7 +120,7 @@
             <q-item key="specialties">
               <q-item-section>
                 <q-select
-                  v-model="editing.specialties"
+                  v-model="props.editing.specialties"
                   multiple
                   :options="allSpecialties"
                 >
@@ -133,7 +133,7 @@
 
             <q-item key="notes">
               <q-item-section>
-                <q-input dense outlined autogrow v-model="editing.notes" placeholder="Notes">
+                <q-input dense outlined autogrow v-model="props.editing.notes" placeholder="Notes">
                   <template v-slot:before>
                     <LabelDiv label="Notes" />
                   </template>
@@ -172,8 +172,6 @@ export default {
     return {
       selected: [],
       filter: '',
-      edit: false,
-      editing: {},
       pagination: {
         rowsPerPage: 25
       },
@@ -196,17 +194,23 @@ export default {
     },
     volunteers () {
       return this.$store.state.volunteers.data
+    },
+    editVolunteerId () {
+      return Number(this.$route.params?.volunteerId)
+    },
+    getVolunteerToEdit () {
+      const v = this.$store.getters['volunteers/getVolunteer'](this.editVolunteerId)
+      return cloneObject(v || {})
     }
   },
   methods: {
     cloneObject,
     ellipsis15,
     onCloseEditDialog (newValue) {
-      this.edit = false
-      this.editing = {}
+      this.$router.go(-1)
 
-      if (newValue && this.selected.length) {
-        this.columns.forEach(c => { this.selected[0][c.name] = newValue[c.name] })
+      if (newValue) {
+        this.$store.commit('volunteers/editVolunteer', { newValue, columns: this.columns })
       }
     }
   }
