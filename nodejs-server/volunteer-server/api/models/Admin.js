@@ -29,6 +29,22 @@ module.exports = {
       required: true
     },
 
+    full_name: {
+      type: 'string',
+      required: true,
+      description: 'Full representation of the user\'s name.',
+      maxLength: 120,
+      example: 'Mary Sue van der McHenst'
+    },
+
+    phone: {
+      type: 'string',
+      required: true,
+      unique: true,
+      description: 'Phone Number.',
+      maxLength: 13,
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -37,6 +53,11 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+
+    projects: {
+      collection: 'project',
+      via: 'manager',
+    },
 
   },
 

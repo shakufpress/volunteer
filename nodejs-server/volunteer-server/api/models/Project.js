@@ -37,21 +37,6 @@ module.exports = {
       required: true,
     },
 
-    phone: {
-      type: 'string',
-      required: true,
-      description: 'Manager phone Number.',
-      maxLength: 13,
-    },
-
-    email: {
-      type: 'string',
-      required: true,
-      isEmail: true,
-      maxLength: 200,
-      example: 'mary.sue@example.com'
-    },
-
     wanted_volunteers: {
       type: 'number',
       required: true,
@@ -72,21 +57,14 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-
-    pending_volunteers: {
-      collection: 'volunteer',
-      via: 'applied_projects',
+    manager: {
+      model: 'admin',
     },
 
-    approved_volunteers: {
+    volunteers: {
       collection: 'volunteer',
-      via: 'working_projects',
-    },
-
-    denied_volunteers: {
-      collection: 'volunteer',
-      via: 'denied_projects',
-    },
+      via: 'projects',
+    },/* change to one list with status */
 
   },
 
