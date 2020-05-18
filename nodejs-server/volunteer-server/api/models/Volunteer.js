@@ -24,7 +24,7 @@ module.exports = {
       example: 'mary.sue@example.com'
     },
 
-    fullName: {
+    full_name: {
       type: 'string',
       required: true,
       description: 'Full representation of the user\'s name.',
@@ -53,6 +53,17 @@ module.exports = {
       maxLength: 50,
     },
 
+    available_hours_per_week : {
+      type: 'number',
+      required: false,
+      defaultsTo: 0,
+    },
+
+    notes: {
+      type: 'json',
+      required: false,
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -67,19 +78,9 @@ module.exports = {
       via: 'volunteers',
     },
 
-    applied_projects: {
+    projects: {
       collection: 'project',
-      via: 'pending_volunteers',
-    },
-
-    working_projects: {
-      collection: 'project',
-      via: 'approved_volunteers',
-    },
-
-    denied_projects: {
-      collection: 'project',
-      via: 'denied_volunteers',
+      via: 'volunteers',
     },
 
   },

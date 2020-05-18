@@ -171,6 +171,11 @@ export default {
     LabelDiv
   },
 
+  async beforeCreate() {
+    this.$store.dispatch('volunteers/all');
+    this.$store.dispatch('specialties/all');
+  },
+
   data () {
     return {
       selected: [],
@@ -218,7 +223,7 @@ export default {
       this.$router.go(-1)
 
       if (newValue) {
-        this.$store.commit('volunteers/editVolunteer', { newValue, columns: this.columns })
+        this.$store.dispatch('volunteers/update', newValue);
       }
     },
     deepSearch

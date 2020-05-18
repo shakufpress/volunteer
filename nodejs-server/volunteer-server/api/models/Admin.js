@@ -26,7 +26,23 @@ module.exports = {
     password: {
       type: 'string',
       minLength: 6,
-      required: true
+      required: false
+    },
+
+    full_name: {
+      type: 'string',
+      required: true,
+      description: 'Full representation of the user\'s name.',
+      maxLength: 120,
+      example: 'Mary Sue van der McHenst'
+    },
+
+    phone: {
+      type: 'string',
+      required: true,
+      unique: true,
+      description: 'Phone Number.',
+      maxLength: 13,
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -38,15 +54,12 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-  },
+    projects: {
+      collection: 'project',
+      via: 'manager',
+    },
 
-  beforeCreate: function (valuesToSet, proceed) {
-    sails.helpers.passwords.hashPassword(valuesToSet.password).exec((err, hashedPassword)=>{
-      if (err) { return proceed(err); }
-      valuesToSet.password = hashedPassword;
-      return proceed();
-    });
-  }
+  },
 
 };
 
