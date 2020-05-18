@@ -171,6 +171,10 @@ export default {
     LabelDiv
   },
 
+  async beforeCreate() {
+    await this.$store.dispatch('volunteers/all');
+  },
+
   data () {
     return {
       selected: [],
