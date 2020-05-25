@@ -1,5 +1,4 @@
 export async function loginVolunteer({ commit }, item) {
-  debugger
   await this.dispatch('volunteers/all');
   const obj = this.getters['volunteers/getEmail'](item.email)
   if (obj) {

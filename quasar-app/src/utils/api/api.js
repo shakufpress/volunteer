@@ -30,7 +30,7 @@ async function get(store_name, id) {
  * Returns the item after adding to the server
  */
 async function add(store_name, item) {
-    const { data } = await instance.post(`${store_name}/${item.id}`, item);
+    const { data } = await instance.post(`${store_name}`, item);
     return data;
 }
 
@@ -41,7 +41,7 @@ async function add(store_name, item) {
  * Returns the item after update
  */
 async function update(store_name, item) {
-    const { data } = await instance.post(`${store_name}/${item.id}`, item);
+    const { data } = await instance.put(`${store_name}/${item.id}`, item);
     return data;
 }
 

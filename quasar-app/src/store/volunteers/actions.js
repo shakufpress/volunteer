@@ -8,11 +8,17 @@ export async function all({ commit }) {
 }
 
 export async function add({ commit }, item) {
-  const update_obj = await api.add(store_name, item);
+  const update_obj = await api.add(store_name, mapToServer(item));
   commit('add', update_obj);
 }
 
 export async function update({ commit }, item) {
-  const update_obj = await api.update(store_name, item);
+  const update_obj = await api.update(store_name, mapToServer(item));
   commit('update', update_obj);
+}
+
+function mapToServer(volunteer)
+{
+  volunteer.specialties = volunteer.specialties.map(s => s.id);
+  return volunteer;
 }

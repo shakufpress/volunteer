@@ -79,8 +79,8 @@ module.exports = {
     },
 
     projects: {
-      collection: 'project',
-      via: 'volunteers',
+      collection: 'status',
+      via: 'volunteer',
     },
 
   },

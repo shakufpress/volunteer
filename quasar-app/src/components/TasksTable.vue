@@ -190,6 +190,7 @@ export default {
 
   async beforeCreate() {
     await this.$store.dispatch('managers/all');
+    await this.$store.dispatch('tasks/all');
   },
 
   data () {
