@@ -296,7 +296,7 @@ export default {
     mapRow (row) {
       const m = cloneObject(row)
       if (m.managerId) {
-        m.managerName = this.managers[m.managerId]?.name
+        m.managerName = this.managers[m.managerId]?.full_name
         m.manager = this.managers[m.managerId]
       }
       if (m.status) {
