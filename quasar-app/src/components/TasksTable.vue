@@ -327,8 +327,8 @@ export default {
     },
     onJoin (task) {
       this.$router.go(-1)
-      if (task) {
-        this.$store.dispatch('tasks/joinVolunteer', { task, volunteer: this.loggedInVolunteer })
+      if (task && task.id) {
+        this.$store.dispatch('tasks/joinVolunteer', { taskId: task.id, volunteer: this.loggedInVolunteer })
       }
     },
     isTaskJoined (task) {
