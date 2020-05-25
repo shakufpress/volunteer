@@ -33,7 +33,11 @@
               />
 
               <div>
-                <q-btn label="Login" to="/admin_volunteers_dashboard" type="button" color="primary" @click="onLogin"/>
+                <q-btn label="Login" type="button" color="primary" @click="onLogin"/>
+              </div>
+
+              <div v-if="invalid" style="color:red">
+                Invalid username or password!
               </div>
             </q-form>
           </q-card-section>
@@ -49,14 +53,19 @@
   export default {
     data() {
       return {
+        invalid: false,
         username: '',
         password: ''
       }
     },
 
     methods: {
-      onLogin () {
-        this.$store.commit('user/updateRole', 'admin')
+      async onLogin () {
+        if (await this.$store.dispatch('user/loginAdmin', { username: this.username, password: this.password })) {
+          this.$router.push('admin_volunteers_dashboard')
+        } else {
+          this.invalid = true
+        }
       }
     }
   }

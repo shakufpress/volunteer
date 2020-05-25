@@ -58,18 +58,10 @@ export default {
     }
   },
 
-  computed: {
-    volunteers () {
-      return this.$store.state.volunteers.data
-    }
-  },
-
   methods: {
-    onLogin (event) {
-      const volunteer = this.volunteers.filter(v => v.email === this.email)[0]
-      if (volunteer) {
-        this.$store.commit('user/updateRole', 'volunteer')
-        this.$store.commit('user/loginVolunteer', volunteer)
+    async onLogin (event) {
+      const volunteer = { email: this.email };
+      if (await this.$store.dispatch('user/loginVolunteer', volunteer)) {
         this.$router.push('tasks_dashboard')
       } else {
         this.register = true

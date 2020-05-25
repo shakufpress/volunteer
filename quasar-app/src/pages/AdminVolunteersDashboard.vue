@@ -172,8 +172,13 @@ export default {
   },
 
   async beforeCreate() {
-    this.$store.dispatch('volunteers/all');
-    this.$store.dispatch('specialties/all');
+    const user = this.$store.state.user
+    if(!user.id || user.role !== 'admin') {
+      this.$router.replace('/')
+    } else {
+      await this.$store.dispatch('volunteers/all');
+      await this.$store.dispatch('specialties/all');
+    }
   },
 
   data () {
@@ -216,7 +221,7 @@ export default {
       return n
     },
     getVolunteerToEdit () {
-      const v = this.$store.getters['volunteers/getVolunteer'](this.editVolunteerId)
+      const v = this.$store.getters['volunteers/getId'](this.editVolunteerId)
       return this.mapRow(v || {})
     },
     onCloseEditDialog (newValue) {

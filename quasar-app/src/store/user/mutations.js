@@ -1,11 +1,16 @@
-export const updateRole = (state, role) => {
+const login = (state, user, role) => {
+  state.id = user.id
+  state.email = user.email
+  state.full_name = user.full_name
   state.role = role
 }
 
 export const loginVolunteer = (state, volunteer) => {
-  state.id = volunteer.id
-  state.email = volunteer.email
-  state.full_name = volunteer.full_name
+	login(state, volunteer, 'volunteer')
+}
+
+export const loginAdmin = (state, admin) => {
+  login(state, admin, 'admin')
 }
 
 export const logout = (state) => {

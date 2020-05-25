@@ -188,6 +188,10 @@ export default {
     LabelDiv
   },
 
+  async beforeCreate() {
+    await this.$store.dispatch('managers/all');
+  },
+
   data () {
     return {
       selected: [],
@@ -229,7 +233,7 @@ export default {
     },
     managers () {
       return this.$store.state.managers.data
-        .map(obj => Object.assign({ label: obj.name, value: obj }, obj))
+        .map(obj => Object.assign({ label: obj.full_name, value: obj }, obj))
         .reduce((dict, obj) => {
           dict[obj.id] = obj
           return dict
@@ -315,16 +319,16 @@ export default {
 
       if (newValue) {
         if (this.edit) {
-          this.$store.commit('tasks/editTask', { newValue, columns: this.columns })
+          this.$store.dispatch('tasks/update', newValue)
         } else if (this.newTask) {
-          this.$store.commit('tasks/addTask', newValue)
+          this.$store.dispatch('tasks/add', newValue)
         }
       }
     },
     onJoin (task) {
       this.$router.go(-1)
       if (task) {
-        this.$store.commit('tasks/joinVolunteer', { task, volunteer: this.loggedInVolunteer })
+        this.$store.dispatch('tasks/joinVolunteer', { task, volunteer: this.loggedInVolunteer })
       }
     },
     isTaskJoined (task) {
