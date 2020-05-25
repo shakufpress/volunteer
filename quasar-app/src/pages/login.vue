@@ -4,7 +4,6 @@
       <q-page class="flex flex-center">
         <div id="particles-js"></div>
         <q-card class="login-form" v-bind:style="$q.platform.is.mobile?{'width': '80%'}:{'width':'30%'}">
-          <q-img src="/statics/images/pharmacy.jpg"></q-img>
           <q-card-section>
             <div class="row no-wrap items-center">
               <div class="col text-h6 ellipsis">

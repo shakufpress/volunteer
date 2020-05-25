@@ -124,6 +124,7 @@
                   v-model="props.editing.specialties"
                   multiple
                   :options="allSpecialties"
+                  option-value = "id"
                 >
                   <template v-slot:before>
                     <LabelDiv label="Specialties" />
@@ -217,7 +218,7 @@ export default {
     ellipsis15,
     mapRow (row) {
       const n = cloneObject(row)
-      n.specialties = n.specialties.map(mapSpecialtiesOptions)
+      n.specialties = (n.specialties || []).map(mapSpecialtiesOptions)
       return n
     },
     getVolunteerToEdit () {
