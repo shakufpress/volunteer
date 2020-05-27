@@ -32,7 +32,6 @@
               <span v-if="!isAdmin">
                 <q-avatar v-if="isTaskJoined(props.row)" class="q-mr-md" icon="done" color="primary" text-color="white" />
                 <LabelDiv :label="props.row.title" width="200px" xsWidth="200px" />
-                <q-btn color="primary" label="Details" :to="'/task/details/'+props.row.id" />
               </span>
             </q-card-section>
 
@@ -48,6 +47,10 @@
                 </q-item-section>
               </q-item>
             </q-list>
+
+            <q-card-actions align="right">
+              <q-btn color="primary" label="Details" :to="'/task/details/'+props.row.id" />
+            </q-card-actions>
           </q-card>
         </div>
       </template>
@@ -308,8 +311,9 @@ export default {
         m.statusStr = taskStatusEnum[m.status]
         m.statusObj = { label: this.taskStatusEnum[m.status], value: m.status }
       }
-      m.volunteers = m.volunteers.map(v => {
-        v.statusObj = { label: this.volunteerStatusEnum[v.status], value: v.status }
+      m.volunteers = m.volunteers.map(({id, status}) => {
+        const v = this.$store.getters['volunteers/getId'](id)
+        v.statusObj = { label: this.volunteerStatusEnum[status], value: status }
         return v
       })
       return m
@@ -334,6 +338,9 @@ export default {
       this.$router.go(-1)
       if (task && task.id) {
         await this.$store.dispatch('tasks/joinVolunteer', { taskId: task.id, volunteer: this.loggedInVolunteer })
+
+        const newTask = this.getTaskForDialog()
+        task.volunteers = newTask.volunteers
       }
     },
     isTaskJoined (task) {

@@ -1,5 +1,4 @@
 
-import { getTask } from './getters'
 import * as api from '../../utils/api/api'
 const store_name = 'project';
 
@@ -34,19 +33,19 @@ const mapFromServer = task => {
     managerId: task.manager?.id,
     phone: task.manager?.phone,
     email: task.manager?.email,
+    volunteers: task.volunteers.map(({volunteer, status}) => ({ status, id: volunteer }))
   }
 }
 
 export async function joinVolunteer (state, { taskId, volunteer }) {
-  const v = getTask(state)(taskId)
+  const v = { ...(state.getters.getTask(taskId)) }
   const exists = v.volunteers.filter(({ id }) => id === volunteer.id).length
   if (!exists) {
-    v.volunteers.push({
-      id: volunteer.id,
-      email: volunteer.email,
-      full_name: volunteer.full_name,
-      status: 0
+    await api.add('status', {
+      status: 0,
+      volunteer: volunteer.id,
+      project: taskId
     })
-    return await update(state, v)
+    await all(state)
   }
 }
