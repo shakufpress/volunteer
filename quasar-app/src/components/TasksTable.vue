@@ -2,6 +2,7 @@
   <div class="q-pa-md">
     <q-table
       title="Tasks"
+      class="sticky-header-table"
       :data="mappedData"
       :columns="defaultColumns"
       row-key="id"
@@ -16,6 +17,9 @@
 
       <template v-slot:top>
         <h5 class="q-ma-xs">Tasks</h5>
+        <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/task/edit/'+(selected[0] || {}).id" />
+        <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" :to="'/task/new/0'" />
+        <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Details" :to="'/task/details/'+(selected[0] || {}).id" />
         <q-space />
         <q-input placeholder="Search" dense outlined class="q-ml-md" debounce="300" color="primary" v-model="filter">
           <template v-slot:append>
@@ -48,7 +52,9 @@
               </q-item>
             </q-list>
 
-            <q-card-actions align="right">
+            <q-card-actions v-if="!isAdmin">
+              <span v-if="isTaskJoined(props.row)" style="color:red" class="q-ma-md">Join request status: {{joinStatusStr(props.row)}}</span>
+              <q-space />
               <q-btn color="primary" label="Details" :to="'/task/details/'+props.row.id" />
             </q-card-actions>
           </q-card>
@@ -57,11 +63,6 @@
 
     </q-table>
 
-    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/task/edit/'+(selected[0] || {}).id" />
-
-    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" :to="'/task/new/0'" />
-
-    <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Details" :to="'/task/details/'+(selected[0] || {}).id" />
 
     <EditDialog :show="!!dialogState" :objGetter="getTaskForDialog" :label="dialogLabel" :columns="editColumns" @close="onCloseNewEditDialog" :readonly="details" :labelCancel="details ? 'Close' : 'Cancel'">
       <template v-slot:customItems="props">
@@ -152,6 +153,7 @@
 
       <template v-slot:buttons="props" v-if="details && !isAdmin">
         <q-btn class="q-ma-md" color="primary" label="Join" :disable="!!isTaskJoined(props.editing)" :to="'/task/join/'+props.editing.id" />
+        <span v-if="isTaskJoined(props.editing)" style="color:red" class="q-ma-md">Join request status: {{joinStatusStr(props.editing)}}</span>
 
         <q-dialog v-model="join" persistent>
           <q-card>
@@ -313,6 +315,7 @@ export default {
       }
       m.volunteers = m.volunteers.map(({id, status}) => {
         const v = this.$store.getters['volunteers/getId'](id)
+        v.status = status
         v.statusObj = { label: this.volunteerStatusEnum[status], value: status }
         return v
       })
@@ -343,8 +346,15 @@ export default {
         task.volunteers = newTask.volunteers
       }
     },
+    taskVolunteerRow (task) {
+      return task.volunteers.filter(({ id }) => id === this.loggedInVolunteer.id)
+    },
     isTaskJoined (task) {
-      return task.volunteers.filter(({ id }) => id === this.loggedInVolunteer.id).length
+      return this.taskVolunteerRow(task).length
+    },
+    joinStatusStr (task) {
+      debugger
+      return this.volunteerStatusEnum[this.taskVolunteerRow(task)[0].status]
     }
   }
 }

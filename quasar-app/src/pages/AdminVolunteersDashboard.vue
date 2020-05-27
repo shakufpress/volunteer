@@ -3,6 +3,7 @@
     <div class="q-pa-md">
       <q-table
         title="Volunteers"
+        class="sticky-header-table"
         :data="volunteers"
         :columns="columns"
         row-key="id"
@@ -17,6 +18,7 @@
 
         <template v-slot:top>
           <h5 class="q-ma-xs">Volunteers</h5>
+          <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/edit_volunteer/'+(selected[0] || {}).id" />
           <q-space />
           <q-input placeholder="Search" dense outlined class="q-ml-md" debounce="300" color="primary" v-model="filter">
             <template v-slot:append>
@@ -102,8 +104,6 @@
         </template>
 
       </q-table>
-
-      <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/edit_volunteer/'+(selected[0] || {}).id" />
 
       <EditDialog :show="!!editVolunteerId" :objGetter="getVolunteerToEdit" label="Edit Volunteer" :columns="defaultColumns" @close="onCloseEditDialog">
         <template v-slot:customItems="props">
