@@ -313,11 +313,10 @@ export default {
         m.statusStr = taskStatusEnum[m.status]
         m.statusObj = { label: this.taskStatusEnum[m.status], value: m.status }
       }
-      m.volunteers = m.volunteers.map(({id, status}) => {
+      m.volunteers = m.volunteers.map(({id, status, statusId}) => {
         const v = this.$store.getters['volunteers/getId'](id)
-        v.status = status
-        v.statusObj = { label: this.volunteerStatusEnum[status], value: status }
-        return v
+        const statusObj = { label: this.volunteerStatusEnum[status], value: status }
+        return { ...v, status, statusId, statusObj }
       })
       return m
     },
