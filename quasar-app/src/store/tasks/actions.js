@@ -5,15 +5,7 @@ const store_name = 'project';
 
 export async function all({ commit }) {
   const items = await api.all(store_name)
-  items.map(el => {
-    return {
-      ...el,
-      managerId: el.manager.id,
-      phone: el.manager.phone,
-      email: el.manager.email,
-    }
-  })
-  commit('setAll', { items });
+  commit('setAll', { items: items.map(mapFromServer) });
 }
 
 export async function add({ commit }, item) {
@@ -27,16 +19,22 @@ export async function update({ commit }, item) {
 }
 
 const mapToServer = task => {
-  task.manager = task.manager?.id;
-  task.status = task.statusObj?.value;
-  task.categories = [];
-  task.volunteers.forEach(v => { v.status = v.statusObj?.value })
-  return task
+  return {
+    ...task,
+    manager: task.manager?.id,
+    status: task.statusObj?.value,
+    categories: [], // TODO: remove after implementing categories in the UI,
+    volunteers: task.volunteers.map(v => ({ ...v, status: v.statusObj?.value }))
+  }
 }
 
 const mapFromServer = task => {
-  task.managerId = task.manager?.id
-  return task
+  return {
+    ...task,
+    managerId: task.manager?.id,
+    phone: task.manager?.phone,
+    email: task.manager?.email,
+  }
 }
 
 export async function joinVolunteer (state, { taskId, volunteer }) {

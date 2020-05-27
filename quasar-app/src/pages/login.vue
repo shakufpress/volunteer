@@ -23,7 +23,7 @@
               />
 
               <div>
-                <q-btn label="Login" type="button" color="primary" @click="onLogin"/>
+                <q-btn label="Login" type="submit" color="primary" @click="onLogin"/>
               </div>
             </q-form>
           </q-card-section>

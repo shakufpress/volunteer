@@ -225,11 +225,11 @@ export default {
       const v = this.$store.getters['volunteers/getId'](this.editVolunteerId)
       return this.mapRow(v || {})
     },
-    onCloseEditDialog (newValue) {
+    async onCloseEditDialog (newValue) {
       this.$router.go(-1)
 
       if (newValue) {
-        this.$store.dispatch('volunteers/update', newValue);
+        await this.$store.dispatch('volunteers/update', newValue);
       }
     },
     deepSearch

@@ -67,8 +67,11 @@
             <q-item-section>
               <q-select
                 v-model="props.editing.manager"
-                :options="Object.values(managers)"
+                :options="managers"
                 :readonly="details"
+                option-value = "id"
+                option-label="full_name"
+                @input="setManagerData(props.editing)"
               >
                 <template v-slot:before>
                   <LabelDiv label="Manager" />
@@ -213,8 +216,8 @@ export default {
         { name: 'title', required: true, label: 'Task Title', align: 'left', field: 'title', sortable: true },
         { name: 'estimation', required: true, label: 'Estimation', align: 'left', field: 'estimation', sortable: true },
         { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
-        { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true },
-        { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
+        { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true, readonly: true },
+        { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true, readonly: true },
         { name: 'wanted_volunteers', required: true, label: 'Wanted Volunteers', align: 'left', field: 'wanted_volunteers', sortable: true },
         { name: 'statusStr', required: true, label: 'Status', align: 'left', field: 'statusStr', sortable: true, hasCustomEdit: true }
       ]
@@ -234,14 +237,9 @@ export default {
     },
     managers () {
       return this.$store.state.managers.data
-        .map(obj => Object.assign({ label: obj.full_name, value: obj }, obj))
-        .reduce((dict, obj) => {
-          dict[obj.id] = obj
-          return dict
-        }, {})
     },
     tasks () {
-      return this.$store.state.tasks.data
+      return this.$store.getters['tasks/all']()
     },
     mappedData () {
       return this.tasks.map(this.mapRow)
@@ -294,11 +292,17 @@ export default {
       }
       return this.deepSearch(rows.map(r => Object.assign({}, r, { volunteers: [] })), terms, cols, getCellValue)
     },
+    setManagerData(task) {
+      const manager = task.manager
+      task.managerName = manager?.full_name
+      task.email = manager?.email
+      task.phone = manager?.phone
+    },
     mapRow (row) {
       const m = cloneObject(row)
       if (m.managerId) {
-        m.managerName = this.managers[m.managerId]?.full_name
-        m.manager = this.managers[m.managerId]
+        m.manager = this.$store.getters['managers/getId'](m.managerId)
+        this.setManagerData(m)
       }
       if (m.status) {
         m.statusStr = taskStatusEnum[m.status]
@@ -315,21 +319,21 @@ export default {
       const ret = v ? cloneObject(v) : this.emptyTask
       return this.mapRow(ret)
     },
-    onCloseNewEditDialog (newValue) {
+    async onCloseNewEditDialog (newValue) {
       this.$router.go(-1)
 
       if (newValue) {
         if (this.edit) {
-          this.$store.dispatch('tasks/update', newValue)
+          await this.$store.dispatch('tasks/update', newValue)
         } else if (this.newTask) {
-          this.$store.dispatch('tasks/add', newValue)
+          await this.$store.dispatch('tasks/add', newValue)
         }
       }
     },
-    onJoin (task) {
+    async onJoin (task) {
       this.$router.go(-1)
       if (task && task.id) {
-        this.$store.dispatch('tasks/joinVolunteer', { taskId: task.id, volunteer: this.loggedInVolunteer })
+        await this.$store.dispatch('tasks/joinVolunteer', { taskId: task.id, volunteer: this.loggedInVolunteer })
       }
     },
     isTaskJoined (task) {

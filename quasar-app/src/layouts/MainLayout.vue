@@ -112,8 +112,8 @@ export default {
   },
 
   methods: {
-    onLogout () {
-      this.$store.dispatch('user/logout')
+    async onLogout () {
+      await this.$store.dispatch('user/logout')
     }
   }
 }

@@ -10,7 +10,7 @@
       <q-list dense>
         <q-item v-for="col in columns" :key="col.name">
           <q-item-section>
-            <q-input dense outlined :readonly="readonly" v-model="editing[col.name]" :placeholder="col.label">
+            <q-input dense outlined :readonly="readonly || col.readonly" v-model="editing[col.name]" :placeholder="col.label">
               <template v-slot:before>
                 <LabelDiv :label="col.label" />
               </template>
