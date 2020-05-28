@@ -14,15 +14,15 @@ export async function add({ commit }, item) {
 }
 
 export async function update({ commit }, item) {
-  const update_obj = await api.update(store_name, mapToServer(item));
-  await item.volunteers.forEach(async v => {
+  for (const v of item.volunteers) {
     await api.update(status_store_name, {
       id: v.statusId,
       status: v.statusObj?.value,
       volunteer: v.id,
       project: item.id
     })
-  })
+  }
+  const update_obj = await api.update(store_name, mapToServer(item));
   commit('update', mapFromServer(update_obj));
 }
 
@@ -55,6 +55,7 @@ export async function joinVolunteer (state, { taskId, volunteer }) {
       volunteer: volunteer.id,
       project: taskId
     })
-    await all(state)
+    v.volunteers = [] // we don't need to update the status of existing volunteers to the server
+    await update(state, v)
   }
 }

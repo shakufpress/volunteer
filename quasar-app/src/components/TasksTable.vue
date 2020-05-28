@@ -352,7 +352,6 @@ export default {
       return this.taskVolunteerRow(task).length
     },
     joinStatusStr (task) {
-      debugger
       return this.volunteerStatusEnum[this.taskVolunteerRow(task)[0].status]
     }
   }
