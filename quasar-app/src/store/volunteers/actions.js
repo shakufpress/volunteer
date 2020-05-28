@@ -19,6 +19,5 @@ export async function update({ commit }, item) {
 
 function mapToServer(volunteer)
 {
-  volunteer.specialties = volunteer.specialties.map(s => s.id);
-  return volunteer;
+  return { ...volunteer, specialties: volunteer.specialties.map(s => s.id), projects: undefined };
 }

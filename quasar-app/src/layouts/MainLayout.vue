@@ -28,6 +28,7 @@
         </q-card-section>
 
         <q-card-actions align="right">
+          <q-btn flat v-if="!isAdmin" label="Update" color="primary" @click="updateVolunteer = true" />
           <q-btn flat label="Logout" color="primary" to="/" @click="onLogout" />
         </q-card-actions>
       </q-card>
@@ -61,14 +62,26 @@
       <router-view />
     </q-page-container>
 
+    <EditVolunteerDialog :show="updateVolunteer" :editVolunteerId="loggedInUser.id" label="Update User Details" :columns="volunteerBasicColumns" @close="onCloseEditDialog" />
+
   </q-layout>
 </template>
 
 <script>
+import EditVolunteerDialog from 'components/EditVolunteerDialog'
+
+import volunteerBasicColumns from '../utils/volunteerBasicColumns'
+
 export default {
+  components: {
+    EditVolunteerDialog
+  },
+
   data () {
     return {
       leftDrawerOpen: false,
+      updateVolunteer: false,
+      volunteerBasicColumns,
       // TODO: should we get the menu items from the server according to login permissions (admin / volunteer)
       menuItems: [
         {
@@ -108,12 +121,22 @@ export default {
     },
     userRole () {
       return this.loggedInUser.role
+    },
+    isAdmin () {
+      return this.userRole === 'admin'
     }
   },
 
   methods: {
     async onLogout () {
       await this.$store.dispatch('user/logout')
+    },
+    async onCloseEditDialog (newValue) {
+      this.updateVolunteer = false
+      if (newValue) {
+        await this.$store.dispatch('volunteers/update', newValue)
+        await this.$store.commit('user/loginVolunteer', newValue)
+      }
     }
   }
 }
