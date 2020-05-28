@@ -25,6 +25,7 @@ module.exports.bootstrap = async function() {
 
   await Admin.createEach([
     { email: 'test@gmail.com', password: "asdfasdf", full_name: 'test testy', phone: '0547634381'},
+    { email: 'bla@gmail.com', password: "zxcvzxcv", full_name: 'bla blabla', phone: '3465363465'},
   ]);
 
 };
