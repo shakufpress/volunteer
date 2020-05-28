@@ -10,9 +10,9 @@ import TasksTable from 'components/TasksTable'
 export default {
   name: 'PageTasksDashboard',
 
-  async beforeCreate() {
+  async beforeCreate () {
     const user = this.$store.state.user
-    if(!user.id) {
+    if (!user.id) {
       this.$router.replace('/')
     }
   },

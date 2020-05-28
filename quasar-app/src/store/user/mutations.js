@@ -6,7 +6,7 @@ const login = (state, user, role) => {
 }
 
 export const loginVolunteer = (state, volunteer) => {
-	login(state, volunteer, 'volunteer')
+  login(state, volunteer, 'volunteer')
 }
 
 export const loginAdmin = (state, admin) => {

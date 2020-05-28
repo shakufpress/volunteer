@@ -1,29 +1,29 @@
 
 import * as api from '../../utils/api/api'
-const store_name = 'project';
-const status_store_name = 'status'
+const storeName = 'project'
+const statusStoreName = 'status'
 
-export async function all({ commit }) {
-  const items = await api.all(store_name)
-  commit('setAll', { items: items.map(mapFromServer) });
+export async function all ({ commit }) {
+  const items = await api.all(storeName)
+  commit('setAll', { items: items.map(mapFromServer) })
 }
 
-export async function add({ commit }, item) {
-  const update_obj = await api.add(store_name, mapToServer(item));
-  commit('add', mapFromServer(update_obj));
+export async function add ({ commit }, item) {
+  const updateObj = await api.add(storeName, mapToServer(item))
+  commit('add', mapFromServer(updateObj))
 }
 
-export async function update({ commit }, item) {
+export async function update ({ commit }, item) {
   for (const v of item.volunteers) {
-    await api.update(status_store_name, {
+    await api.update(statusStoreName, {
       id: v.statusId,
       status: v.statusObj?.value,
       volunteer: v.id,
       project: item.id
     })
   }
-  const update_obj = await api.update(store_name, mapToServer(item));
-  commit('update', mapFromServer(update_obj));
+  const updateObj = await api.update(storeName, mapToServer(item))
+  commit('update', mapFromServer(updateObj))
 }
 
 const mapToServer = task => {
@@ -42,7 +42,7 @@ const mapFromServer = task => {
     managerId: task.manager?.id,
     phone: task.manager?.phone,
     email: task.manager?.email,
-    volunteers: task.volunteers.map(({volunteer, status, id}) => ({ status, id: volunteer, statusId: id }))
+    volunteers: task.volunteers.map(({ volunteer, status, id }) => ({ status, id: volunteer, statusId: id }))
   }
 }
 
@@ -50,7 +50,7 @@ export async function joinVolunteer (state, { taskId, volunteer }) {
   const v = { ...(state.getters.getTask(taskId)) }
   const exists = v.volunteers.filter(({ id }) => id === volunteer.id).length
   if (!exists) {
-    await api.add(status_store_name, {
+    await api.add(statusStoreName, {
       status: 0,
       volunteer: volunteer.id,
       project: taskId

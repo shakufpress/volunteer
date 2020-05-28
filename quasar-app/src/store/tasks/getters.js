@@ -3,5 +3,5 @@ export function getTask (state) {
 }
 
 export function all (state) {
-	return () => state.data
+  return () => state.data
 }

@@ -51,7 +51,7 @@ import defaultColumns from '../utils/defaultColumns'
 
 export default {
   name: 'EditVolunteerDialog',
-  
+
   components: {
     EditDialog,
     LabelDiv

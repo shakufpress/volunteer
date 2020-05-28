@@ -119,7 +119,6 @@ import volunteerBasicColumns from '../utils/volunteerBasicColumns'
 import BadgeLink from 'components/BadgeLink'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import EditVolunteerDialog from 'components/EditVolunteerDialog'
-import LabelDiv from 'components/LabelDiv'
 
 const ellipsis15 = str => str && str.length > 15 ? str.substr(0, 15) + '...' : str
 
@@ -129,17 +128,16 @@ export default {
   components: {
     BadgeLink,
     SpecialtiesBadgeList,
-    EditVolunteerDialog,
-    LabelDiv
+    EditVolunteerDialog
   },
 
-  async beforeCreate() {
+  async beforeCreate () {
     const user = this.$store.state.user
-    if(!user.id || user.role !== 'admin') {
+    if (!user.id || user.role !== 'admin') {
       this.$router.replace('/')
     } else {
-      await this.$store.dispatch('volunteers/all');
-      await this.$store.dispatch('specialties/all');
+      await this.$store.dispatch('volunteers/all')
+      await this.$store.dispatch('specialties/all')
     }
   },
 
@@ -172,7 +170,7 @@ export default {
       this.$router.go(-1)
 
       if (newValue) {
-        await this.$store.dispatch('volunteers/update', newValue);
+        await this.$store.dispatch('volunteers/update', newValue)
       }
     },
     deepSearch

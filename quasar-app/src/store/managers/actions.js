@@ -1,18 +1,18 @@
 
 import * as api from '../../utils/api/api'
-const store_name = 'admin';
+const storeName = 'admin'
 
-export async function all({ commit }) {
-  const items = await api.all(store_name)
-  commit('setAll', { items });
+export async function all ({ commit }) {
+  const items = await api.all(storeName)
+  commit('setAll', { items })
 }
 
-export async function add({ commit }, item) {
-  const update_obj = await api.add(store_name, item);
-  commit('add', update_obj);
+export async function add ({ commit }, item) {
+  const updateObj = await api.add(storeName, item)
+  commit('add', updateObj)
 }
 
-export async function update({ commit }, item) {
-  const update_obj = await api.update(store_name, item);
-  commit('update', update_obj);
+export async function update ({ commit }, item) {
+  const updateObj = await api.update(storeName, item)
+  commit('update', updateObj)
 }

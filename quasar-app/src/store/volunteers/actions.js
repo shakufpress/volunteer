@@ -1,23 +1,22 @@
 
 import * as api from '../../utils/api/api'
-const store_name = 'volunteer';
+const storeName = 'volunteer'
 
-export async function all({ commit }) {
-  const items = await api.all(store_name)
-  commit('setAll', { items });
+export async function all ({ commit }) {
+  const items = await api.all(storeName)
+  commit('setAll', { items })
 }
 
-export async function add({ commit }, item) {
-  const update_obj = await api.add(store_name, mapToServer(item));
-  commit('add', update_obj);
+export async function add ({ commit }, item) {
+  const updateObj = await api.add(storeName, mapToServer(item))
+  commit('add', updateObj)
 }
 
-export async function update({ commit }, item) {
-  const update_obj = await api.update(store_name, mapToServer(item));
-  commit('update', update_obj);
+export async function update ({ commit }, item) {
+  const updateObj = await api.update(storeName, mapToServer(item))
+  commit('update', updateObj)
 }
 
-function mapToServer(volunteer)
-{
-  return { ...volunteer, specialties: volunteer.specialties.map(s => s.id), projects: undefined };
+function mapToServer (volunteer) {
+  return { ...volunteer, specialties: volunteer.specialties.map(s => s.id), projects: undefined }
 }

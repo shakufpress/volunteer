@@ -63,7 +63,6 @@
 
     </q-table>
 
-
     <EditDialog :show="!!dialogState" :objGetter="getTaskForDialog" :label="dialogLabel" :columns="editColumns" @close="onCloseNewEditDialog" :readonly="details" :labelCancel="details ? 'Close' : 'Cancel'">
       <template v-slot:customItems="props">
         <span v-if="props.editing">
@@ -196,9 +195,9 @@ export default {
     LabelDiv
   },
 
-  async beforeCreate() {
-    await this.$store.dispatch('managers/all');
-    await this.$store.dispatch('tasks/all');
+  async beforeCreate () {
+    await this.$store.dispatch('managers/all')
+    await this.$store.dispatch('tasks/all')
   },
 
   data () {
@@ -297,9 +296,9 @@ export default {
       }
       return this.deepSearch(rows.map(r => Object.assign({}, r, { volunteers: [] })), terms, cols, getCellValue)
     },
-    setManagerData(task) {
+    setManagerData (task) {
       const manager = task.manager
-      task.managerName = manager?.full_name
+      task.managerName = manager?.full_name // eslint-disable-line camelcase
       task.email = manager?.email
       task.phone = manager?.phone
     },
@@ -313,7 +312,7 @@ export default {
         m.statusStr = taskStatusEnum[m.status]
         m.statusObj = { label: this.taskStatusEnum[m.status], value: m.status }
       }
-      m.volunteers = m.volunteers.map(({id, status, statusId}) => {
+      m.volunteers = m.volunteers.map(({ id, status, statusId }) => {
         const v = this.$store.getters['volunteers/getId'](id)
         const statusObj = { label: this.volunteerStatusEnum[status], value: status }
         return { ...v, status, statusId, statusObj }
