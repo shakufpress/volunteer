@@ -15,13 +15,6 @@
 
 <script>
 export default {
-  name: 'PageAbout',
-
-  async beforeCreate () {
-    const user = this.$store.state.user
-    if (!user.id) {
-      this.$router.replace('/')
-    }
-  }
+  name: 'PageAbout'
 }
 </script>

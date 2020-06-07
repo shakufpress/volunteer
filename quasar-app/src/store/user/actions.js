@@ -1,3 +1,14 @@
+import firebaseService from '../../services/firebase'
+
+export async function auth({ commit, state: { role, id } }) {
+  const user = firebaseService.getUser()
+  if (user) {
+    commit('loginAdmin', user)
+  } else if (!(role === 'volunteer' && !!id)) {
+    commit('logout')
+  }
+}
+
 export async function loginVolunteer ({ commit }, item) {
   await this.dispatch('volunteers/all')
   const obj = this.getters['volunteers/getEmail'](item.email)
@@ -7,15 +18,21 @@ export async function loginVolunteer ({ commit }, item) {
   return !!obj
 }
 
-export async function loginAdmin ({ commit }, item) {
+export async function loginAdmin ({ commit }, { username, password }) {
   await this.dispatch('managers/all')
-  const obj = this.getters['managers/getEmail'](item.username)
-  if (obj) {
-    commit('loginAdmin', obj)
+  try {
+    const { user } = await firebaseService.login(username, password)
+    if (user) {
+      commit('loginAdmin', user)
+    }
+    return !!user
+  } catch(ex) {
+    // invalid signup
+    return false
   }
-  return !!obj
 }
 
 export async function logout ({ commit }) {
+  await firebaseService.logout()
   commit('logout')
 }

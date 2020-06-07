@@ -62,7 +62,7 @@
       <router-view />
     </q-page-container>
 
-    <EditVolunteerDialog :show="updateVolunteer" :editVolunteerId="loggedInUser.id" label="Update User Details" :columns="volunteerBasicColumns" @close="onCloseEditDialog" />
+    <EditVolunteerDialog v-if="!isAdmin" :show="updateVolunteer" :editVolunteerId="loggedInUser.id" label="Update User Details" :columns="volunteerBasicColumns" @close="onCloseEditDialog" />
 
   </q-layout>
 </template>
@@ -70,9 +70,17 @@
 <script>
 import EditVolunteerDialog from 'components/EditVolunteerDialog'
 
+import auth from '../utils/auth'
 import volunteerBasicColumns from '../utils/volunteerBasicColumns'
 
 export default {
+  async beforeCreate () {
+    const user = await auth(this.$store)
+    if (!user?.id) {
+      this.$router.replace('/')
+    }
+  },
+
   components: {
     EditVolunteerDialog
   },

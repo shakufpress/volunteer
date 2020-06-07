@@ -49,7 +49,16 @@
 <script type="text/javascript">
 </script>
 <script>
+import auth from '../utils/auth'
+
 export default {
+  async beforeCreate () {
+    const user = await auth(this.$store)
+    if (user?.id) {
+      this.$router.push(user.role === 'admin' ? 'admin_volunteers_dashboard' : 'tasks_dashboard')
+    }
+  },
+  
   data() {
     return {
       email: '',

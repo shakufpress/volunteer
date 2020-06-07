@@ -1,7 +1,7 @@
 const login = (state, user, role) => {
-  state.id = user.id
+  state.id = user.id || user.uid
   state.email = user.email
-  state.full_name = user.full_name
+  state.full_name = user.full_name || user.email
   state.role = role
 }
 

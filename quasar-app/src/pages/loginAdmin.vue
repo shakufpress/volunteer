@@ -49,25 +49,34 @@
 <script type="text/javascript">
 </script>
 <script>
-  export default {
-    data() {
-      return {
-        invalid: false,
-        username: '',
-        password: ''
-      }
-    },
+import auth from '../utils/auth'
 
-    methods: {
-      async onLogin () {
-        if (await this.$store.dispatch('user/loginAdmin', { username: this.username, password: this.password })) {
-          this.$router.push('admin_volunteers_dashboard')
-        } else {
-          this.invalid = true
-        }
+export default {
+  async beforeCreate () {
+    const user = await auth(this.$store)
+    if (user?.id) {
+      this.$router.push(user.role === 'admin' ? 'admin_volunteers_dashboard' : 'tasks_dashboard')
+    }
+  },
+
+  data() {
+    return {
+      invalid: false,
+      username: '',
+      password: ''
+    }
+  },
+
+  methods: {
+    async onLogin () {
+      if (await this.$store.dispatch('user/loginAdmin', { username: this.username, password: this.password })) {
+        this.$router.push('admin_volunteers_dashboard')
+      } else {
+        this.invalid = true
       }
     }
   }
+}
 </script>
 
 <style>

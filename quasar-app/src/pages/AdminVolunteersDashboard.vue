@@ -132,13 +132,8 @@ export default {
   },
 
   async beforeCreate () {
-    const user = this.$store.state.user
-    if (!user.id || user.role !== 'admin') {
-      this.$router.replace('/')
-    } else {
-      await this.$store.dispatch('volunteers/all')
-      await this.$store.dispatch('specialties/all')
-    }
+    await this.$store.dispatch('volunteers/all')
+    await this.$store.dispatch('specialties/all')
   },
 
   data () {
