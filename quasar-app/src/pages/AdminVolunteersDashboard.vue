@@ -113,7 +113,6 @@
 <script>
 import defaultColumns from '../utils/defaultColumns'
 import deepSearch from '../utils/deepSearch'
-import mapVolunteer from '../utils/mapVolunteer'
 import volunteerBasicColumns from '../utils/volunteerBasicColumns'
 
 import BadgeLink from 'components/BadgeLink'
@@ -133,7 +132,6 @@ export default {
 
   async beforeCreate () {
     await this.$store.dispatch('volunteers/all')
-    await this.$store.dispatch('specialties/all')
   },
 
   data () {
@@ -152,7 +150,7 @@ export default {
   computed: {
     defaultColumns,
     volunteers () {
-      return this.$store.state.volunteers.data.map(this.mapRow)
+      return this.$store.state.volunteers.data
     },
     editVolunteerId () {
       return Number(this.$route.params?.volunteerId)
@@ -160,7 +158,6 @@ export default {
   },
   methods: {
     ellipsis15,
-    mapRow: mapVolunteer,
     async onCloseEditDialog (newValue) {
       this.$router.go(-1)
 

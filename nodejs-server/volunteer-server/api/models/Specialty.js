@@ -42,6 +42,11 @@ module.exports = {
       via: 'specialties',
     },
 
+    projects: {
+      collection: 'project',
+      via: 'categories',
+    },
+
   },
 
 };

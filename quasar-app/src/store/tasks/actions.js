@@ -1,4 +1,4 @@
-
+import mapSpecialtiesOptions from '../../utils/mapSpecialtiesOptions'
 import * as api from '../../utils/api/api'
 const storeName = 'project'
 const statusStoreName = 'status'
@@ -29,9 +29,8 @@ export async function update ({ commit }, item) {
 const mapToServer = task => {
   return {
     ...task,
-    manager: task.manager?.id,
     status: task.statusObj?.value,
-    categories: [], // TODO: remove after implementing categories in the UI,
+    categories: task.categories.map(s => s.id),
     volunteers: undefined
   }
 }
@@ -39,10 +38,8 @@ const mapToServer = task => {
 const mapFromServer = task => {
   return {
     ...task,
-    managerId: task.manager?.id,
-    phone: task.manager?.phone,
-    email: task.manager?.email,
-    volunteers: task.volunteers.map(({ volunteer, status, id }) => ({ status, id: volunteer, statusId: id }))
+    volunteers: task.volunteers.map(({ volunteer, status, id }) => ({ status, id: volunteer, statusId: id })),
+    categories: task.categories.map(mapSpecialtiesOptions)
   }
 }
 

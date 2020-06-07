@@ -19,7 +19,6 @@ export async function loginVolunteer ({ commit }, item) {
 }
 
 export async function loginAdmin ({ commit }, { username, password }) {
-  await this.dispatch('managers/all')
   try {
     const { user } = await firebaseService.login(username, password)
     if (user) {

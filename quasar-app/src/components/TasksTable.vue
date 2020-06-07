@@ -4,7 +4,7 @@
       title="Tasks"
       class="sticky-header-table"
       :data="mappedData"
-      :columns="defaultColumns"
+      :columns="columns"
       row-key="id"
       :dense="$q.screen.lt.md"
       :grid="$q.screen.xs || !isAdmin"
@@ -26,6 +26,12 @@
             <q-icon name="search" />
           </template>
         </q-input>
+      </template>
+
+      <template v-slot:body-cell-categories="props">
+        <q-td :props="props">
+          <SpecialtiesBadgeList :list="props.value" />
+        </q-td>
       </template>
 
       <template v-slot:item="props">
@@ -50,6 +56,15 @@
                   <q-item-label>{{ props.row[col.name] }}</q-item-label>
                 </q-item-section>
               </q-item>
+
+              <q-item>
+                <q-item-section>
+                  <q-item-label caption>Categories</q-item-label>
+                </q-item-section>
+                <q-item-section side>
+                  <SpecialtiesBadgeList :list="props.row.categories" />
+                </q-item-section>
+              </q-item>
             </q-list>
 
             <q-card-actions v-if="!isAdmin">
@@ -66,23 +81,6 @@
     <EditDialog :show="!!dialogState" :objGetter="getTaskForDialog" :label="dialogLabel" :columns="editColumns" @close="onCloseNewEditDialog" :readonly="details" :labelCancel="details ? 'Close' : 'Cancel'">
       <template v-slot:customItems="props">
         <span v-if="props.editing">
-          <q-item key="managerName">
-            <q-item-section>
-              <q-select
-                v-model="props.editing.manager"
-                :options="managers"
-                :readonly="details"
-                option-value = "id"
-                option-label="full_name"
-                @input="setManagerData(props.editing)"
-              >
-                <template v-slot:before>
-                  <LabelDiv label="Manager" />
-                </template>
-              </q-select>
-            </q-item-section>
-          </q-item>
-
           <q-item key="statusStr">
             <q-item-section>
               <q-select
@@ -94,6 +92,13 @@
                   <LabelDiv label="Status" />
                 </template>
               </q-select>
+            </q-item-section>
+          </q-item>
+
+          <q-item key="categories">
+            <q-item-section>
+              <SpecialtiesSelectBox v-if="!details" label="Categories" v-model="props.editing.categories"/>
+              <SpecialtiesBadgeList v-if="details" label="Categories" :list="props.editing.categories" />
             </q-item-section>
           </q-item>
 
@@ -184,6 +189,8 @@ import deepSearch from '../utils/deepSearch'
 
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
+import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
+import SpecialtiesSelectBox from 'components/SpecialtiesSelectBox'
 
 export default {
   name: 'TasksTable',
@@ -192,12 +199,14 @@ export default {
 
   components: {
     EditDialog,
-    LabelDiv
+    LabelDiv,
+    SpecialtiesBadgeList,
+    SpecialtiesSelectBox
   },
 
   async beforeCreate () {
-    await this.$store.dispatch('managers/all')
     await this.$store.dispatch('tasks/all')
+    await this.$store.dispatch('specialties/all')
   },
 
   data () {
@@ -211,18 +220,19 @@ export default {
         rowsPerPage: 25
       },
       volunteersColumns: [
-        { name: 'full_name', required: true, label: 'full_name', field: 'full_name', align: 'left', sortable: true },
-        { name: 'email', required: true, label: 'email', field: 'email', align: 'left', sortable: true },
-        { name: 'status', required: true, label: 'status', field: 'status', align: 'left', sortable: true }
+        { name: 'full_name', required: true, label: 'Full Name', field: 'full_name', align: 'left', sortable: true },
+        { name: 'email', required: true, label: 'Email', field: 'email', align: 'left', sortable: true },
+        { name: 'status', required: true, label: 'Status', field: 'status', align: 'left', sortable: true }
       ],
       columns: [
-        { name: 'managerName', required: true, label: 'Manager', align: 'left', field: 'managerName', sortable: true, hasCustomEdit: true },
         { name: 'title', required: true, label: 'Task Title', align: 'left', field: 'title', sortable: true },
         { name: 'estimation', required: true, label: 'Estimation', align: 'left', field: 'estimation', sortable: true },
         { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
-        { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true, readonly: true },
-        { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true, readonly: true },
+        { name: 'manager_name', required: true, label: 'Manager Name', align: 'left', field: 'manager_name', sortable: true },
+        { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true },
+        { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
         { name: 'wanted_volunteers', required: true, label: 'Wanted Volunteers', align: 'left', field: 'wanted_volunteers', sortable: true },
+        { name: 'categories', label: 'Categories', align: 'left', field: 'categories', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
         { name: 'statusStr', required: true, label: 'Status', align: 'left', field: 'statusStr', sortable: true, hasCustomEdit: true }
       ]
     }
@@ -238,9 +248,6 @@ export default {
     },
     isAdmin () {
       return this.userRole === 'admin'
-    },
-    managers () {
-      return this.$store.state.managers.data
     },
     tasks () {
       return this.$store.getters['tasks/all']()
@@ -260,6 +267,7 @@ export default {
     emptyTask () {
       const t = { volunteers: [] }
       this.columns.forEach(({ field }) => { t[field] = '' })
+      t.categories = []
       return t
     },
     dialogLabel () {
@@ -296,18 +304,8 @@ export default {
       }
       return this.deepSearch(rows.map(r => Object.assign({}, r, { volunteers: [] })), terms, cols, getCellValue)
     },
-    setManagerData (task) {
-      const manager = task.manager
-      task.managerName = manager?.full_name // eslint-disable-line camelcase
-      task.email = manager?.email
-      task.phone = manager?.phone
-    },
     mapRow (row) {
       const m = cloneObject(row)
-      if (m.managerId) {
-        m.manager = this.$store.getters['managers/getId'](m.managerId)
-        this.setManagerData(m)
-      }
       if (m.status) {
         m.statusStr = taskStatusEnum[m.status]
         m.statusObj = { label: this.taskStatusEnum[m.status], value: m.status }

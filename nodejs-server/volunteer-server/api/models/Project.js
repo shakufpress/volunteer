@@ -21,12 +21,6 @@ module.exports = {
       maxLength: 120,
     },
 
-    categories: {
-      type: 'json',
-      required: true,
-      example: "['cat1', 'cat2', 'cat3']"
-    },
-
     estimation: {
       type: 'number',
       required: false,
@@ -48,6 +42,30 @@ module.exports = {
       maxLength: 20,
     },
 
+    manager_name: {
+      type: 'string',
+      required: true,
+      description: 'Full representation of the manager\'s name.',
+      maxLength: 120,
+      example: 'Mary Sue van der McHenst'
+    },
+
+    email: {
+      type: 'string',
+      required: true,
+      isEmail: true,
+      maxLength: 200,
+      example: 'mary.sue@example.com'
+    },
+
+    phone: {
+      type: 'string',
+      required: true,
+      unique: true,
+      description: 'Phone Number.',
+      maxLength: 13,
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -57,13 +75,14 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    manager: {
-      model: 'admin',
-    },
-
     volunteers: {
       collection: 'status',
       via: 'project',
+    },
+
+    categories: {
+      collection: 'specialty',
+      via: 'projects',
     },
 
   },

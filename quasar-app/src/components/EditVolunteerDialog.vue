@@ -14,16 +14,7 @@
 
         <q-item v-if="columnExists('specialties')" key="specialties">
           <q-item-section>
-            <q-select
-              v-model="props.editing.specialties"
-              multiple
-              :options="allSpecialties"
-              option-value = "id"
-            >
-              <template v-slot:before>
-                <LabelDiv label="Specialties" />
-              </template>
-            </q-select>
+            <SpecialtiesSelectBox v-model="props.editing.specialties"/>
           </q-item-section>
         </q-item>
 
@@ -44,9 +35,8 @@
 <script>
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
+import SpecialtiesSelectBox from 'components/SpecialtiesSelectBox'
 
-import mapVolunteer from '../utils/mapVolunteer'
-import mapSpecialtiesOptions from '../utils/mapSpecialtiesOptions'
 import defaultColumns from '../utils/defaultColumns'
 
 export default {
@@ -54,7 +44,8 @@ export default {
 
   components: {
     EditDialog,
-    LabelDiv
+    LabelDiv,
+    SpecialtiesSelectBox
   },
 
   props: {
@@ -80,16 +71,13 @@ export default {
   },
 
   computed: {
-    defaultColumns,
-    allSpecialties () {
-      return this.$store.state.specialties.data.map(mapSpecialtiesOptions)
-    }
+    defaultColumns
   },
 
   methods: {
     getVolunteerToEdit () {
       const v = this.$store.getters['volunteers/getId'](this.editVolunteerId)
-      return mapVolunteer(v || {})
+      return v || { specialties: [] }
     },
     columnExists (name) {
       return this.columns.filter(c => c.name === name).length > 0

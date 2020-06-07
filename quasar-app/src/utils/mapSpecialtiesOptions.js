@@ -1,1 +1,3 @@
-export default sp => Object.assign({ label: `${sp.category}: ${sp.name}` }, sp)
+export default function(sp) {
+	return { ...sp, label: `${sp.category}: ${sp.name}` }
+}
