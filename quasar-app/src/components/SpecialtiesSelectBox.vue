@@ -40,13 +40,13 @@ export default {
     }
   },
 
-  data() {
+  data () {
     return {
       editArr: []
     }
   },
 
-  created() {
+  created () {
     this.editArr = this.value.slice()
   },
 
@@ -57,8 +57,8 @@ export default {
   },
 
   methods: {
-    update() {
-      this.$emit('input', this.editArr);
+    update () {
+      this.$emit('input', this.editArr)
     }
   }
 }

@@ -1,3 +1,3 @@
-export default function(sp) {
-	return { ...sp, label: `${sp.category}: ${sp.name}` }
+export default function (sp) {
+  return { ...sp, label: `${sp.category}: ${sp.name}` }
 }

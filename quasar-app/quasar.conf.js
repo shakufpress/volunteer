@@ -96,7 +96,7 @@ module.exports = function (/* ctx */) {
       open: true, // opens browser window automatically
       before (app) {
         const cors = require('cors')
-        app.use(cors({ origin: '*', methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS" }))
+        app.use(cors({ origin: '*', methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS' }))
       }
     },
 

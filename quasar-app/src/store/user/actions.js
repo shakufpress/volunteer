@@ -1,6 +1,6 @@
 import firebaseService from '../../services/firebase'
 
-export async function auth({ commit, state: { role, id } }) {
+export async function auth ({ commit, state: { role, id } }) {
   const user = firebaseService.getUser()
   if (user) {
     commit('loginAdmin', user)
@@ -25,7 +25,7 @@ export async function loginAdmin ({ commit }, { username, password }) {
       commit('loginAdmin', user)
     }
     return !!user
-  } catch(ex) {
+  } catch (ex) {
     // invalid signup
     return false
   }

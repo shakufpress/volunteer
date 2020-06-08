@@ -58,7 +58,7 @@ export default {
       this.$router.push(user.role === 'admin' ? 'admin_volunteers_dashboard' : 'tasks_dashboard')
     }
   },
-  
+
   data() {
     return {
       email: '',
