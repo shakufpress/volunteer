@@ -22,7 +22,7 @@ function getUser () {
 }
 
 async function getIdToken () {
-  return await getUser().getIdToken(/* forceRefresh */ true)
+  return await getUser()?.getIdToken(/* forceRefresh */ true)
 }
 
 export default {
