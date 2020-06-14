@@ -21,10 +21,15 @@ function getUser () {
   return firebase.auth().currentUser
 }
 
+async function getIdToken () {
+  return await getUser().getIdToken(/* forceRefresh */ true)
+}
+
 export default {
   init,
   auth,
   login,
   logout,
-  getUser
+  getUser,
+  getIdToken
 }

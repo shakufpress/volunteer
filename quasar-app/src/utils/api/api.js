@@ -1,5 +1,10 @@
 import axios from 'axios'
 
+// this is the firebase token of the current user.
+// we send it to the server. The server should verify it with firebase:
+// https://firebase.google.com/docs/auth/admin/verify-id-tokens#verify_id_tokens_using_the_firebase_admin_sdk
+import { getIdToken } from '../../services/firebase'
+
 const instance = axios.create({
   baseURL: 'http://localhost:1337'
 })
