@@ -1,5 +1,5 @@
 <template>
-  <q-dialog persistent v-model="show" full-width>
+  <q-dialog persistent v-model="isShow" full-width>
     <q-card v-if="editing">
       <q-card-section>
         {{ label }}
@@ -76,12 +76,14 @@ export default {
 
   data () {
     return {
-      editing: null
+      editing: null,
+      isShow: false
     }
   },
 
   watch: {
     show (newVal, oldVal) {
+      this.isShow = newVal
       if (newVal) {
         this.editing = cloneObject(this.objGetter())
       }
