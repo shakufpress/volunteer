@@ -10,6 +10,7 @@
     "@sailshq/socket.io-redis": "^5.2.0",
     "axios": "^0.19.2",
     "csv-reader": "^1.0.6",
+    "firebase-admin": "^8.12.1",
     "grunt": "1.0.4",
     "sails": "^1.2.4",
     "sails-hook-grunt": "^4.0.0",

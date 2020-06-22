@@ -5,24 +5,18 @@ import axios from 'axios'
 // https://firebase.google.com/docs/auth/admin/verify-id-tokens#verify_id_tokens_using_the_firebase_admin_sdk
 import firebaseService from '../../services/firebase'
 
-const instance = axios.create({
-  baseURL: 'http://localhost:1337'
-})
-
-async function getConfig() {
-  const firebaseToken = await firebaseService.getIdToken()
-  return {
-    headers: {
-      firebaseToken
-    }
-  }
-}
-
 /**
  * Returns all data
  */
 async function all (storeName) {
-  const { data } = await instance.get(`${storeName}/`, await getConfig())
+  const data = []
+  const snapshot = await firebaseService.db().collection(storeName).get()
+  snapshot.forEach(doc => {
+    data.push({
+      id: doc.id,
+      ...doc.data(),
+    })
+  })
   return data
 }
 
@@ -32,8 +26,11 @@ async function all (storeName) {
  * Returns the item with id == id
  */
 async function get (storeName, id) {
-  const { data } = await instance.get(`${storeName}/${id}`, await getConfig())
-  return data
+  const doc = await firebaseService.db().collection(storeName).doc(id).get()
+  return {
+    id: doc.id,
+    ...doc.data(),
+  }
 }
 
 /**
@@ -42,7 +39,7 @@ async function get (storeName, id) {
  * Returns the item after adding to the server
  */
 async function add (storeName, item) {
-  const { data } = await instance.post(`${storeName}`, item, await getConfig())
+  const data = await firebaseService.db().collection(storeName).add(item)
   return data
 }
 
@@ -52,8 +49,9 @@ async function add (storeName, item) {
  * Returns the item after update
  */
 async function update (storeName, item) {
-  const { data } = await instance.put(`${storeName}/${item.id}`, item, await getConfig())
-  return data
+  console.log(item)
+  await firebaseService.db().collection(storeName).doc(item.id).update(item)
+  return item
 }
 
 export {

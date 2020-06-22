@@ -1,6 +1,6 @@
 import mapSpecialtiesOptions from '../../utils/mapSpecialtiesOptions'
 import * as api from '../../utils/api/api'
-const storeName = 'project'
+const storeName = 'projects'
 const statusStoreName = 'status'
 
 export async function all ({ commit }) {
@@ -31,7 +31,7 @@ const mapToServer = task => {
     ...task,
     status: task.statusObj?.value,
     categories: task.categories.map(s => s.id),
-    volunteers: undefined
+    volunteers: []
   }
 }
 

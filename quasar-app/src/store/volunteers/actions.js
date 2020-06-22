@@ -1,9 +1,19 @@
 import mapSpecialtiesOptions from '../../utils/mapSpecialtiesOptions'
 import * as api from '../../utils/api/api'
-const storeName = 'volunteer'
+const storeName = 'volunteers'
 
-export async function all ({ commit }) {
-  const items = await api.all(storeName)
+export async function all ({ rootState, commit }) {
+  await this.dispatch('specialties/all')
+  let items = await api.all(storeName)
+  items = items.map(item => {
+    const specialties = item.specialties.map(spec => {
+      return rootState.specialties.data.find(el => el.id == spec);
+    });
+    return {
+      ...item,
+      specialties: specialties,
+    }
+  })
   commit('setAll', { items: items.map(mapFromServer) })
 }
 
@@ -22,5 +32,5 @@ function mapFromServer (volunteer) {
 }
 
 function mapToServer (volunteer) {
-  return { ...volunteer, specialties: volunteer.specialties.map(s => s.id), projects: undefined }
+  return { ...volunteer, specialties: volunteer.specialties.map(s => s.id), projects: [] }
 }

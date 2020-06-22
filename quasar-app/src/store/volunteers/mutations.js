@@ -1,10 +1,5 @@
 import { getId } from './getters'
 
-export const editVolunteer = (state, { newValue, columns }) => {
-  const v = getId(state)(newValue.id)
-  columns.forEach(({ field }) => { v[field] = newValue[field] })
-}
-
 export const setAll = (state, { items }) => {
   state.data = items
 }

@@ -1,6 +1,6 @@
 
 import * as api from '../../utils/api/api'
-const storeName = 'specialty'
+const storeName = 'specialties'
 
 export async function all ({ commit }) {
   const items = await api.all(storeName)
