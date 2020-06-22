@@ -153,7 +153,7 @@ export default {
       return this.$store.state.volunteers.data
     },
     editVolunteerId () {
-      return Number(this.$route.params?.volunteerId)
+      return this.$route.params?.volunteerId
     }
   },
   methods: {

@@ -56,7 +56,7 @@ export default {
 
     editVolunteerId: {
       type: String,
-      default: ""
+      default: "noId"
     },
 
     columns: {

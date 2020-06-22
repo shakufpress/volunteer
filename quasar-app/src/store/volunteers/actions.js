@@ -2,35 +2,31 @@ import mapSpecialtiesOptions from '../../utils/mapSpecialtiesOptions'
 import * as api from '../../utils/api/api'
 const storeName = 'volunteers'
 
-export async function all ({ rootState, commit }) {
-  await this.dispatch('specialties/all')
+export async function all ({ rootState, commit, dispatch }) {
+  await dispatch('specialties/all', {}, { root: true })
   let items = await api.all(storeName)
-  items = items.map(item => {
-    const specialties = item.specialties.map(spec => {
-      return rootState.specialties.data.find(el => el.id == spec);
+  commit('setAll', { items: items.map(mapFromServer(rootState.specialties.data)) })
+}
+
+export async function add ({ dispatch }, item) {
+  await api.add(storeName, mapToServer(item))
+  dispatch('all')
+}
+
+export async function update ({ dispatch }, item) {
+  await api.update(storeName, mapToServer(item))
+  dispatch('all')
+}
+
+function mapFromServer (specialties) {
+  return (volunteer) => {
+    const vol_specialties = volunteer.specialties.map(spec => {
+      return specialties.find(el => el.id == spec);
     });
-    return {
-      ...item,
-      specialties: specialties,
-    }
-  })
-  commit('setAll', { items: items.map(mapFromServer) })
-}
-
-export async function add ({ commit }, item) {
-  const updateObj = await api.add(storeName, mapToServer(item))
-  commit('add', updateObj)
-}
-
-export async function update ({ commit }, item) {
-  const updateObj = await api.update(storeName, mapToServer(item))
-  commit('update', updateObj)
-}
-
-function mapFromServer (volunteer) {
-  return { ...volunteer, specialties: volunteer.specialties.map(mapSpecialtiesOptions) }
+    return { ...volunteer, specialties: vol_specialties.map(mapSpecialtiesOptions) }
+  }
 }
 
 function mapToServer (volunteer) {
-  return { ...volunteer, specialties: volunteer.specialties.map(s => s.id), projects: [] }
+  return { ...volunteer, specialties: volunteer.specialties.map(s => s.id) }
 }

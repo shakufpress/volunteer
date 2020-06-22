@@ -8,12 +8,12 @@ export async function all ({ commit }) {
   commit('setAll', { items: items.map(mapFromServer) })
 }
 
-export async function add ({ commit }, item) {
-  const updateObj = await api.add(storeName, mapToServer(item))
-  commit('add', mapFromServer(updateObj))
+export async function add ({ dispatch }, item) {
+  await api.add(storeName, mapToServer(item))
+  dispatch('all')
 }
 
-export async function update ({ commit }, item) {
+export async function update ({ dispatch }, item) {
   for (const v of item.volunteers) {
     await api.update(statusStoreName, {
       id: v.statusId,
@@ -22,8 +22,8 @@ export async function update ({ commit }, item) {
       project: item.id
     })
   }
-  const updateObj = await api.update(storeName, mapToServer(item))
-  commit('update', mapFromServer(updateObj))
+  await api.update(storeName, mapToServer(item))
+  dispatch('all')
 }
 
 const mapToServer = task => {

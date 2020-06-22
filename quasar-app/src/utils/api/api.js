@@ -49,7 +49,6 @@ async function add (storeName, item) {
  * Returns the item after update
  */
 async function update (storeName, item) {
-  console.log(item)
   await firebaseService.db().collection(storeName).doc(item.id).update(item)
   return item
 }
