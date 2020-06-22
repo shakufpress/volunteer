@@ -33,6 +33,18 @@ async function get (storeName, id) {
   }
 }
 
+async function query (storeName, lvalue, op, rvalue) {
+  const data = []
+  const snapshot = await firebaseService.db().collection(storeName).where(lvalue, op, rvalue).get()
+  snapshot.forEach(doc => {
+    data.push({
+      id: doc.id,
+      ...doc.data(),
+    })
+  })
+  return data
+}
+
 /**
  * Send add request to the item api
  * @param {item} item object
@@ -54,5 +66,5 @@ async function update (storeName, item) {
 }
 
 export {
-  all, get, add, update
+  all, get, add, update, query
 }

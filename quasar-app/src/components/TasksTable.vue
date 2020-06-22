@@ -259,7 +259,7 @@ export default {
       return this.$store.state.user
     },
     dialogTaskId () {
-      return Number(this.$route.params?.taskId)
+      return this.$route.params?.taskId
     },
     dialogState () {
       return this.$route.params?.dialogState

@@ -1,11 +1,13 @@
 import mapSpecialtiesOptions from '../../utils/mapSpecialtiesOptions'
 import * as api from '../../utils/api/api'
 const storeName = 'projects'
-const statusStoreName = 'status'
+const statusStoreName = 'projectsRequestStatuses'
 
-export async function all ({ commit }) {
+export async function all ({ commit, dispatch, rootState }) {
+  await dispatch('specialties/all', {}, { root: true })
+  const statuses = await api.all(statusStoreName)
   const items = await api.all(storeName)
-  commit('setAll', { items: items.map(mapFromServer) })
+  commit('setAll', { items: items.map(mapFromServer(rootState.specialties.data, statuses)) })
 }
 
 export async function add ({ dispatch }, item) {
@@ -35,11 +37,16 @@ const mapToServer = task => {
   }
 }
 
-const mapFromServer = task => {
+const mapFromServer = (specialties, statuses) => (task) => {
+  const specs = task.categories.map(spec => {
+    return specialties.find(el => el.id == spec);
+  });
+
+  const proj_vol_stats = statuses.filter(s => s.project == task.id)
   return {
     ...task,
-    volunteers: task.volunteers.map(({ volunteer, status, id }) => ({ status, id: volunteer, statusId: id })),
-    categories: task.categories.map(mapSpecialtiesOptions)
+    volunteers: proj_vol_stats.map(({ volunteer, status, id }) => ({ status, id: volunteer, statusId: id })),
+    categories: specs.map(mapSpecialtiesOptions)
   }
 }
 
