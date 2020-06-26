@@ -2,8 +2,12 @@ import firebaseService from '../services/firebase'
 import axios from "axios"
 
 const getFirebaseConfig = async () => {
-  const { data } = await axios.get(`/__/firebase/init.json`)
-  return data
+  try {
+    const { data } = await axios.get(`/__/firebase/init.json`)
+    return data
+  } catch (ex) {
+    // dev env
+  }
 };
 
 
