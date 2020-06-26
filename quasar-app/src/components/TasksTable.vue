@@ -20,7 +20,11 @@
         <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/task/edit/'+(selected[0] || {}).id" />
         <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" :to="'/task/new/0'" />
         <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Details" :to="'/task/details/'+(selected[0] || {}).id" />
+        
         <q-space />
+        <TagLine />
+        <q-space />
+
         <q-input placeholder="Search" dense outlined class="q-ml-md" debounce="300" color="primary" v-model="filter">
           <template v-slot:append>
             <q-icon name="search" />
@@ -189,6 +193,7 @@ import deepSearch from '../utils/deepSearch'
 
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
+import TagLine from 'components/TagLine'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import SpecialtiesSelectBox from 'components/SpecialtiesSelectBox'
 
@@ -200,6 +205,7 @@ export default {
   components: {
     EditDialog,
     LabelDiv,
+    TagLine,
     SpecialtiesBadgeList,
     SpecialtiesSelectBox
   },
