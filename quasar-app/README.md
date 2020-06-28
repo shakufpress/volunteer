@@ -22,5 +22,12 @@ npm run lint
 quasar build
 ```
 
-### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+### Deploy the app to firebase
+Make sure the app name in `.firebaserc` is correct and corresponds to the app name in your firebase console project https://console.firebase.google.com .
+
+Then:
+```bash
+# login to firebase
+firebase login
+firebase deploy
+```

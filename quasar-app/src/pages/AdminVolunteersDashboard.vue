@@ -20,6 +20,8 @@
           <h5 class="q-ma-xs">Volunteers</h5>
           <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/edit_volunteer/'+(selected[0] || {}).id" />
           <q-space />
+          <TagLine />
+          <q-space />
           <q-input placeholder="Search" dense outlined class="q-ml-md" debounce="300" color="primary" v-model="filter">
             <template v-slot:append>
               <q-icon name="search" />
@@ -116,6 +118,7 @@ import deepSearch from '../utils/deepSearch'
 import volunteerBasicColumns from '../utils/volunteerBasicColumns'
 
 import BadgeLink from 'components/BadgeLink'
+import TagLine from 'components/TagLine'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import EditVolunteerDialog from 'components/EditVolunteerDialog'
 
@@ -126,6 +129,7 @@ export default {
 
   components: {
     BadgeLink,
+    TagLine,
     SpecialtiesBadgeList,
     EditVolunteerDialog
   },

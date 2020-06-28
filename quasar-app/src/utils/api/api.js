@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 // this is the firebase token of the current user.
 // we send it to the server. The server should verify it with firebase:
 // https://firebase.google.com/docs/auth/admin/verify-id-tokens#verify_id_tokens_using_the_firebase_admin_sdk
@@ -9,12 +7,13 @@ import firebaseService from '../../services/firebase'
  * Returns all data
  */
 async function all (storeName) {
+  // console.log('list ', storeName)
   const data = []
   const snapshot = await firebaseService.db().collection(storeName).get()
   snapshot.forEach(doc => {
     data.push({
       id: doc.id,
-      ...doc.data(),
+      ...doc.data()
     })
   })
   return data
@@ -26,20 +25,22 @@ async function all (storeName) {
  * Returns the item with id == id
  */
 async function get (storeName, id) {
+  // console.log('get ', storeName, id)
   const doc = await firebaseService.db().collection(storeName).doc(id).get()
   return {
     id: doc.id,
-    ...doc.data(),
+    ...doc.data()
   }
 }
 
 async function query (storeName, lvalue, op, rvalue) {
+  // console.log('query ', storeName, lvalue, op, rvalue)
   const data = []
   const snapshot = await firebaseService.db().collection(storeName).where(lvalue, op, rvalue).get()
   snapshot.forEach(doc => {
     data.push({
       id: doc.id,
-      ...doc.data(),
+      ...doc.data()
     })
   })
   return data
@@ -51,6 +52,7 @@ async function query (storeName, lvalue, op, rvalue) {
  * Returns the item after adding to the server
  */
 async function add (storeName, item) {
+  // console.log('create ', storeName, item)
   const data = await firebaseService.db().collection(storeName).add(item)
   return data
 }
@@ -61,6 +63,7 @@ async function add (storeName, item) {
  * Returns the item after update
  */
 async function update (storeName, item) {
+  // console.log('update ', storeName, item)
   await firebaseService.db().collection(storeName).doc(item.id).update(item)
   return item
 }

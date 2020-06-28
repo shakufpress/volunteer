@@ -10,7 +10,7 @@ export async function auth ({ commit, state: { role, id } }) {
 }
 
 export async function loginVolunteer ({ commit }, item) {
-  await this.dispatch('volunteers/all')
+  await this.dispatch('volunteers/all', item.email)
   const obj = this.getters['volunteers/getEmail'](item.email)
   if (obj) {
     commit('loginVolunteer', obj)
