@@ -9,6 +9,7 @@ import firebaseService from '../../services/firebase'
  * Returns all data
  */
 async function all (storeName) {
+  // console.log('list ', storeName)
   const data = []
   const snapshot = await firebaseService.db().collection(storeName).get()
   snapshot.forEach(doc => {
@@ -26,6 +27,7 @@ async function all (storeName) {
  * Returns the item with id == id
  */
 async function get (storeName, id) {
+  // console.log('get ', storeName, id)
   const doc = await firebaseService.db().collection(storeName).doc(id).get()
   return {
     id: doc.id,
@@ -34,6 +36,7 @@ async function get (storeName, id) {
 }
 
 async function query (storeName, lvalue, op, rvalue) {
+  // console.log('query ', storeName, lvalue, op, rvalue)
   const data = []
   const snapshot = await firebaseService.db().collection(storeName).where(lvalue, op, rvalue).get()
   snapshot.forEach(doc => {
@@ -51,6 +54,7 @@ async function query (storeName, lvalue, op, rvalue) {
  * Returns the item after adding to the server
  */
 async function add (storeName, item) {
+  // console.log('create ', storeName, item)
   const data = await firebaseService.db().collection(storeName).add(item)
   return data
 }
@@ -61,6 +65,7 @@ async function add (storeName, item) {
  * Returns the item after update
  */
 async function update (storeName, item) {
+  // console.log('update ', storeName, item)
   await firebaseService.db().collection(storeName).doc(item.id).update(item)
   return item
 }
