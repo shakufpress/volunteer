@@ -1,5 +1,3 @@
-import { getId } from './getters'
-
 export const setAll = (state, { items }) => {
   state.data = items
 }
@@ -9,7 +7,7 @@ export const add = (state, item) => {
 }
 
 export const update = (state, item) => {
-  let found = false;
+  let found = false
   state.data = state.data.map(el => {
     if (el.id === item.id) {
       found = true

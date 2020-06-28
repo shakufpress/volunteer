@@ -25,10 +25,10 @@ export async function update ({ dispatch }, item) {
 
 function mapFromServer (specialties) {
   return (volunteer) => {
-    const vol_specialties = volunteer.specialties.map(spec => {
-      return specialties.find(el => el.id == spec);
-    });
-    return { ...volunteer, specialties: vol_specialties.map(mapSpecialtiesOptions) }
+    const volSpecialties = volunteer.specialties.map(spec => {
+      return specialties.find(el => el.id === spec)
+    })
+    return { ...volunteer, specialties: volSpecialties.map(mapSpecialtiesOptions) }
   }
 }
 

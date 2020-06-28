@@ -1,13 +1,13 @@
 import * as firebase from 'firebase/app'
-import * as firestore from 'firebase/firestore'
+import 'firebase/firestore'
 import 'firebase/auth'
 
-const firestore_db = {}
+const firestoreDb = {}
 
 function init (firebaseConfig) {
-  firestore_db.db = firebase
-          .initializeApp(firebaseConfig)
-          .firestore()
+  firestoreDb.db = firebase
+    .initializeApp(firebaseConfig)
+    .firestore()
 }
 
 function auth (cb) {
@@ -31,7 +31,7 @@ async function getIdToken () {
 }
 
 function db () {
-  return firestore_db.db;
+  return firestoreDb.db
 }
 
 export default {
@@ -41,5 +41,5 @@ export default {
   logout,
   getUser,
   getIdToken,
-  db,
+  db
 }

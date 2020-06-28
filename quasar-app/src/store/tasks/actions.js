@@ -37,7 +37,7 @@ const mapToServer = task => {
   const t = {
     ...task,
     status: task.statusObj?.value,
-    categories: task.categories.map(s => s.id),
+    categories: task.categories.map(s => s.id)
   }
   delete t.statusObj
   delete t.statusStr
@@ -47,13 +47,13 @@ const mapToServer = task => {
 
 const mapFromServer = (specialties, statuses) => (task) => {
   const specs = task.categories.map(spec => {
-    return specialties.find(el => el.id == spec);
-  });
+    return specialties.find(el => el.id === spec)
+  })
 
-  const proj_vol_stats = statuses.filter(s => s.project == task.id)
+  const projVolStats = statuses.filter(s => s.project === task.id)
   return {
     ...task,
-    volunteers: proj_vol_stats.map(({ volunteer, status, id }) => ({ status, id: volunteer, statusId: id })),
+    volunteers: projVolStats.map(({ volunteer, status, id }) => ({ status, id: volunteer, statusId: id })),
     categories: specs.map(mapSpecialtiesOptions)
   }
 }

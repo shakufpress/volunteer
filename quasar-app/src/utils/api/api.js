@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 // this is the firebase token of the current user.
 // we send it to the server. The server should verify it with firebase:
 // https://firebase.google.com/docs/auth/admin/verify-id-tokens#verify_id_tokens_using_the_firebase_admin_sdk
@@ -15,7 +13,7 @@ async function all (storeName) {
   snapshot.forEach(doc => {
     data.push({
       id: doc.id,
-      ...doc.data(),
+      ...doc.data()
     })
   })
   return data
@@ -31,7 +29,7 @@ async function get (storeName, id) {
   const doc = await firebaseService.db().collection(storeName).doc(id).get()
   return {
     id: doc.id,
-    ...doc.data(),
+    ...doc.data()
   }
 }
 
@@ -42,7 +40,7 @@ async function query (storeName, lvalue, op, rvalue) {
   snapshot.forEach(doc => {
     data.push({
       id: doc.id,
-      ...doc.data(),
+      ...doc.data()
     })
   })
   return data
