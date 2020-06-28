@@ -91,6 +91,7 @@
                 v-model="props.editing.statusObj"
                 :options="Object.keys(taskStatusEnum).map(n => ({label: taskStatusEnum[n], value: n}))"
                 :readonly="details"
+                :disabled="details"
               >
                 <template v-slot:before>
                   <LabelDiv label="Status" />
@@ -108,7 +109,7 @@
 
           <q-item key="description">
             <q-item-section>
-              <q-input dense outlined autogrow :readonly="details" v-model="props.editing.description">
+              <q-input dense outlined autogrow :readonly="details" :disabled="details" v-model="props.editing.description">
                 <template v-slot:before>
                   <LabelDiv label="Description" />
                 </template>
@@ -233,6 +234,7 @@ export default {
       columns: [
         { name: 'title', required: true, label: 'Task Title', align: 'left', field: 'title', sortable: true },
         { name: 'estimation', required: true, label: 'Estimation', align: 'left', field: 'estimation', sortable: true },
+        { name: 'deadline', required: true, label: 'Deadline', align: 'left', field: 'deadline', sortable: true },
         { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
         { name: 'manager_name', required: true, label: 'Manager Name', align: 'left', field: 'manager_name', sortable: true },
         { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true },
