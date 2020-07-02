@@ -183,7 +183,7 @@ export default {
       if (newValue) {
         try {
           await this.$store.dispatch('volunteers/update', newValue)
-        } catch(ex) {
+        } catch (ex) {
           this.errorText = ex.message
           this.showError = true
         }

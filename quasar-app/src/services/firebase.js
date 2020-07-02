@@ -35,7 +35,7 @@ function db () {
   return firestoreDb.db
 }
 
-function functions() {
+function functions () {
   return firebase.functions()
 }
 

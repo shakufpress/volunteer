@@ -14,7 +14,7 @@ export async function all ({ rootState, commit, dispatch }, email) {
   commit('setAll', { items: items.map(mapFromServer(rootState.specialties.data)) })
 }
 
-async function getVolunteerByEmail(email) {
+async function getVolunteerByEmail (email) {
   const id = await api.callFunction('getVolunteerId', { email })
   if (id) {
     return await api.get(storeName, id)
