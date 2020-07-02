@@ -5,9 +5,9 @@ admin.initializeApp()
 exports.getVolunteerId = functions.https.onCall((data, context) => {
   return admin.firestore().collection('volunteers')
     .where('email', '==', data.email).get()
-    .then(volunteers => {
-      if (volunteers && volunteers.length === 1) {
-        return volunteers[0].id
+    .then(snapshot => {
+      if (snapshot.docs && snapshot.docs.length === 1) {
+        return snapshot.docs[0].id
       }
     })
 });

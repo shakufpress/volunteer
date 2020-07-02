@@ -17,7 +17,7 @@ export async function all ({ rootState, commit, dispatch }, email) {
 
 async function getVolunteerByEmail(email) {
   const getVolunteerId = firebaseService.functions().httpsCallable('getVolunteerId')
-  const id = await getVolunteerId({ email })
+  const { data: id } = await getVolunteerId({ email })
   if (id) {
     return await api.get(storeName, id)
   }
@@ -29,15 +29,14 @@ export async function add ({ dispatch }, item) {
 }
 
 export async function update ({ rootState, dispatch }, item) {
-  if (item.email !== rootState.user.email) {
-    // updating the volunteer email - make sure there isn't another volunteer with the same email
-    v = await getVolunteerByEmail(item.email)
-    if (v && v.length) {
-      throw new Error('The provided email already exists')
-    }
+  // if updating the volunteer email - make sure there isn't another volunteer with the same email
+  const v = await getVolunteerByEmail(item.email)
+  if (v && v.id !== item.id) {
+    throw new Error('The provided email already exists. Update failed.')
   }
+
   await api.update(storeName, mapToServer(item))
-  dispatch('all')
+  await dispatch('all')
 }
 
 function mapFromServer (specialties) {
