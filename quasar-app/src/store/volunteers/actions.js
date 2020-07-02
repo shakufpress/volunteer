@@ -1,6 +1,5 @@
 import mapSpecialtiesOptions from '../../utils/mapSpecialtiesOptions'
 import * as api from '../../utils/api/api'
-import firebaseService from '../../services/firebase'
 const storeName = 'volunteers'
 
 export async function all ({ rootState, commit, dispatch }, email) {
@@ -16,8 +15,7 @@ export async function all ({ rootState, commit, dispatch }, email) {
 }
 
 async function getVolunteerByEmail(email) {
-  const getVolunteerId = firebaseService.functions().httpsCallable('getVolunteerId')
-  const { data: id } = await getVolunteerId({ email })
+  const id = await api.callFunction('getVolunteerId', { email })
   if (id) {
     return await api.get(storeName, id)
   }
@@ -29,13 +27,7 @@ export async function add ({ dispatch }, item) {
 }
 
 export async function update ({ rootState, dispatch }, item) {
-  // if updating the volunteer email - make sure there isn't another volunteer with the same email
-  const v = await getVolunteerByEmail(item.email)
-  if (v && v.id !== item.id) {
-    throw new Error('The provided email already exists. Update failed.')
-  }
-
-  await api.update(storeName, mapToServer(item))
+  await api.callFunction('updateVolunteer', { item: mapToServer(item) })
   await dispatch('all')
 }
 

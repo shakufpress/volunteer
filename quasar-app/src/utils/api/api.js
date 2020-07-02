@@ -68,6 +68,16 @@ async function update (storeName, item) {
   return item
 }
 
+/**
+ * Call firebase cloud function
+ * @param {data} data for the function
+ * Returns what the cloud function returns
+ */
+async function callFunction (funcName, data) {
+  const func = firebaseService.functions().httpsCallable(funcName)
+  return (await func(data)).data
+}
+
 export {
-  all, get, add, update, query
+  all, get, add, update, query, callFunction
 }

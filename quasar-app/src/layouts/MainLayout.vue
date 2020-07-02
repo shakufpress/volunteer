@@ -158,11 +158,10 @@ export default {
       if (newValue) {
         try {
           await this.$store.dispatch('volunteers/update', newValue)
+          await this.$store.dispatch('user/loginVolunteer', newValue)
         } catch(ex) {
           this.errorText = ex.message
           this.showError = true
-        } finally {
-          await this.$store.dispatch('user/loginVolunteer', newValue)
         }
       }
       this.updateVolunteer = false

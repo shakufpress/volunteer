@@ -9,7 +9,7 @@ export async function all ({ commit, dispatch, rootState }) {
   if (rootState.user.role === 'admin') {
     statuses = await api.all(statusStoreName)
   } else {
-    statuses = await api.query(statusStoreName, 'volunteer', '==', rootState.user.id)
+    statuses = await api.callFunction('getProjectRequestsByVolunteer', { id: rootState.user.id })
   }
   const items = await api.all(storeName)
   commit('setAll', { items: items.map(mapFromServer(rootState.specialties.data, statuses)) })
