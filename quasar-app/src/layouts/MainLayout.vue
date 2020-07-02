@@ -89,6 +89,8 @@ export default {
     return {
       leftDrawerOpen: false,
       updateVolunteer: false,
+      showError: false,
+      errorText: '',
       volunteerBasicColumns,
       // TODO: should we get the menu items from the server according to login permissions (admin / volunteer)
       menuItems: [
@@ -142,8 +144,13 @@ export default {
     async onCloseEditDialog (newValue) {
       this.updateVolunteer = false
       if (newValue) {
-        await this.$store.dispatch('volunteers/update', newValue)
-        await this.$store.commit('user/loginVolunteer', newValue)
+        try {
+          await this.$store.dispatch('volunteers/update', newValue)
+          await this.$store.commit('user/loginVolunteer', newValue)
+        } catch(ex) {
+          this.errorText = ex.message
+          this.showError = true
+        }
       }
     }
   }

@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
+import 'firebase/functions'
 
 const firestoreDb = {}
 
@@ -34,6 +35,10 @@ function db () {
   return firestoreDb.db
 }
 
+function functions() {
+  return firebase.functions()
+}
+
 export default {
   init,
   auth,
@@ -41,5 +46,6 @@ export default {
   logout,
   getUser,
   getIdToken,
-  db
+  db,
+  functions
 }
