@@ -1,19 +1,26 @@
 import mapSpecialtiesOptions from '../../utils/mapSpecialtiesOptions'
 import * as api from '../../utils/api/api'
-const storeName = 'project'
-const statusStoreName = 'status'
+const storeName = 'projects'
+const statusStoreName = 'projectsRequestStatuses'
 
-export async function all ({ commit }) {
+export async function all ({ commit, dispatch, rootState }) {
+  await dispatch('specialties/all', {}, { root: true })
+  let statuses
+  if (rootState.user.role === 'admin') {
+    statuses = await api.all(statusStoreName)
+  } else {
+    statuses = await api.callFunction('getProjectRequestsByVolunteer', { id: rootState.user.id })
+  }
   const items = await api.all(storeName)
-  commit('setAll', { items: items.map(mapFromServer) })
+  commit('setAll', { items: items.map(mapFromServer(rootState.specialties.data, statuses)) })
 }
 
-export async function add ({ commit }, item) {
-  const updateObj = await api.add(storeName, mapToServer(item))
-  commit('add', mapFromServer(updateObj))
+export async function add ({ dispatch }, item) {
+  await api.add(storeName, mapToServer(item))
+  dispatch('all')
 }
 
-export async function update ({ commit }, item) {
+export async function update ({ dispatch }, item) {
   for (const v of item.volunteers) {
     await api.update(statusStoreName, {
       id: v.statusId,
@@ -22,24 +29,32 @@ export async function update ({ commit }, item) {
       project: item.id
     })
   }
-  const updateObj = await api.update(storeName, mapToServer(item))
-  commit('update', mapFromServer(updateObj))
+  await api.update(storeName, mapToServer(item))
+  dispatch('all')
 }
 
 const mapToServer = task => {
-  return {
+  const t = {
     ...task,
     status: task.statusObj?.value,
-    categories: task.categories.map(s => s.id),
-    volunteers: undefined
+    categories: task.categories.map(s => s.id)
   }
+  delete t.statusObj
+  delete t.statusStr
+  delete t.volunteers
+  return t
 }
 
-const mapFromServer = task => {
+const mapFromServer = (specialties, statuses) => (task) => {
+  const specs = task.categories.map(spec => {
+    return specialties.find(el => el.id === spec)
+  })
+
+  const projVolStats = statuses.filter(s => s.project === task.id)
   return {
     ...task,
-    volunteers: task.volunteers.map(({ volunteer, status, id }) => ({ status, id: volunteer, statusId: id })),
-    categories: task.categories.map(mapSpecialtiesOptions)
+    volunteers: projVolStats.map(({ volunteer, status, id }) => ({ status, id: volunteer, statusId: id })),
+    categories: specs.map(mapSpecialtiesOptions)
   }
 }
 
@@ -52,7 +67,6 @@ export async function joinVolunteer (state, { taskId, volunteer }) {
       volunteer: volunteer.id,
       project: taskId
     })
-    v.volunteers = [] // we don't need to update the status of existing volunteers to the server
-    await update(state, v)
+    await state.dispatch('all')
   }
 }

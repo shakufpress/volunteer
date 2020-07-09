@@ -1,8 +1,14 @@
 import * as firebase from 'firebase/app'
+import 'firebase/firestore'
 import 'firebase/auth'
+import 'firebase/functions'
+
+const firestoreDb = {}
 
 function init (firebaseConfig) {
-  firebase.initializeApp(firebaseConfig)
+  firestoreDb.db = firebase
+    .initializeApp(firebaseConfig)
+    .firestore()
 }
 
 function auth (cb) {
@@ -25,11 +31,21 @@ async function getIdToken () {
   return await getUser()?.getIdToken(/* forceRefresh */ true)
 }
 
+function db () {
+  return firestoreDb.db
+}
+
+function functions () {
+  return firebase.functions()
+}
+
 export default {
   init,
   auth,
   login,
   logout,
   getUser,
-  getIdToken
+  getIdToken,
+  db,
+  functions
 }

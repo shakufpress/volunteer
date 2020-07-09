@@ -1,0 +1,4320 @@
+[
+  {
+    "full_name": "John Dou",
+    "email": "johndou0@gmail.com",
+    "phone": "051274295",
+    "facebook_profile_url": "http://johndou0.com",
+    "city": "עיר מגורים",
+    "available_hours_per_week": 0,
+    "notes": "ספר/י לנו עלייך או כל הערה רלוונטית",
+    "specialties": [
+      1
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou1@gmail.com",
+    "phone": "0514942866",
+    "facebook_profile_url": "http://johndou1.com",
+    "city": "חיפה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou2@gmail.com",
+    "phone": "0522581224",
+    "facebook_profile_url": "http://johndou2.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou3@gmail.com",
+    "phone": "0534360205",
+    "facebook_profile_url": "http://johndou3.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou4@gmail.com",
+    "phone": "0537169153",
+    "facebook_profile_url": "http://johndou4.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou5@gmail.com",
+    "phone": "0532399727",
+    "facebook_profile_url": "http://johndou5.com",
+    "city": "כפר בין נון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou6@gmail.com",
+    "phone": "0521006753",
+    "facebook_profile_url": "http://johndou6.com",
+    "city": "יד אליהו",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou7@gmail.com",
+    "phone": "0505461236",
+    "facebook_profile_url": "http://johndou7.com",
+    "city": "ירושלים (ברוב הזמן), וחיפה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou8@gmail.com",
+    "phone": "0545586817",
+    "facebook_profile_url": "http://johndou8.com",
+    "city": "תל מונד",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou9@gmail.com",
+    "phone": "0542969633",
+    "facebook_profile_url": "http://johndou9.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      10,
+      11,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou10@gmail.com",
+    "phone": "0501650673",
+    "facebook_profile_url": "http://johndou10.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou11@gmail.com",
+    "phone": "0528509465",
+    "facebook_profile_url": "http://johndou11.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou12@gmail.com",
+    "phone": "0519886875",
+    "facebook_profile_url": "http://johndou12.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou13@gmail.com",
+    "phone": "0549262153",
+    "facebook_profile_url": "http://johndou13.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou14@gmail.com",
+    "phone": "0538355250",
+    "facebook_profile_url": "http://johndou14.com",
+    "city": "ראשון לציון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou15@gmail.com",
+    "phone": "0538637841",
+    "facebook_profile_url": "http://johndou15.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      10,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou16@gmail.com",
+    "phone": "0529929779",
+    "facebook_profile_url": "http://johndou16.com",
+    "city": "גדרה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou17@gmail.com",
+    "phone": "0546423773",
+    "facebook_profile_url": "http://johndou17.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou18@gmail.com",
+    "phone": "0527472794",
+    "facebook_profile_url": "http://johndou18.com",
+    "city": "יבנה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      15,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou19@gmail.com",
+    "phone": "0512423904",
+    "facebook_profile_url": "http://johndou19.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou20@gmail.com",
+    "phone": "0519631992",
+    "facebook_profile_url": "http://johndou20.com",
+    "city": "גן יבנה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou21@gmail.com",
+    "phone": "0519866615",
+    "facebook_profile_url": "http://johndou21.com",
+    "city": "אשדוד",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      15,
+      13,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou22@gmail.com",
+    "phone": "0546513901",
+    "facebook_profile_url": "http://johndou22.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou23@gmail.com",
+    "phone": "0515258079",
+    "facebook_profile_url": "http://johndou23.com",
+    "city": "תא",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou24@gmail.com",
+    "phone": "053587663",
+    "facebook_profile_url": "http://johndou24.com",
+    "city": "רחובות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou25@gmail.com",
+    "phone": "0511730814",
+    "facebook_profile_url": "http://johndou25.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou26@gmail.com",
+    "phone": "0538081232",
+    "facebook_profile_url": "http://johndou26.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou27@gmail.com",
+    "phone": "0528668932",
+    "facebook_profile_url": "http://johndou27.com",
+    "city": "בת ים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou28@gmail.com",
+    "phone": "0538873681",
+    "facebook_profile_url": "http://johndou28.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou29@gmail.com",
+    "phone": "0528350373",
+    "facebook_profile_url": "http://johndou29.com",
+    "city": "קיבוץ שריד",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      17,
+      10,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou30@gmail.com",
+    "phone": "0512402164",
+    "facebook_profile_url": "http://johndou30.com",
+    "city": "קרית ביאליק",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou31@gmail.com",
+    "phone": "0547424963",
+    "facebook_profile_url": "http://johndou31.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou32@gmail.com",
+    "phone": "0536066159",
+    "facebook_profile_url": "http://johndou32.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou33@gmail.com",
+    "phone": "0531635207",
+    "facebook_profile_url": "http://johndou33.com",
+    "city": "כמון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou34@gmail.com",
+    "phone": "0537278339",
+    "facebook_profile_url": "http://johndou34.com",
+    "city": "ירושלים / כפר סבא",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou35@gmail.com",
+    "phone": "0548062228",
+    "facebook_profile_url": "http://johndou35.com",
+    "city": "עספיא",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      11
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou36@gmail.com",
+    "phone": "0502922204",
+    "facebook_profile_url": "http://johndou36.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      15,
+      13,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou37@gmail.com",
+    "phone": "0549474960",
+    "facebook_profile_url": "http://johndou37.com",
+    "city": "Tel Aviv",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou38@gmail.com",
+    "phone": "0523786087",
+    "facebook_profile_url": "http://johndou38.com",
+    "city": "tel aviv",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou39@gmail.com",
+    "phone": "052594548",
+    "facebook_profile_url": "http://johndou39.com",
+    "city": "מודיעין (בקיץ עובר ללוד)",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou40@gmail.com",
+    "phone": "0515440002",
+    "facebook_profile_url": "http://johndou40.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou41@gmail.com",
+    "phone": "0517352303",
+    "facebook_profile_url": "http://johndou41.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      15,
+      13,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou42@gmail.com",
+    "phone": "0546395732",
+    "facebook_profile_url": "http://johndou42.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      10,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou43@gmail.com",
+    "phone": "0532959882",
+    "facebook_profile_url": "http://johndou43.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou44@gmail.com",
+    "phone": "0508535228",
+    "facebook_profile_url": "http://johndou44.com",
+    "city": "רמת השרון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou45@gmail.com",
+    "phone": "05267214",
+    "facebook_profile_url": "http://johndou45.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou46@gmail.com",
+    "phone": "0521590533",
+    "facebook_profile_url": "http://johndou46.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou47@gmail.com",
+    "phone": "0548370261",
+    "facebook_profile_url": "http://johndou47.com",
+    "city": "ראשון לציון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      10,
+      11,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou48@gmail.com",
+    "phone": "0501663767",
+    "facebook_profile_url": "http://johndou48.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou49@gmail.com",
+    "phone": "0516773006",
+    "facebook_profile_url": "http://johndou49.com",
+    "city": "pardes hana karkur",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou50@gmail.com",
+    "phone": "052151240",
+    "facebook_profile_url": "http://johndou50.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou51@gmail.com",
+    "phone": "0549028618",
+    "facebook_profile_url": "http://johndou51.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      15,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou52@gmail.com",
+    "phone": "0548461088",
+    "facebook_profile_url": "http://johndou52.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou53@gmail.com",
+    "phone": "0524345026",
+    "facebook_profile_url": "http://johndou53.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou54@gmail.com",
+    "phone": "0542842881",
+    "facebook_profile_url": "http://johndou54.com",
+    "city": "כפר סבא",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou55@gmail.com",
+    "phone": "0539356165",
+    "facebook_profile_url": "http://johndou55.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou56@gmail.com",
+    "phone": "0507047086",
+    "facebook_profile_url": "http://johndou56.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      15,
+      13,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou57@gmail.com",
+    "phone": "0528929649",
+    "facebook_profile_url": "http://johndou57.com",
+    "city": "דן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      10
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou58@gmail.com",
+    "phone": "0543631579",
+    "facebook_profile_url": "http://johndou58.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou59@gmail.com",
+    "phone": "0526994189",
+    "facebook_profile_url": "http://johndou59.com",
+    "city": "אשקלון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      17,
+      10,
+      11
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou60@gmail.com",
+    "phone": "0506345600",
+    "facebook_profile_url": "http://johndou60.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      10,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou61@gmail.com",
+    "phone": "0543583104",
+    "facebook_profile_url": "http://johndou61.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou62@gmail.com",
+    "phone": "0507290408",
+    "facebook_profile_url": "http://johndou62.com",
+    "city": "צור יצחק",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      11
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou63@gmail.com",
+    "phone": "0543146929",
+    "facebook_profile_url": "http://johndou63.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou64@gmail.com",
+    "phone": "0523411170",
+    "facebook_profile_url": "http://johndou64.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou65@gmail.com",
+    "phone": "0543162010",
+    "facebook_profile_url": "http://johndou65.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou66@gmail.com",
+    "phone": "0511522543",
+    "facebook_profile_url": "http://johndou66.com",
+    "city": "חדרה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      17,
+      10,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou67@gmail.com",
+    "phone": "052354773",
+    "facebook_profile_url": "http://johndou67.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou68@gmail.com",
+    "phone": "0523114719",
+    "facebook_profile_url": "http://johndou68.com",
+    "city": "בית יצחק",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou69@gmail.com",
+    "phone": "0525151483",
+    "facebook_profile_url": "http://johndou69.com",
+    "city": "בית יצחק",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou70@gmail.com",
+    "phone": "0521073970",
+    "facebook_profile_url": "http://johndou70.com",
+    "city": "מעלות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou71@gmail.com",
+    "phone": "0514299514",
+    "facebook_profile_url": "http://johndou71.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou72@gmail.com",
+    "phone": "0537740211",
+    "facebook_profile_url": "http://johndou72.com",
+    "city": "הוד השרון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou73@gmail.com",
+    "phone": "0545095616",
+    "facebook_profile_url": "http://johndou73.com",
+    "city": "נהריה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou74@gmail.com",
+    "phone": "0524650065",
+    "facebook_profile_url": "http://johndou74.com",
+    "city": "הרצליה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou75@gmail.com",
+    "phone": "052400831",
+    "facebook_profile_url": "http://johndou75.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      17,
+      11
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou76@gmail.com",
+    "phone": "0548755069",
+    "facebook_profile_url": "http://johndou76.com",
+    "city": "נתיבות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      10,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou77@gmail.com",
+    "phone": "051378584",
+    "facebook_profile_url": "http://johndou77.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      4,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou78@gmail.com",
+    "phone": "0531191268",
+    "facebook_profile_url": "http://johndou78.com",
+    "city": "לוד",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      19
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou79@gmail.com",
+    "phone": "0538443506",
+    "facebook_profile_url": "http://johndou79.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou80@gmail.com",
+    "phone": "0509216063",
+    "facebook_profile_url": "http://johndou80.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou81@gmail.com",
+    "phone": "0525027462",
+    "facebook_profile_url": "http://johndou81.com",
+    "city": "רחובות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      15,
+      13,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou82@gmail.com",
+    "phone": "0548392496",
+    "facebook_profile_url": "http://johndou82.com",
+    "city": "עפולה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou83@gmail.com",
+    "phone": "0538000699",
+    "facebook_profile_url": "http://johndou83.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou84@gmail.com",
+    "phone": "0548101508",
+    "facebook_profile_url": "http://johndou84.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou85@gmail.com",
+    "phone": "0503462882",
+    "facebook_profile_url": "http://johndou85.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      15,
+      13,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou86@gmail.com",
+    "phone": "0519748396",
+    "facebook_profile_url": "http://johndou86.com",
+    "city": "רחובות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou87@gmail.com",
+    "phone": "0511547458",
+    "facebook_profile_url": "http://johndou87.com",
+    "city": "ראשון לציון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18,
+      11,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou88@gmail.com",
+    "phone": "0536854350",
+    "facebook_profile_url": "http://johndou88.com",
+    "city": "פתח תקווה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou89@gmail.com",
+    "phone": "0521752880",
+    "facebook_profile_url": "http://johndou89.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      10,
+      11,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou90@gmail.com",
+    "phone": "0532559390",
+    "facebook_profile_url": "http://johndou90.com",
+    "city": "גן יבנה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou91@gmail.com",
+    "phone": "0514962040",
+    "facebook_profile_url": "http://johndou91.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou92@gmail.com",
+    "phone": "0546807481",
+    "facebook_profile_url": "http://johndou92.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou93@gmail.com",
+    "phone": "0515299861",
+    "facebook_profile_url": "http://johndou93.com",
+    "city": "Brandenburg an der Havel",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou94@gmail.com",
+    "phone": "0525792063",
+    "facebook_profile_url": "http://johndou94.com",
+    "city": "תל רביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      15,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou95@gmail.com",
+    "phone": "054359171",
+    "facebook_profile_url": "http://johndou95.com",
+    "city": "מודיעין מכבים רעות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou96@gmail.com",
+    "phone": "0507245398",
+    "facebook_profile_url": "http://johndou96.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou97@gmail.com",
+    "phone": "0514781630",
+    "facebook_profile_url": "http://johndou97.com",
+    "city": "כפר סבא",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      15,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou98@gmail.com",
+    "phone": "0508110798",
+    "facebook_profile_url": "http://johndou98.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou99@gmail.com",
+    "phone": "0543769196",
+    "facebook_profile_url": "http://johndou99.com",
+    "city": "כפר סבא",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou100@gmail.com",
+    "phone": "0507954228",
+    "facebook_profile_url": "http://johndou100.com",
+    "city": "חדרה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou101@gmail.com",
+    "phone": "0549955981",
+    "facebook_profile_url": "http://johndou101.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      20,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou102@gmail.com",
+    "phone": "0513780265",
+    "facebook_profile_url": "http://johndou102.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      17
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou103@gmail.com",
+    "phone": "0528294430",
+    "facebook_profile_url": "http://johndou103.com",
+    "city": "תל מונד",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou104@gmail.com",
+    "phone": "0537434689",
+    "facebook_profile_url": "http://johndou104.com",
+    "city": "אבן יהודה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou105@gmail.com",
+    "phone": "0534422839",
+    "facebook_profile_url": "http://johndou105.com",
+    "city": "באר שבע",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou106@gmail.com",
+    "phone": "0508731568",
+    "facebook_profile_url": "http://johndou106.com",
+    "city": "מעלות - תרשיחא",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou107@gmail.com",
+    "phone": "0513510806",
+    "facebook_profile_url": "http://johndou107.com",
+    "city": "כפר בן נון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou108@gmail.com",
+    "phone": "050824504",
+    "facebook_profile_url": "http://johndou108.com",
+    "city": "דימונה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou109@gmail.com",
+    "phone": "0537874480",
+    "facebook_profile_url": "http://johndou109.com",
+    "city": "נתניה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou110@gmail.com",
+    "phone": "0518333931",
+    "facebook_profile_url": "http://johndou110.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou111@gmail.com",
+    "phone": "0503311149",
+    "facebook_profile_url": "http://johndou111.com",
+    "city": "חיפה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou112@gmail.com",
+    "phone": "0523682369",
+    "facebook_profile_url": "http://johndou112.com",
+    "city": "פרדסיה/תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou113@gmail.com",
+    "phone": "0528102793",
+    "facebook_profile_url": "http://johndou113.com",
+    "city": "יפו",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou114@gmail.com",
+    "phone": "0511219359",
+    "facebook_profile_url": "http://johndou114.com",
+    "city": "תל מונד",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      15,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou115@gmail.com",
+    "phone": "0521501295",
+    "facebook_profile_url": "http://johndou115.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou116@gmail.com",
+    "phone": "0532799598",
+    "facebook_profile_url": "http://johndou116.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou117@gmail.com",
+    "phone": "0505363074",
+    "facebook_profile_url": "http://johndou117.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou118@gmail.com",
+    "phone": "051442237",
+    "facebook_profile_url": "http://johndou118.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou119@gmail.com",
+    "phone": "0526543871",
+    "facebook_profile_url": "http://johndou119.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      15,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou120@gmail.com",
+    "phone": "0537640019",
+    "facebook_profile_url": "http://johndou120.com",
+    "city": "יהוד מונוסון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou121@gmail.com",
+    "phone": "0511783154",
+    "facebook_profile_url": "http://johndou121.com",
+    "city": "https://www.facebook.com/itay.bendan",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou122@gmail.com",
+    "phone": "0506047157",
+    "facebook_profile_url": "http://johndou122.com",
+    "city": "נתניה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou123@gmail.com",
+    "phone": "0507380637",
+    "facebook_profile_url": "http://johndou123.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou124@gmail.com",
+    "phone": "0514081757",
+    "facebook_profile_url": "http://johndou124.com",
+    "city": "קיבוץ שדה נחמיה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou125@gmail.com",
+    "phone": "0511468318",
+    "facebook_profile_url": "http://johndou125.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou126@gmail.com",
+    "phone": "0509289376",
+    "facebook_profile_url": "http://johndou126.com",
+    "city": "קרית מוצקין",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou127@gmail.com",
+    "phone": "0502526698",
+    "facebook_profile_url": "http://johndou127.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou128@gmail.com",
+    "phone": "0543279350",
+    "facebook_profile_url": "http://johndou128.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou129@gmail.com",
+    "phone": "052276182",
+    "facebook_profile_url": "http://johndou129.com",
+    "city": "נתיבות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou130@gmail.com",
+    "phone": "0534696191",
+    "facebook_profile_url": "http://johndou130.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      4,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou131@gmail.com",
+    "phone": "050299493",
+    "facebook_profile_url": "http://johndou131.com",
+    "city": "רחובות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou132@gmail.com",
+    "phone": "0502660172",
+    "facebook_profile_url": "http://johndou132.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou133@gmail.com",
+    "phone": "0542926066",
+    "facebook_profile_url": "http://johndou133.com",
+    "city": "חדרה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou134@gmail.com",
+    "phone": "0527810441",
+    "facebook_profile_url": "http://johndou134.com",
+    "city": "באר שבע",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou135@gmail.com",
+    "phone": "052159432",
+    "facebook_profile_url": "http://johndou135.com",
+    "city": "Palo Alto California",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou136@gmail.com",
+    "phone": "0536300202",
+    "facebook_profile_url": "http://johndou136.com",
+    "city": "יגל",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18,
+      4,
+      15,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou137@gmail.com",
+    "phone": "0507324472",
+    "facebook_profile_url": "http://johndou137.com",
+    "city": "אשקלון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou138@gmail.com",
+    "phone": "0546223315",
+    "facebook_profile_url": "http://johndou138.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou139@gmail.com",
+    "phone": "0501332271",
+    "facebook_profile_url": "http://johndou139.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou140@gmail.com",
+    "phone": "0525708044",
+    "facebook_profile_url": "http://johndou140.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      3,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou141@gmail.com",
+    "phone": "0542513984",
+    "facebook_profile_url": "http://johndou141.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      19
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou142@gmail.com",
+    "phone": "0516267691",
+    "facebook_profile_url": "http://johndou142.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou143@gmail.com",
+    "phone": "0538115544",
+    "facebook_profile_url": "http://johndou143.com",
+    "city": "כפר כמא",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou144@gmail.com",
+    "phone": "053897334",
+    "facebook_profile_url": "http://johndou144.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      19
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou145@gmail.com",
+    "phone": "053132857",
+    "facebook_profile_url": "http://johndou145.com",
+    "city": "ראשןן לציון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou146@gmail.com",
+    "phone": "0524697043",
+    "facebook_profile_url": "http://johndou146.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou147@gmail.com",
+    "phone": "0504256097",
+    "facebook_profile_url": "http://johndou147.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou148@gmail.com",
+    "phone": "053113347",
+    "facebook_profile_url": "http://johndou148.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      15,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou149@gmail.com",
+    "phone": "0524038506",
+    "facebook_profile_url": "http://johndou149.com",
+    "city": "יבנה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4,
+      15,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou150@gmail.com",
+    "phone": "0512799214",
+    "facebook_profile_url": "http://johndou150.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou151@gmail.com",
+    "phone": "0521914457",
+    "facebook_profile_url": "http://johndou151.com",
+    "city": "צורן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      15,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou152@gmail.com",
+    "phone": "0527501900",
+    "facebook_profile_url": "http://johndou152.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      3,
+      4,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou153@gmail.com",
+    "phone": "054608772",
+    "facebook_profile_url": "http://johndou153.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      11,
+      3,
+      4,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou154@gmail.com",
+    "phone": "0515877876",
+    "facebook_profile_url": "http://johndou154.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou155@gmail.com",
+    "phone": "0525799574",
+    "facebook_profile_url": "http://johndou155.com",
+    "city": "חיפה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou156@gmail.com",
+    "phone": "0544578230",
+    "facebook_profile_url": "http://johndou156.com",
+    "city": "אילון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou157@gmail.com",
+    "phone": "0526625616",
+    "facebook_profile_url": "http://johndou157.com",
+    "city": "מזכרת בתיה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou158@gmail.com",
+    "phone": "0525757361",
+    "facebook_profile_url": "http://johndou158.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou159@gmail.com",
+    "phone": "0514778411",
+    "facebook_profile_url": "http://johndou159.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou160@gmail.com",
+    "phone": "0516494050",
+    "facebook_profile_url": "http://johndou160.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou161@gmail.com",
+    "phone": "0512214710",
+    "facebook_profile_url": "http://johndou161.com",
+    "city": "הרצליה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou162@gmail.com",
+    "phone": "0507418896",
+    "facebook_profile_url": "http://johndou162.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou163@gmail.com",
+    "phone": "0535778448",
+    "facebook_profile_url": "http://johndou163.com",
+    "city": "לוד",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou164@gmail.com",
+    "phone": "0526995474",
+    "facebook_profile_url": "http://johndou164.com",
+    "city": "קריית מוצקין",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou165@gmail.com",
+    "phone": "0537905263",
+    "facebook_profile_url": "http://johndou165.com",
+    "city": "חצור הגלילית",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou166@gmail.com",
+    "phone": "0515405950",
+    "facebook_profile_url": "http://johndou166.com",
+    "city": "פתח תקווה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou167@gmail.com",
+    "phone": "0528930483",
+    "facebook_profile_url": "http://johndou167.com",
+    "city": "יפו",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou168@gmail.com",
+    "phone": "0533308547",
+    "facebook_profile_url": "http://johndou168.com",
+    "city": "raanana",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou169@gmail.com",
+    "phone": "0549910066",
+    "facebook_profile_url": "http://johndou169.com",
+    "city": "נווה מבטח, מועצה אזורית באר טוביה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou170@gmail.com",
+    "phone": "052267155",
+    "facebook_profile_url": "http://johndou170.com",
+    "city": "קרית ים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou171@gmail.com",
+    "phone": "0537524031",
+    "facebook_profile_url": "http://johndou171.com",
+    "city": "חיפה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      15,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou172@gmail.com",
+    "phone": "0506789192",
+    "facebook_profile_url": "http://johndou172.com",
+    "city": "נווה מבטח",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou173@gmail.com",
+    "phone": "0541679360",
+    "facebook_profile_url": "http://johndou173.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou174@gmail.com",
+    "phone": "0513065454",
+    "facebook_profile_url": "http://johndou174.com",
+    "city": "אשדוד",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou175@gmail.com",
+    "phone": "0508507713",
+    "facebook_profile_url": "http://johndou175.com",
+    "city": "באר שבע",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou176@gmail.com",
+    "phone": "0529587730",
+    "facebook_profile_url": "http://johndou176.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou177@gmail.com",
+    "phone": "05390873",
+    "facebook_profile_url": "http://johndou177.com",
+    "city": "באר שבע",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou178@gmail.com",
+    "phone": "054930335",
+    "facebook_profile_url": "http://johndou178.com",
+    "city": "זכרון יעקב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou179@gmail.com",
+    "phone": "0538156551",
+    "facebook_profile_url": "http://johndou179.com",
+    "city": "בואנוס איירס (שנת שבתון)",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou180@gmail.com",
+    "phone": "0514472529",
+    "facebook_profile_url": "http://johndou180.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou181@gmail.com",
+    "phone": "0537444184",
+    "facebook_profile_url": "http://johndou181.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      15,
+      13,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou182@gmail.com",
+    "phone": "0501749728",
+    "facebook_profile_url": "http://johndou182.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou183@gmail.com",
+    "phone": "0534466737",
+    "facebook_profile_url": "http://johndou183.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou184@gmail.com",
+    "phone": "0542032770",
+    "facebook_profile_url": "http://johndou184.com",
+    "city": "חיפה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou185@gmail.com",
+    "phone": "0517492419",
+    "facebook_profile_url": "http://johndou185.com",
+    "city": "רמת השרון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou186@gmail.com",
+    "phone": "051617600",
+    "facebook_profile_url": "http://johndou186.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou187@gmail.com",
+    "phone": "0529315346",
+    "facebook_profile_url": "http://johndou187.com",
+    "city": "גדרה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou188@gmail.com",
+    "phone": "0528429358",
+    "facebook_profile_url": "http://johndou188.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou189@gmail.com",
+    "phone": "0507753151",
+    "facebook_profile_url": "http://johndou189.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      15
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou190@gmail.com",
+    "phone": "0545854938",
+    "facebook_profile_url": "http://johndou190.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou191@gmail.com",
+    "phone": "0533482677",
+    "facebook_profile_url": "http://johndou191.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou192@gmail.com",
+    "phone": "0522647715",
+    "facebook_profile_url": "http://johndou192.com",
+    "city": "יובלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      17,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou193@gmail.com",
+    "phone": "051855469",
+    "facebook_profile_url": "http://johndou193.com",
+    "city": "באר שבע",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou194@gmail.com",
+    "phone": "0512662678",
+    "facebook_profile_url": "http://johndou194.com",
+    "city": "vrmkhv",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou195@gmail.com",
+    "phone": "0532067403",
+    "facebook_profile_url": "http://johndou195.com",
+    "city": "הוד השרון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou196@gmail.com",
+    "phone": "0538646697",
+    "facebook_profile_url": "http://johndou196.com",
+    "city": "חיפה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou197@gmail.com",
+    "phone": "0505906562",
+    "facebook_profile_url": "http://johndou197.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou198@gmail.com",
+    "phone": "0501484243",
+    "facebook_profile_url": "http://johndou198.com",
+    "city": "רמת השרון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou199@gmail.com",
+    "phone": "0544417029",
+    "facebook_profile_url": "http://johndou199.com",
+    "city": "כפר יונה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou200@gmail.com",
+    "phone": "0528226011",
+    "facebook_profile_url": "http://johndou200.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou201@gmail.com",
+    "phone": "0504512232",
+    "facebook_profile_url": "http://johndou201.com",
+    "city": "גבעת שמואל",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou202@gmail.com",
+    "phone": "0503516094",
+    "facebook_profile_url": "http://johndou202.com",
+    "city": "גבעת שמואל",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou203@gmail.com",
+    "phone": "0511972053",
+    "facebook_profile_url": "http://johndou203.com",
+    "city": "מודיעין",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou204@gmail.com",
+    "phone": "0512346264",
+    "facebook_profile_url": "http://johndou204.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou205@gmail.com",
+    "phone": "054206851",
+    "facebook_profile_url": "http://johndou205.com",
+    "city": "כפר אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou206@gmail.com",
+    "phone": "0506258788",
+    "facebook_profile_url": "http://johndou206.com",
+    "city": "יפו",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou207@gmail.com",
+    "phone": "054992098",
+    "facebook_profile_url": "http://johndou207.com",
+    "city": "אזור חיפה והגליל המערבי",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      10
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou208@gmail.com",
+    "phone": "0535548719",
+    "facebook_profile_url": "http://johndou208.com",
+    "city": "פתח תקווה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou209@gmail.com",
+    "phone": "0549923812",
+    "facebook_profile_url": "http://johndou209.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou210@gmail.com",
+    "phone": "0528532421",
+    "facebook_profile_url": "http://johndou210.com",
+    "city": "נס ציונה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou211@gmail.com",
+    "phone": "050121272",
+    "facebook_profile_url": "http://johndou211.com",
+    "city": "גבעת זאב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou212@gmail.com",
+    "phone": "0507487467",
+    "facebook_profile_url": "http://johndou212.com",
+    "city": "קריית ביאליק",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou213@gmail.com",
+    "phone": "0504421238",
+    "facebook_profile_url": "http://johndou213.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      13,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou214@gmail.com",
+    "phone": "0502601536",
+    "facebook_profile_url": "http://johndou214.com",
+    "city": "חצור",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou215@gmail.com",
+    "phone": "0536508093",
+    "facebook_profile_url": "http://johndou215.com",
+    "city": "יגל",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18,
+      4,
+      15,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou216@gmail.com",
+    "phone": "0548963510",
+    "facebook_profile_url": "http://johndou216.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou217@gmail.com",
+    "phone": "0548092890",
+    "facebook_profile_url": "http://johndou217.com",
+    "city": "חיפה / ראשלצ",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      15,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou218@gmail.com",
+    "phone": "0535452507",
+    "facebook_profile_url": "http://johndou218.com",
+    "city": "באקה אל גרבייה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou219@gmail.com",
+    "phone": "0545982709",
+    "facebook_profile_url": "http://johndou219.com",
+    "city": "כפר סבא",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou220@gmail.com",
+    "phone": "0529235346",
+    "facebook_profile_url": "http://johndou220.com",
+    "city": "כפר אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou221@gmail.com",
+    "phone": "0546622538",
+    "facebook_profile_url": "http://johndou221.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou222@gmail.com",
+    "phone": "0501249570",
+    "facebook_profile_url": "http://johndou222.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      13,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou223@gmail.com",
+    "phone": "0513016025",
+    "facebook_profile_url": "http://johndou223.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou224@gmail.com",
+    "phone": "0549202715",
+    "facebook_profile_url": "http://johndou224.com",
+    "city": "ירושלים/ נס ציונה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou225@gmail.com",
+    "phone": "0531868452",
+    "facebook_profile_url": "http://johndou225.com",
+    "city": "הר אדר",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      15
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou226@gmail.com",
+    "phone": "0531850721",
+    "facebook_profile_url": "http://johndou226.com",
+    "city": "פתח תקווה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou227@gmail.com",
+    "phone": "0505009400",
+    "facebook_profile_url": "http://johndou227.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou228@gmail.com",
+    "phone": "0547757299",
+    "facebook_profile_url": "http://johndou228.com",
+    "city": "ראשון לציון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou229@gmail.com",
+    "phone": "0546772148",
+    "facebook_profile_url": "http://johndou229.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou230@gmail.com",
+    "phone": "0522322396",
+    "facebook_profile_url": "http://johndou230.com",
+    "city": "פרדסיה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      11,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou231@gmail.com",
+    "phone": "0502556235",
+    "facebook_profile_url": "http://johndou231.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou232@gmail.com",
+    "phone": "0542993229",
+    "facebook_profile_url": "http://johndou232.com",
+    "city": "ראשלצ",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou233@gmail.com",
+    "phone": "0546741447",
+    "facebook_profile_url": "http://johndou233.com",
+    "city": "הר אדר",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou234@gmail.com",
+    "phone": "0528981120",
+    "facebook_profile_url": "http://johndou234.com",
+    "city": "נוף איילון (זמינות גבוהה לירושלים ולתל אביב)",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou235@gmail.com",
+    "phone": "0509913612",
+    "facebook_profile_url": "http://johndou235.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou236@gmail.com",
+    "phone": "0502232503",
+    "facebook_profile_url": "http://johndou236.com",
+    "city": "תל אבעב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou237@gmail.com",
+    "phone": "0512523211",
+    "facebook_profile_url": "http://johndou237.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      13,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou238@gmail.com",
+    "phone": "0501616018",
+    "facebook_profile_url": "http://johndou238.com",
+    "city": "כפר אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou239@gmail.com",
+    "phone": "050927182",
+    "facebook_profile_url": "http://johndou239.com",
+    "city": "בחן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      15,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou240@gmail.com",
+    "phone": "0541421628",
+    "facebook_profile_url": "http://johndou240.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou241@gmail.com",
+    "phone": "0537995887",
+    "facebook_profile_url": "http://johndou241.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou242@gmail.com",
+    "phone": "0537346625",
+    "facebook_profile_url": "http://johndou242.com",
+    "city": "נס ציונה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou243@gmail.com",
+    "phone": "0545331290",
+    "facebook_profile_url": "http://johndou243.com",
+    "city": "הרצליה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou244@gmail.com",
+    "phone": "050833253",
+    "facebook_profile_url": "http://johndou244.com",
+    "city": "נס ציונה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou245@gmail.com",
+    "phone": "0511620339",
+    "facebook_profile_url": "http://johndou245.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      17,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou246@gmail.com",
+    "phone": "0519808483",
+    "facebook_profile_url": "http://johndou246.com",
+    "city": "תל אביב יפן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou247@gmail.com",
+    "phone": "0525766898",
+    "facebook_profile_url": "http://johndou247.com",
+    "city": "ראשון לציון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou248@gmail.com",
+    "phone": "0505048588",
+    "facebook_profile_url": "http://johndou248.com",
+    "city": "אזור מרכז",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou249@gmail.com",
+    "phone": "0512736439",
+    "facebook_profile_url": "http://johndou249.com",
+    "city": "הרצליה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou250@gmail.com",
+    "phone": "0504455067",
+    "facebook_profile_url": "http://johndou250.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou251@gmail.com",
+    "phone": "0542699375",
+    "facebook_profile_url": "http://johndou251.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou252@gmail.com",
+    "phone": "0501244061",
+    "facebook_profile_url": "http://johndou252.com",
+    "city": "נס ציונה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou253@gmail.com",
+    "phone": "0505532726",
+    "facebook_profile_url": "http://johndou253.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou254@gmail.com",
+    "phone": "0519300309",
+    "facebook_profile_url": "http://johndou254.com",
+    "city": "באר שבע",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou255@gmail.com",
+    "phone": "0547010638",
+    "facebook_profile_url": "http://johndou255.com",
+    "city": "הרצליה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou256@gmail.com",
+    "phone": "0542822506",
+    "facebook_profile_url": "http://johndou256.com",
+    "city": "תל-אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      13,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou257@gmail.com",
+    "phone": "0507199241",
+    "facebook_profile_url": "http://johndou257.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      11,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou258@gmail.com",
+    "phone": "054607157",
+    "facebook_profile_url": "http://johndou258.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou259@gmail.com",
+    "phone": "0549670428",
+    "facebook_profile_url": "http://johndou259.com",
+    "city": "פתח תקווה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      17,
+      11,
+      3,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou260@gmail.com",
+    "phone": "0532694709",
+    "facebook_profile_url": "http://johndou260.com",
+    "city": "גן יבנה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou261@gmail.com",
+    "phone": "0528465843",
+    "facebook_profile_url": "http://johndou261.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou262@gmail.com",
+    "phone": "0501883596",
+    "facebook_profile_url": "http://johndou262.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou263@gmail.com",
+    "phone": "0501410971",
+    "facebook_profile_url": "http://johndou263.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou264@gmail.com",
+    "phone": "054602143",
+    "facebook_profile_url": "http://johndou264.com",
+    "city": "ראשון לציון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      20
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou265@gmail.com",
+    "phone": "0517821440",
+    "facebook_profile_url": "http://johndou265.com",
+    "city": "חיפה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16,
+      15,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou266@gmail.com",
+    "phone": "0501296640",
+    "facebook_profile_url": "http://johndou266.com",
+    "city": "חיפה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou267@gmail.com",
+    "phone": "0514516644",
+    "facebook_profile_url": "http://johndou267.com",
+    "city": "רחובות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      14
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou268@gmail.com",
+    "phone": "0533759939",
+    "facebook_profile_url": "http://johndou268.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou269@gmail.com",
+    "phone": "0542021562",
+    "facebook_profile_url": "http://johndou269.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou270@gmail.com",
+    "phone": "0526547871",
+    "facebook_profile_url": "http://johndou270.com",
+    "city": "גבעתיים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou271@gmail.com",
+    "phone": "0504793528",
+    "facebook_profile_url": "http://johndou271.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou272@gmail.com",
+    "phone": "0533731500",
+    "facebook_profile_url": "http://johndou272.com",
+    "city": "הרצליה/ירושלים/תל-אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou273@gmail.com",
+    "phone": "05234008",
+    "facebook_profile_url": "http://johndou273.com",
+    "city": "באר שבע",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou274@gmail.com",
+    "phone": "053204832",
+    "facebook_profile_url": "http://johndou274.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      15,
+      13,
+      9
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou275@gmail.com",
+    "phone": "0538073510",
+    "facebook_profile_url": "http://johndou275.com",
+    "city": "פתח תקווה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou276@gmail.com",
+    "phone": "052879793",
+    "facebook_profile_url": "http://johndou276.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou277@gmail.com",
+    "phone": "0536088608",
+    "facebook_profile_url": "http://johndou277.com",
+    "city": "עצמון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      17,
+      11,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou278@gmail.com",
+    "phone": "0536093464",
+    "facebook_profile_url": "http://johndou278.com",
+    "city": "ראשון לציון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      20
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou279@gmail.com",
+    "phone": "0546814433",
+    "facebook_profile_url": "http://johndou279.com",
+    "city": "הוד השרון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou280@gmail.com",
+    "phone": "0517794452",
+    "facebook_profile_url": "http://johndou280.com",
+    "city": "חולון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      4,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou281@gmail.com",
+    "phone": "052777704",
+    "facebook_profile_url": "http://johndou281.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou282@gmail.com",
+    "phone": "0533528135",
+    "facebook_profile_url": "http://johndou282.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou283@gmail.com",
+    "phone": "0517824929",
+    "facebook_profile_url": "http://johndou283.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou284@gmail.com",
+    "phone": "0514611464",
+    "facebook_profile_url": "http://johndou284.com",
+    "city": "ירושלים",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou285@gmail.com",
+    "phone": "0534056149",
+    "facebook_profile_url": "http://johndou285.com",
+    "city": "קרית טיבעון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou286@gmail.com",
+    "phone": "0511829227",
+    "facebook_profile_url": "http://johndou286.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou287@gmail.com",
+    "phone": "0517864935",
+    "facebook_profile_url": "http://johndou287.com",
+    "city": "זה מסובך... לדואר: מושב חניאל, תא דואר 443",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      16
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou288@gmail.com",
+    "phone": "0502916299",
+    "facebook_profile_url": "http://johndou288.com",
+    "city": "Tel aviv- Yaffo",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8,
+      4,
+      15,
+      13,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou289@gmail.com",
+    "phone": "0526647950",
+    "facebook_profile_url": "http://johndou289.com",
+    "city": "רחובות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou290@gmail.com",
+    "phone": "0529275904",
+    "facebook_profile_url": "http://johndou290.com",
+    "city": "באר שבע",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      2,
+      3,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou291@gmail.com",
+    "phone": "0544379835",
+    "facebook_profile_url": "http://johndou291.com",
+    "city": "נתניה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      11,
+      3
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou292@gmail.com",
+    "phone": "0537313758",
+    "facebook_profile_url": "http://johndou292.com",
+    "city": "ראשון לציון",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      8
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou293@gmail.com",
+    "phone": "053564305",
+    "facebook_profile_url": "http://johndou293.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      13
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou294@gmail.com",
+    "phone": "0536174217",
+    "facebook_profile_url": "http://johndou294.com",
+    "city": "רמת גן",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      7,
+      10,
+      11,
+      3,
+      4
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou295@gmail.com",
+    "phone": "0518483504",
+    "facebook_profile_url": "http://johndou295.com",
+    "city": "כפר יונה",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5,
+      3,
+      4,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou296@gmail.com",
+    "phone": "051269180",
+    "facebook_profile_url": "http://johndou296.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      18,
+      3,
+      4,
+      9,
+      6
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou297@gmail.com",
+    "phone": "0508135648",
+    "facebook_profile_url": "http://johndou297.com",
+    "city": "תל אביב",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      5
+    ],
+    "projects": []
+  },
+  {
+    "full_name": "John Dou",
+    "email": "johndou298@gmail.com",
+    "phone": "0549615439",
+    "facebook_profile_url": "http://johndou298.com",
+    "city": "רחובות",
+    "available_hours_per_week": 0,
+    "notes": "",
+    "specialties": [
+      12,
+      9,
+      6
+    ],
+    "projects": []
+  }
+]

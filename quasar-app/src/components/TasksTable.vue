@@ -20,7 +20,11 @@
         <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/task/edit/'+(selected[0] || {}).id" />
         <q-btn v-if="isAdmin" class="q-ma-md" color="primary" label="New Task" :to="'/task/new/0'" />
         <q-btn v-if="isAdmin" class="q-ma-md" color="primary" :disable="!selected.length" label="Details" :to="'/task/details/'+(selected[0] || {}).id" />
+
         <q-space />
+        <TagLine />
+        <q-space />
+
         <q-input placeholder="Search" dense outlined class="q-ml-md" debounce="300" color="primary" v-model="filter">
           <template v-slot:append>
             <q-icon name="search" />
@@ -87,6 +91,7 @@
                 v-model="props.editing.statusObj"
                 :options="Object.keys(taskStatusEnum).map(n => ({label: taskStatusEnum[n], value: n}))"
                 :readonly="details"
+                :disabled="details"
               >
                 <template v-slot:before>
                   <LabelDiv label="Status" />
@@ -104,7 +109,7 @@
 
           <q-item key="description">
             <q-item-section>
-              <q-input dense outlined autogrow :readonly="details" v-model="props.editing.description">
+              <q-input dense outlined autogrow :readonly="details" :disabled="details" v-model="props.editing.description">
                 <template v-slot:before>
                   <LabelDiv label="Description" />
                 </template>
@@ -189,6 +194,7 @@ import deepSearch from '../utils/deepSearch'
 
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
+import TagLine from 'components/TagLine'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import SpecialtiesSelectBox from 'components/SpecialtiesSelectBox'
 
@@ -200,6 +206,7 @@ export default {
   components: {
     EditDialog,
     LabelDiv,
+    TagLine,
     SpecialtiesBadgeList,
     SpecialtiesSelectBox
   },
@@ -227,6 +234,7 @@ export default {
       columns: [
         { name: 'title', required: true, label: 'Task Title', align: 'left', field: 'title', sortable: true },
         { name: 'estimation', required: true, label: 'Estimation', align: 'left', field: 'estimation', sortable: true },
+        { name: 'deadline', required: true, label: 'Deadline', align: 'left', field: 'deadline', sortable: true },
         { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
         { name: 'manager_name', required: true, label: 'Manager Name', align: 'left', field: 'manager_name', sortable: true },
         { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true },
@@ -259,7 +267,7 @@ export default {
       return this.$store.state.user
     },
     dialogTaskId () {
-      return Number(this.$route.params?.taskId)
+      return this.$route.params?.taskId
     },
     dialogState () {
       return this.$route.params?.dialogState

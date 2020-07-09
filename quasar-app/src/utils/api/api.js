@@ -1,28 +1,21 @@
-import axios from 'axios'
-
 // this is the firebase token of the current user.
 // we send it to the server. The server should verify it with firebase:
 // https://firebase.google.com/docs/auth/admin/verify-id-tokens#verify_id_tokens_using_the_firebase_admin_sdk
 import firebaseService from '../../services/firebase'
 
-const instance = axios.create({
-  baseURL: 'http://localhost:1337'
-})
-
-async function getConfig() {
-  const firebaseToken = await firebaseService.getIdToken()
-  return {
-    headers: {
-      firebaseToken
-    }
-  }
-}
-
 /**
  * Returns all data
  */
 async function all (storeName) {
-  const { data } = await instance.get(`${storeName}/`, await getConfig())
+  // console.log('list ', storeName)
+  const data = []
+  const snapshot = await firebaseService.db().collection(storeName).get()
+  snapshot.forEach(doc => {
+    data.push({
+      id: doc.id,
+      ...doc.data()
+    })
+  })
   return data
 }
 
@@ -32,7 +25,24 @@ async function all (storeName) {
  * Returns the item with id == id
  */
 async function get (storeName, id) {
-  const { data } = await instance.get(`${storeName}/${id}`, await getConfig())
+  // console.log('get ', storeName, id)
+  const doc = await firebaseService.db().collection(storeName).doc(id).get()
+  return {
+    id: doc.id,
+    ...doc.data()
+  }
+}
+
+async function query (storeName, lvalue, op, rvalue) {
+  // console.log('query ', storeName, lvalue, op, rvalue)
+  const data = []
+  const snapshot = await firebaseService.db().collection(storeName).where(lvalue, op, rvalue).get()
+  snapshot.forEach(doc => {
+    data.push({
+      id: doc.id,
+      ...doc.data()
+    })
+  })
   return data
 }
 
@@ -42,7 +52,8 @@ async function get (storeName, id) {
  * Returns the item after adding to the server
  */
 async function add (storeName, item) {
-  const { data } = await instance.post(`${storeName}`, item, await getConfig())
+  // console.log('create ', storeName, item)
+  const data = await firebaseService.db().collection(storeName).add(item)
   return data
 }
 
@@ -52,10 +63,21 @@ async function add (storeName, item) {
  * Returns the item after update
  */
 async function update (storeName, item) {
-  const { data } = await instance.put(`${storeName}/${item.id}`, item, await getConfig())
-  return data
+  // console.log('update ', storeName, item)
+  await firebaseService.db().collection(storeName).doc(item.id).update(item)
+  return item
+}
+
+/**
+ * Call firebase cloud function
+ * @param {data} data for the function
+ * Returns what the cloud function returns
+ */
+async function callFunction (funcName, data) {
+  const func = firebaseService.functions().httpsCallable(funcName)
+  return (await func(data)).data
 }
 
 export {
-  all, get, add, update
+  all, get, add, update, query, callFunction
 }

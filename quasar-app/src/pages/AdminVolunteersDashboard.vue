@@ -20,6 +20,8 @@
           <h5 class="q-ma-xs">Volunteers</h5>
           <q-btn class="q-ma-md" color="primary" :disable="!selected.length" label="Edit" :to="'/edit_volunteer/'+(selected[0] || {}).id" />
           <q-space />
+          <TagLine />
+          <q-space />
           <q-input placeholder="Search" dense outlined class="q-ml-md" debounce="300" color="primary" v-model="filter">
             <template v-slot:append>
               <q-icon name="search" />
@@ -106,6 +108,19 @@
       </q-table>
 
       <EditVolunteerDialog :show="!!editVolunteerId" :editVolunteerId="editVolunteerId" label="Edit Volunteer" :columns="columns" @close="onCloseEditDialog" />
+
+      <q-dialog v-model="showError" persistent>
+        <q-card>
+          <q-card-section class="items-center">
+            <q-avatar icon="error" color="primary" text-color="white" />
+            <span class="q-ml-sm">{{ errorText }}</span>
+          </q-card-section>
+
+          <q-card-actions align="right">
+            <q-btn flat label="Close" color="primary" v-close-popup @click="showError = false" />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </div>
   </q-page>
 </template>
@@ -116,6 +131,7 @@ import deepSearch from '../utils/deepSearch'
 import volunteerBasicColumns from '../utils/volunteerBasicColumns'
 
 import BadgeLink from 'components/BadgeLink'
+import TagLine from 'components/TagLine'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import EditVolunteerDialog from 'components/EditVolunteerDialog'
 
@@ -126,6 +142,7 @@ export default {
 
   components: {
     BadgeLink,
+    TagLine,
     SpecialtiesBadgeList,
     EditVolunteerDialog
   },
@@ -138,6 +155,8 @@ export default {
     return {
       selected: [],
       filter: '',
+      showError: false,
+      errorText: '',
       pagination: {
         rowsPerPage: 25
       },
@@ -153,7 +172,7 @@ export default {
       return this.$store.state.volunteers.data
     },
     editVolunteerId () {
-      return Number(this.$route.params?.volunteerId)
+      return this.$route.params?.volunteerId
     }
   },
   methods: {
@@ -162,7 +181,12 @@ export default {
       this.$router.go(-1)
 
       if (newValue) {
-        await this.$store.dispatch('volunteers/update', newValue)
+        try {
+          await this.$store.dispatch('volunteers/update', newValue)
+        } catch (ex) {
+          this.errorText = ex.message
+          this.showError = true
+        }
       }
     },
     deepSearch
