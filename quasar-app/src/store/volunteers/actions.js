@@ -8,9 +8,17 @@ export async function all ({ rootState, commit, dispatch }, email) {
   if (rootState.user.role === 'admin') {
     items = await api.all(storeName)
   } else {
-    items = await api.query(storeName, 'email', '==', email || rootState.user.email)
+    const item = await getVolunteerByEmail(email || rootState.user.email)
+    items = item ? [item] : []
   }
   commit('setAll', { items: items.map(mapFromServer(rootState.specialties.data)) })
+}
+
+async function getVolunteerByEmail (email) {
+  const id = await api.callFunction('getVolunteerId', { email })
+  if (id) {
+    return await api.get(storeName, id)
+  }
 }
 
 export async function add ({ dispatch }, item) {
@@ -18,9 +26,9 @@ export async function add ({ dispatch }, item) {
   dispatch('all')
 }
 
-export async function update ({ dispatch }, item) {
-  await api.update(storeName, mapToServer(item))
-  dispatch('all')
+export async function update ({ rootState, dispatch }, item) {
+  await api.callFunction('updateVolunteer', { item: mapToServer(item) })
+  await dispatch('all')
 }
 
 function mapFromServer (specialties) {

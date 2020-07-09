@@ -108,6 +108,19 @@
       </q-table>
 
       <EditVolunteerDialog :show="!!editVolunteerId" :editVolunteerId="editVolunteerId" label="Edit Volunteer" :columns="columns" @close="onCloseEditDialog" />
+
+      <q-dialog v-model="showError" persistent>
+        <q-card>
+          <q-card-section class="items-center">
+            <q-avatar icon="error" color="primary" text-color="white" />
+            <span class="q-ml-sm">{{ errorText }}</span>
+          </q-card-section>
+
+          <q-card-actions align="right">
+            <q-btn flat label="Close" color="primary" v-close-popup @click="showError = false" />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </div>
   </q-page>
 </template>
@@ -142,6 +155,8 @@ export default {
     return {
       selected: [],
       filter: '',
+      showError: false,
+      errorText: '',
       pagination: {
         rowsPerPage: 25
       },
@@ -166,7 +181,12 @@ export default {
       this.$router.go(-1)
 
       if (newValue) {
-        await this.$store.dispatch('volunteers/update', newValue)
+        try {
+          await this.$store.dispatch('volunteers/update', newValue)
+        } catch (ex) {
+          this.errorText = ex.message
+          this.showError = true
+        }
       }
     },
     deepSearch

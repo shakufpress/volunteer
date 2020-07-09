@@ -64,6 +64,19 @@
 
     <EditVolunteerDialog v-if="!isAdmin" :show="updateVolunteer" :editVolunteerId="loggedInUser.id" label="Update User Details" :columns="volunteerBasicColumns" @close="onCloseEditDialog" />
 
+    <q-dialog v-model="showError" persistent>
+      <q-card>
+        <q-card-section class="items-center">
+          <q-avatar icon="error" color="primary" text-color="white" />
+          <span class="q-ml-sm">{{ errorText }}</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Close" color="primary" v-close-popup @click="showError = false" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
   </q-layout>
 </template>
 
@@ -89,6 +102,8 @@ export default {
     return {
       leftDrawerOpen: false,
       updateVolunteer: false,
+      showError: false,
+      errorText: '',
       volunteerBasicColumns,
       // TODO: should we get the menu items from the server according to login permissions (admin / volunteer)
       menuItems: [
@@ -140,11 +155,16 @@ export default {
       await this.$store.dispatch('user/logout')
     },
     async onCloseEditDialog (newValue) {
-      this.updateVolunteer = false
       if (newValue) {
-        await this.$store.dispatch('volunteers/update', newValue)
-        await this.$store.commit('user/loginVolunteer', newValue)
+        try {
+          await this.$store.dispatch('volunteers/update', newValue)
+          await this.$store.dispatch('user/loginVolunteer', newValue)
+        } catch (ex) {
+          this.errorText = ex.message
+          this.showError = true
+        }
       }
+      this.updateVolunteer = false
     }
   }
 }
