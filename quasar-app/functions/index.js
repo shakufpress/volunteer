@@ -1,5 +1,6 @@
-const express = require('express')
+const axios = require('axios')
 const cors = require('cors')
+const express = require('express')
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 admin.initializeApp()
@@ -7,7 +8,9 @@ admin.initializeApp()
 const volunteersStoreName = 'volunteers'
 const statusStoreName = 'projectsRequestStatuses'
 const specialtiesStoreName = 'specialties'
-const GENERAL_CATEGORY = 'כללי'
+
+const projectsStoreName = "projects"
+const GENERAL_CATEGORY = "כללי"
 
 function getVolunteersByEmail (email) {
   return admin.firestore().collection(volunteersStoreName)
@@ -72,16 +75,16 @@ function hasSpecialty (specialties, s) {
   }
 
   return specialties.find(s => {
-    return s.name === specialty.name && s.category === specialty.category
+    return s.name == specialty.name && s.category == specialty.category
   })
 }
 
-function getSpecialties (oldSpecialties, volunteer) {
-  const newSpecialties = []
-  const userSpecialties = []
-  let specialtiesLength = oldSpecialties.length
+function getSpecialties(oldSpecialties, volunteer) {
+  let newSpecialties = []
+  let user_specialties = []
+  let specialties_length = oldSpecialties.length
   volunteer.specialties.split(',').forEach(s => {
-    let specialtyId = 0
+    specialty_id = 0
     let specialty
     try {
       specialty = hasSpecialty(oldSpecialties, s)
@@ -91,9 +94,9 @@ function getSpecialties (oldSpecialties, volunteer) {
       return
     }
     if (specialty) {
-      specialtyId = specialty.id
+      specialty_id = specialty.id
     } else {
-      specialtyId = specialtiesLength++
+      specialty_id = specialties_length++
       try {
         specialty = s.split(':')
         specialty = {
@@ -105,15 +108,15 @@ function getSpecialties (oldSpecialties, volunteer) {
         specialty = {
           id: specialtyId,
           name: specialty[0].trim(),
-          category: GENERAL_CATEGORY
+          category: GENERAL_CATEGORY,
         }
       }
       newSpecialties.push(specialty)
     }
-    userSpecialties.push(specialtyId)
+    user_specialties.push(specialty_id)
   })
 
-  return [newSpecialties, userSpecialties]
+  return [newSpecialties, user_specialties]
 }
 
 const app = express()
@@ -122,7 +125,7 @@ app.use(cors({ origin: true }))
 app.post('/', async (req, res) => {
   const specialties = []
   try {
-    const snapshot = await (await admin.firestore().collection(specialtiesStoreName).get()).docs
+    let snapshot = await (await admin.firestore().collection(specialtiesStoreName).get()).docs
     snapshot.forEach(doc => {
       specialties.push({
         id: doc.id,
@@ -146,7 +149,7 @@ app.post('/', async (req, res) => {
 
   try {
     newspecs.forEach(async s => {
-      await admin.firestore().collection(specialtiesStoreName).doc(s.id + '').set(s)
+      await admin.firestore().collection(specialtiesStoreName).doc(s.id + "").set(s)
     })
   } catch (err) {
     return res.status(500).send(err.stack)
@@ -167,4 +170,115 @@ app.post('/', async (req, res) => {
   return res.status(201).json(volunteer)
 })
 
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+      user: "",
+      pass: ""
+  }
+})
+
 exports.addVolunteerFromSheet = functions.https.onRequest(app)
+
+exports.userPending = functions.https.onCall(async (data, context) => {
+  let task = await (await admin.firestore().collection(projectsStoreName).doc(data.taskId).get()).doc
+  if (!task.exists) {
+    return
+  }
+
+  task = task.data()
+
+  let volunteer = await (await admin.firestore().collection(projectsStoreName).doc(data.volunteerId).get()).doc
+  if (!volunteer.exists) {
+    return
+  }
+
+  volunteer = volunteer.data()
+
+  const mailOptions = {
+      from: 'Shakufpress <shakufpress@shakuf.co.il>',
+      to: task.email,
+      subject: 'New user request for project ' + task.title,
+      html: "New request for project " + task.title + " from user " + volunteer.full_name + "!!"
+  }
+
+  // returning result
+  return transporter.sendMail(mailOptions, (erro, info) => {
+    if(erro){
+      console.log("failed sending mail " + erro.stack)
+    }
+  })
+
+})
+
+exports.statusChanged = functions.https.onCall(async (data, context) => {
+  let task = await (await admin.firestore().collection(projectsStoreName).doc(data.taskId).get()).doc
+  if (!task.exists) {
+    return
+  }
+
+  task = task.data()
+
+  let volunteer = await (await admin.firestore().collection(projectsStoreName).doc(data.volunteerId).get()).doc
+  if (!volunteer.exists) {
+    return
+  }
+
+  volunteer = volunteer.data()
+
+  const status = await (await admin.firestore().collection(statusStoreName).doc(data.id).get()).doc
+  if (status.status == data.status) {
+    return
+  }
+
+  let status_str = "Approved"
+  if (data.status == 2) {
+    status_str = "Rejected"
+  }
+
+  const mailOptions = {
+      from: 'Shakufpress <shakufpress@shakuf.co.il>',
+      to: volunteer.email,
+      subject: 'You are ' + status_str + ' in project ' + task.title,
+      html: 'You are ' + status_str + ' in project ' + task.title
+  }
+
+  // returning result
+  return transporter.sendMail(mailOptions, (erro, info) => {
+    if(erro){
+      console.log("failed sending mail " + erro.stack)
+    }
+  })
+})
+
+function getSpecialtiesVolunteers(specialties) {
+  return admin.firestore().collection(volunteersStoreName)
+              .where("specialties", "array-contains-any", specialties).get()
+}
+
+exports.newProject = functions.https.onCall(async (data, context) => {
+  const task = await (await admin.firestore().collection(projectsStoreName).doc(data.taskId).get()).doc
+  if (!task.exists) {
+    return
+  }
+
+  task = task.data()
+
+  let volunteers = await getSpecialtiesVolunteers(task.categories)
+
+  volunteers.forEach(doc => {
+    let volunteer = doc.data()
+    const mailOptions = {
+        from: 'Shakufpress <shakufpress@shakuf.co.il>',
+        to: volunteer.email,
+        subject: 'New Project ' + task.title,
+        html: 'New Project ' + task.title,
+    }
+
+    transporter.sendMail(mailOptions, (erro, info) => {
+      if(erro){
+        console.log("failed sending mail " + erro.stack)
+      }
+    })
+  })
+})

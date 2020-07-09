@@ -17,6 +17,7 @@ export async function all ({ commit, dispatch, rootState }) {
 
 export async function add ({ dispatch }, item) {
   await api.add(storeName, mapToServer(item))
+  await api.callFunction('newProject', { taskId: item.id })
   dispatch('all')
 }
 
@@ -28,6 +29,15 @@ export async function update ({ dispatch }, item) {
       volunteer: v.id,
       project: item.id
     })
+    await api.callFunction(
+      'statusChanged',
+      {
+        id: v.statusId,
+        status: v.statusObj?.value,
+        volunteerId: v.id,
+        taskId: item.id
+      }
+    )
   }
   await api.update(storeName, mapToServer(item))
   dispatch('all')
@@ -68,5 +78,6 @@ export async function joinVolunteer (state, { taskId, volunteer }) {
       project: taskId
     })
     await state.dispatch('all')
+    await api.callFunction('userPending', { taskId, volunteerId: volunteer.id })
   }
 }
