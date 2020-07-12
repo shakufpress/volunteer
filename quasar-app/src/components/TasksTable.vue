@@ -38,6 +38,24 @@
         </q-td>
       </template>
 
+      <template v-slot:body-cell-total-volunteers="props">
+        <q-td :props="props">
+          {{ props.value.length }}
+        </q-td>
+      </template>
+
+      <template v-slot:body-cell-pending-volunteers="props">
+        <q-td :props="props">
+          {{ props.value.filter(v => v.statusObj.label === volunteerStatusEnum[0]).length }}
+        </q-td>
+      </template>
+
+      <template v-slot:body-cell-approved-volunteers="props">
+        <q-td :props="props">
+          {{ props.value.filter(v => v.statusObj.label === volunteerStatusEnum[1]).length }}
+        </q-td>
+      </template>
+
       <template v-slot:item="props">
         <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
           <q-card :class="props.selected ? 'bg-grey-2' : ''">
@@ -240,6 +258,9 @@ export default {
         { name: 'phone', required: true, label: 'Phone', align: 'left', field: 'phone', sortable: true },
         { name: 'email', required: true, label: 'Email', align: 'left', field: 'email', sortable: true },
         { name: 'wanted_volunteers', required: true, label: 'Wanted Volunteers', align: 'left', field: 'wanted_volunteers', sortable: true },
+        { name: 'total-volunteers', label: 'Total Volunteers', align: 'left', field: 'volunteers', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
+        { name: 'pending-volunteers', label: 'Pending Volunteers', align: 'left', field: 'volunteers', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
+        { name: 'approved-volunteers', label: 'Approved Volunteers', align: 'left', field: 'volunteers', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
         { name: 'categories', label: 'Categories', align: 'left', field: 'categories', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
         { name: 'statusStr', required: true, label: 'Status', align: 'left', field: 'statusStr', sortable: true, hasCustomEdit: true }
       ]
@@ -318,7 +339,7 @@ export default {
         m.statusStr = taskStatusEnum[m.status]
         m.statusObj = { label: this.taskStatusEnum[m.status], value: m.status }
       }
-      m.volunteers = m.volunteers.map(({ id, status, statusId }) => {
+      m.volunteers = (m.volunteers || []).map(({ id, status, statusId }) => {
         const v = this.$store.getters['volunteers/getId'](id)
         const statusObj = { label: this.volunteerStatusEnum[status], value: status }
         return { ...v, status, statusId, statusObj }
