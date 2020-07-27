@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require('cors');
+const express = require('express')
+const cors = require('cors')
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 admin.initializeApp()
@@ -7,9 +7,9 @@ admin.initializeApp()
 const volunteersStoreName = 'volunteers'
 const statusStoreName = 'projectsRequestStatuses'
 const specialtiesStoreName = 'specialties'
-const GENERAL_CATEGORY = "כללי"
+const GENERAL_CATEGORY = 'כללי'
 
-function getVolunteersByEmail(email) {
+function getVolunteersByEmail (email) {
   return admin.firestore().collection(volunteersStoreName)
     .where('email', '==', email).get()
 }
@@ -56,16 +56,15 @@ exports.getProjectRequestsByVolunteer = functions.https.onCall((data, context) =
     })
 })
 
-function hasSpecialty(specialties, s) {
-  let specialty = s.split(':');
+function hasSpecialty (specialties, s) {
+  let specialty = s.split(':')
 
   try {
     specialty = {
       name: specialty[1].trim(),
-      category: specialty[0].trim(),
+      category: specialty[0].trim()
     }
-  } catch (e)
-  {
+  } catch (e) {
     specialty = {
       name: specialty[0].trim(),
       category: GENERAL_CATEGORY
@@ -73,57 +72,57 @@ function hasSpecialty(specialties, s) {
   }
 
   return specialties.find(s => {
-    return s.name == specialty.name && s.category == specialty.category;
+    return s.name === specialty.name && s.category === specialty.category
   })
 }
 
-function getSpecialties(oldSpecialties, volunteer) {
-  let newSpecialties = [];
-  let user_specialties = [];
-  let specialties_length = oldSpecialties.length;
+function getSpecialties (oldSpecialties, volunteer) {
+  const newSpecialties = []
+  const userSpecialties = []
+  let specialtiesLength = oldSpecialties.length
   volunteer.specialties.split(',').forEach(s => {
-    specialty_id = 0;
+    let specialtyId = 0
     let specialty
     try {
-      specialty = hasSpecialty(oldSpecialties, s);
+      specialty = hasSpecialty(oldSpecialties, s)
     } catch (err) {
-      console.err("Specialty: " + s);
-      console.err(err.stack);
+      console.err('Specialty: ' + s)
+      console.err(err.stack)
       return
     }
     if (specialty) {
-      specialty_id = specialty.id;
+      specialtyId = specialty.id
     } else {
-      specialty_id = specialties_length++;
+      specialtyId = specialtiesLength++
       try {
-        specialty = s.split(':');
+        specialty = s.split(':')
         specialty = {
-          id: specialty_id,
+          id: specialtyId,
           name: specialty[1].trim(),
-          category: specialty[0].trim(),
+          category: specialty[0].trim()
         }
       } catch (ex) {
         specialty = {
-          id: specialty_id,
+          id: specialtyId,
           name: specialty[0].trim(),
-          category: GENERAL_CATEGORY,
-        };
+          category: GENERAL_CATEGORY
+        }
       }
-      newSpecialties.push(specialty);
+      newSpecialties.push(specialty)
     }
-    user_specialties.push(specialty_id);
-  });
+    userSpecialties.push(specialtyId)
+  })
 
-  return [newSpecialties, user_specialties];
+  return [newSpecialties, userSpecialties]
 }
 
-const app = express();
-app.use(cors({ origin: true }));
+const app = express()
+app.use(cors({ origin: true }))
 
 app.post('/', async (req, res) => {
-  let specialties = []
+  const specialties = []
   try {
-    let snapshot = await (await admin.firestore().collection(specialtiesStoreName).get()).docs;
+    const snapshot = await (await admin.firestore().collection(specialtiesStoreName).get()).docs
     snapshot.forEach(doc => {
       specialties.push({
         id: doc.id,
@@ -134,10 +133,10 @@ app.post('/', async (req, res) => {
     return res.status(500).send(err.stack)
   }
 
-  const volunteer = req.body;
+  const volunteer = req.body
   let newspecs = []
   let userspecs = []
-  if (volunteer.specialties != "") {
+  if (volunteer.specialties !== '') {
     try {
       [newspecs, userspecs] = getSpecialties(specialties, volunteer)
     } catch (err) {
@@ -147,25 +146,25 @@ app.post('/', async (req, res) => {
 
   try {
     newspecs.forEach(async s => {
-      await admin.firestore().collection(specialtiesStoreName).doc(s.id + "").set(s);
+      await admin.firestore().collection(specialtiesStoreName).doc(s.id + '').set(s)
     })
   } catch (err) {
     return res.status(500).send(err.stack)
   }
 
-  volunteer.specialties = userspecs;
-  volunteer.projects = [];
+  volunteer.specialties = userspecs
+  volunteer.projects = []
   try {
-    let updateVol = await (await getVolunteersByEmail(volunteer.email)).docs
-    if (updateVol && updateVol.length == 1) {
+    const updateVol = await (await getVolunteersByEmail(volunteer.email)).docs
+    if (updateVol && updateVol.length === 1) {
       await admin.firestore().collection(volunteersStoreName).doc(updateVol[0].id).update(volunteer)
     } else {
-      await admin.firestore().collection(volunteersStoreName).add(volunteer);
+      await admin.firestore().collection(volunteersStoreName).add(volunteer)
     }
   } catch (err) {
     return res.status(500).send(err.stack)
   }
-  return res.status(201).json(volunteer);
-});
+  return res.status(201).json(volunteer)
+})
 
-exports.addVolunteerFromSheet = functions.https.onRequest(app);
+exports.addVolunteerFromSheet = functions.https.onRequest(app)
