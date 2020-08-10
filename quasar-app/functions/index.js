@@ -10,6 +10,7 @@ const statusStoreName = 'projectsRequestStatuses'
 const specialtiesStoreName = 'specialties'
 
 const projectsStoreName = "projects"
+const mailingStoreName = "mailing"
 const GENERAL_CATEGORY = "כללי"
 
 function getVolunteersByEmail (email) {
@@ -167,118 +168,54 @@ app.post('/', async (req, res) => {
   } catch (err) {
     return res.status(500).send(err.stack)
   }
-  return res.status(201).json(volunteer)
-})
-
-let transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-      user: "",
-      pass: ""
-  }
+  return res.status(200).json(volunteer)
 })
 
 exports.addVolunteerFromSheet = functions.https.onRequest(app)
 
-exports.userPending = functions.https.onCall(async (data, context) => {
-  let task = await (await admin.firestore().collection(projectsStoreName).doc(data.taskId).get()).doc
-  if (!task.exists) {
-    return
-  }
-
-  task = task.data()
-
-  let volunteer = await (await admin.firestore().collection(projectsStoreName).doc(data.volunteerId).get()).doc
-  if (!volunteer.exists) {
-    return
-  }
-
-  volunteer = volunteer.data()
-
-  const mailOptions = {
-      from: 'Shakufpress <shakufpress@shakuf.co.il>',
-      to: task.email,
-      subject: 'New user request for project ' + task.title,
-      html: "New request for project " + task.title + " from user " + volunteer.full_name + "!!"
-  }
-
-  // returning result
-  return transporter.sendMail(mailOptions, (erro, info) => {
-    if(erro){
-      console.log("failed sending mail " + erro.stack)
-    }
-  })
-
-})
-
 exports.statusChanged = functions.https.onCall(async (data, context) => {
-  let task = await (await admin.firestore().collection(projectsStoreName).doc(data.taskId).get()).doc
+  let task = await admin.firestore().collection(projectsStoreName).doc(data.taskId).get()
+
   if (!task.exists) {
     return
   }
 
   task = task.data()
 
-  let volunteer = await (await admin.firestore().collection(projectsStoreName).doc(data.volunteerId).get()).doc
+  let volunteer = await admin.firestore().collection(volunteersStoreName).doc(data.volunteerId).get()
   if (!volunteer.exists) {
     return
   }
 
   volunteer = volunteer.data()
 
-  const status = await (await admin.firestore().collection(statusStoreName).doc(data.id).get()).doc
-  if (status.status == data.status) {
+  let status = await admin.firestore().collection(statusStoreName).doc(data.id).get()
+  status = status.data()
+
+  functions.logger.log("Hello from info 3");
+  /* we don't send rejection mails */
+  if (data.status == 2) {
     return
   }
 
-  let status_str = "Approved"
-  if (data.status == 2) {
-    status_str = "Rejected"
-  }
+  functions.logger.log("Hello from info 4");
+  const mail_body = `
+  <h3> היי ${volunteer.full_name}, </h3>
+
+  <p>${task.manager_name} צירף אותך לצוות המשימה. לצפייה בפרטים <a href="https://https://shakuf-volunteer.web.app/?#/task/details/${data.taskId}"> לחץ כאן </a>.
+  בקרוב יצרו איתך קשר, <p>
+
+  <p>תודה גדולה, <br>
+  צוות שקוף</p>
+  `;
 
   const mailOptions = {
-      from: 'Shakufpress <shakufpress@shakuf.co.il>',
       to: volunteer.email,
-      subject: 'You are ' + status_str + ' in project ' + task.title,
-      html: 'You are ' + status_str + ' in project ' + task.title
+      subject: `הי ${volunteer.full_name} קיבלת עדכון מפרויקט ${task.title}`,
+      body: mail_body,
+      timestamp: new Date()
   }
 
-  // returning result
-  return transporter.sendMail(mailOptions, (erro, info) => {
-    if(erro){
-      console.log("failed sending mail " + erro.stack)
-    }
-  })
-})
-
-function getSpecialtiesVolunteers(specialties) {
-  return admin.firestore().collection(volunteersStoreName)
-              .where("specialties", "array-contains-any", specialties).get()
-}
-
-exports.newProject = functions.https.onCall(async (data, context) => {
-  const task = await (await admin.firestore().collection(projectsStoreName).doc(data.taskId).get()).doc
-  if (!task.exists) {
-    return
-  }
-
-  task = task.data()
-
-  let volunteers = await getSpecialtiesVolunteers(task.categories)
-
-  volunteers.forEach(doc => {
-    let volunteer = doc.data()
-    const mailOptions = {
-        from: 'Shakufpress <shakufpress@shakuf.co.il>',
-        to: volunteer.email,
-        subject: 'New Project ' + task.title,
-        html: 'New Project ' + task.title,
-    }
-
-    transporter.sendMail(mailOptions, (erro, info) => {
-      if(erro){
-        console.log("failed sending mail " + erro.stack)
-      }
-    })
-  })
+  await admin.firestore().collection(mailingStoreName).add(mailOptions)
+  return
 })

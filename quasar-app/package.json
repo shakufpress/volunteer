@@ -19,6 +19,7 @@
     "cors": "^2.8.5",
     "firebase": "^7.15.3",
     "quasar": "^1.0.0",
+    "request": "^2.88.2",
     "vuexfire": "^3.2.2"
   },
   "devDependencies": {
