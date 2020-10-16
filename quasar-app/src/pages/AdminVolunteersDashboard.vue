@@ -128,14 +128,13 @@
 <script>
 import defaultColumns from '../utils/defaultColumns'
 import deepSearch from '../utils/deepSearch'
-import volunteerBasicColumns from '../utils/volunteerBasicColumns'
+import volunteerAllColumns from '../utils/volunteerAllColumns'
+import ellipsis15 from '../utils/ellipsis15'
 
 import BadgeLink from 'components/BadgeLink'
 import TagLine from 'components/TagLine'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import EditVolunteerDialog from 'components/EditVolunteerDialog'
-
-const ellipsis15 = str => str && str.length > 15 ? str.substr(0, 15) + '...' : str
 
 export default {
   name: 'PageAdminVolunteersDashboard',
@@ -160,10 +159,7 @@ export default {
       pagination: {
         rowsPerPage: 25
       },
-      columns: [
-        ...volunteerBasicColumns,
-        { name: 'notes', label: 'Notes', align: 'left', field: 'notes', sortable: true, hasCustomStyle: true, format: ellipsis15 }
-      ]
+      columns: volunteerAllColumns
     }
   },
   computed: {

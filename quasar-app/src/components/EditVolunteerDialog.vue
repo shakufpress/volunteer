@@ -1,10 +1,10 @@
 <template>
-  <EditDialog :show="show" :objGetter="getVolunteerToEdit" :label="label" :columns="defaultColumns" @close="onClose">
+  <EditDialog :show="show" :objGetter="getVolunteerToEdit" :label="label" :columns="defaultColumns" @close="onClose" :readonly="readonly" >
     <template v-slot:customItems="props">
       <span v-if="props.editing">
         <q-item v-if="columnExists('facebook_profile_url')" key="facebook_profile_url">
           <q-item-section>
-            <q-input dense outlined v-model="props.editing.facebook_profile_url" placeholder="Facebook Profile">
+            <q-input dense outlined v-model="props.editing.facebook_profile_url" placeholder="Facebook Profile" :readonly="readonly || getColumn('facebook_profile_url').readonly">
               <template v-slot:before>
                 <LabelDiv label="Facebook Profile" />
               </template>
@@ -14,13 +14,14 @@
 
         <q-item v-if="columnExists('specialties')" key="specialties">
           <q-item-section>
-            <SpecialtiesSelectBox v-model="props.editing.specialties"/>
+            <SpecialtiesBadgeList label="Specialties" :list="props.editing.specialties" v-if="readonly || getColumn('specialties').readonly" />
+            <SpecialtiesSelectBox v-model="props.editing.specialties" v-else/>
           </q-item-section>
         </q-item>
 
         <q-item v-if="columnExists('notes')" key="notes">
           <q-item-section>
-            <q-input dense outlined autogrow v-model="props.editing.notes" placeholder="Notes">
+            <q-input dense outlined autogrow v-model="props.editing.notes" placeholder="Notes" :readonly="readonly || getColumn('notes').readonly">
               <template v-slot:before>
                 <LabelDiv label="Notes" />
               </template>
@@ -36,6 +37,7 @@
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
 import SpecialtiesSelectBox from 'components/SpecialtiesSelectBox'
+import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 
 import defaultColumns from '../utils/defaultColumns'
 
@@ -45,7 +47,8 @@ export default {
   components: {
     EditDialog,
     LabelDiv,
-    SpecialtiesSelectBox
+    SpecialtiesSelectBox,
+    SpecialtiesBadgeList
   },
 
   props: {
@@ -62,6 +65,11 @@ export default {
     columns: {
       type: Array,
       required: true
+    },
+
+    readonly: {
+      type: Boolean,
+      default: false
     },
 
     label: {
@@ -81,6 +89,9 @@ export default {
     },
     columnExists (name) {
       return this.columns.filter(c => c.name === name).length > 0
+    },
+    getColumn (name) {
+      return this.columns.filter(c => c.name === name)[0]
     },
     onClose (event) {
       this.$emit('close', event)

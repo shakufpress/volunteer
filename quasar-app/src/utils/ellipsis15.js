@@ -1,0 +1,1 @@
+export default str => str && str.length > 15 ? str.substr(0, 15) + '...' : str

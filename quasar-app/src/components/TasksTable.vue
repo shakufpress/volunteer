@@ -159,6 +159,12 @@
                   </q-input>
                 </template>
 
+                <template v-slot:body-cell-show="props">
+                  <q-td :props="props">
+                    <q-btn class="q-xs" flat label="Show" color="secondary" @click="selectedVolunteerId = props.row.id; showVolunteer = true" />
+                  </q-td>
+                </template>
+
                 <template v-slot:body-cell-status="props">
                   <q-td :props="props">
                     {{ props.row.statusObj.label }}
@@ -200,6 +206,8 @@
       </template>
 
     </EditDialog>
+
+    <EditVolunteerDialog v-if="isAdmin" :show="showVolunteer" :editVolunteerId="selectedVolunteerId" label="Volunteer Details" :columns="volunteerAllColumns" @close="showVolunteer = false" readonly />
   </div>
 </template>
 
@@ -209,12 +217,14 @@ import defaultColumns from '../utils/defaultColumns'
 import taskStatusEnum from '../utils/taskStatusEnum'
 import volunteerStatusEnum from '../utils/volunteerStatusEnum'
 import deepSearch from '../utils/deepSearch'
+import volunteerAllColumns from '../utils/volunteerAllColumns'
 
 import EditDialog from 'components/EditDialog'
 import LabelDiv from 'components/LabelDiv'
 import TagLine from 'components/TagLine'
 import SpecialtiesBadgeList from 'components/SpecialtiesBadgeList'
 import SpecialtiesSelectBox from 'components/SpecialtiesSelectBox'
+import EditVolunteerDialog from 'components/EditVolunteerDialog'
 
 export default {
   name: 'TasksTable',
@@ -226,7 +236,8 @@ export default {
     LabelDiv,
     TagLine,
     SpecialtiesBadgeList,
-    SpecialtiesSelectBox
+    SpecialtiesSelectBox,
+    EditVolunteerDialog
   },
 
   async beforeCreate () {
@@ -242,12 +253,16 @@ export default {
       filterVolunteer: '',
       taskStatusEnum,
       volunteerStatusEnum,
+      showVolunteer: false,
+      selectedVolunteerId: null,
+      volunteerAllColumns,
       pagination: {
         sortBy: 'statusStr',
         descending: true,
         rowsPerPage: 25
       },
       volunteersColumns: [
+        { name: 'show', required: true, label: 'Details', align: 'left' },
         { name: 'full_name', required: true, label: 'Full Name', field: 'full_name', align: 'left', sortable: true },
         { name: 'email', required: true, label: 'Email', field: 'email', align: 'left', sortable: true },
         { name: 'status', required: true, label: 'Status', field: 'status', align: 'left', sortable: true }
@@ -360,6 +375,7 @@ export default {
     },
     async onCloseNewEditDialog (newValue) {
       this.$router.go(-1)
+      this.showVolunteer = false
 
       if (newValue) {
         if (this.edit) {
