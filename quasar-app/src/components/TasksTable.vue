@@ -242,6 +242,8 @@ export default {
       taskStatusEnum,
       volunteerStatusEnum,
       pagination: {
+        sortBy: 'statusStr',
+        descending: true,
         rowsPerPage: 25
       },
       volunteersColumns: [
@@ -251,6 +253,7 @@ export default {
       ],
       columns: [
         { name: 'title', required: true, label: 'Task Title', align: 'left', field: 'title', sortable: true },
+        { name: 'statusStr', required: true, label: 'Status', align: 'left', field: 'statusStr', sortable: true, hasCustomEdit: true },
         { name: 'estimation', required: true, label: 'Estimation', align: 'left', field: 'estimation', sortable: true },
         { name: 'deadline', required: true, label: 'Deadline', align: 'left', field: 'deadline', sortable: true },
         { name: 'description', required: true, label: 'Description', align: 'left', field: 'description', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
@@ -261,8 +264,7 @@ export default {
         { name: 'total-volunteers', label: 'Total Volunteers', align: 'left', field: 'volunteers', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
         { name: 'pending-volunteers', label: 'Pending Volunteers', align: 'left', field: 'volunteers', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
         { name: 'approved-volunteers', label: 'Approved Volunteers', align: 'left', field: 'volunteers', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
-        { name: 'categories', label: 'Categories', align: 'left', field: 'categories', sortable: true, hasCustomStyle: true, hasCustomEdit: true },
-        { name: 'statusStr', required: true, label: 'Status', align: 'left', field: 'statusStr', sortable: true, hasCustomEdit: true }
+        { name: 'categories', label: 'Categories', align: 'left', field: 'categories', sortable: true, hasCustomStyle: true, hasCustomEdit: true }
       ]
     }
   },
