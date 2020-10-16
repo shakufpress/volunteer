@@ -24,6 +24,7 @@
 
               <div>
                 <q-btn label="Login" type="submit" color="primary" @click="onLogin"/>
+                <q-btn label="Register here!" @click="registerForm"/>
               </div>
             </q-form>
           </q-card-section>
@@ -33,7 +34,10 @@
           <q-card>
             <q-card-section class="items-center">
               <q-avatar icon="error" color="primary" text-color="white" />
-              <span class="q-ml-sm">Your email address is not registered. Please register!</span>
+              <span class="q-ml-sm">
+                Your email address is not registered.
+                <q-btn label="Register here!" color="primary" @click="registerForm"/>
+              </span>
             </q-card-section>
 
             <q-card-actions align="right">
@@ -50,6 +54,7 @@
 </script>
 <script>
 import auth from '../utils/auth'
+import { openURL } from 'quasar'
 
 export default {
   async beforeCreate () {
@@ -74,6 +79,9 @@ export default {
       } else {
         this.register = true
       }
+    },
+    registerForm () {
+      openURL('https://shakuf.press/volunteer/')
     }
   }
 }
