@@ -282,7 +282,11 @@ export default {
       return this.$store.getters['tasks/all']()
     },
     mappedData () {
-      return this.tasks.map(this.mapRow)
+      const allTasks = this.tasks.map(this.mapRow)
+      if (this.isAdmin) {
+        return allTasks
+      }
+      return allTasks.filter(row => Number(row.status) !== 2)
     },
     loggedInVolunteer () {
       return this.$store.state.user
