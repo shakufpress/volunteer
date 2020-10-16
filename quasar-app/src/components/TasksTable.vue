@@ -230,6 +230,7 @@ export default {
   },
 
   async beforeCreate () {
+    await this.$store.dispatch('volunteers/all')
     await this.$store.dispatch('tasks/all')
     await this.$store.dispatch('specialties/all')
   },
